@@ -14,14 +14,21 @@ build/
 .venv/
 venv/
 ENV/
+env/
+backend/venv/
+backend/.venv/
 
 # ─── Node / Frontend ─────────────────────────────────────────────
 node_modules/
+frontend/node_modules/
 frontend/dist/
 frontend/.vite/
 *.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# ─── IDE ──────────────────────────────────────────────────────────
+# ─── IDE & OS ─────────────────────────────────────────────────────
 .vscode/
 .idea/
 *.swp
@@ -29,17 +36,31 @@ frontend/.vite/
 *~
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# ─── Environment ─────────────────────────────────────────────────
+# ─── Secrets & Environment ───────────────────────────────────────
 .env
 .env.local
 .env.*.local
+*.pem
+*.key
+kaggle.json
+secrets/
+credentials.json
 
-# ─── Data & Models (never committed) ─────────────────────────────
+# ─── Data & Database (never committed) ───────────────────────────
 data/
+backend/data/
 *.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
 *.sqlite3
+
+# ─── Model Checkpoints & Large Binaries ───────────────────────────
 models/
+backend/models/
 *.safetensors
 *.bin
 *.pth
@@ -49,31 +70,42 @@ models/
 *.joblib
 *.npy
 *.npz
+*.h5
+*.tflite
+*.tar.gz
+*.zip
+*.7z
 
-# ─── Audio & media artifacts ─────────────────────────────────────
+# ─── Audio & Media Artifacts ─────────────────────────────────────
 *.wav
 *.mp3
 *.flac
 *.m4a
 *.ogg
 *.webm
+*.aac
+*.wma
+artifacts/
+backend/artifacts/
+uploads/
+backend/uploads/
 
-# ─── Generated images ────────────────────────────────────────────
-# (spectrogram/heatmap/overlay PNGs are generated artifacts)
-
-# ─── Notebooks ────────────────────────────────────────────────────
+# ─── Jupyter Notebooks ────────────────────────────────────────────
 .ipynb_checkpoints/
 
-# ─── Coverage & test artifacts ────────────────────────────────────
+# ─── Testing, Caching & Linting ───────────────────────────────────
 .coverage
 htmlcov/
 .pytest_cache/
+.ruff_cache/
+.mypy_cache/
 coverage/
 
 # ─── Docker ───────────────────────────────────────────────────────
 docker-compose.override.yml
 
-# ─── Misc ─────────────────────────────────────────────────────────
+# ─── Scratch & Logs ───────────────────────────────────────────────
+scratch/
 *.log
 *.bak
 *.tmp
