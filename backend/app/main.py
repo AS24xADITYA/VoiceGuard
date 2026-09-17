@@ -15,7 +15,7 @@ import structlog
 from fastapi import FastAPI, Request, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.config import Settings, get_settings
@@ -254,6 +254,10 @@ def create_app() -> FastAPI:
     app.include_router(analyses_router, prefix="/api/v1")
     app.include_router(challenge_router, prefix="/api/v1")
     app.include_router(artifacts_router, prefix="/api/v1")
+
+    @app.get("/", include_in_schema=False)
+    async def root() -> RedirectResponse:
+        return RedirectResponse(url="/docs")
 
     return app
 
