@@ -29,6 +29,9 @@ def create_synthetic_audio(
     for i, f in enumerate(frequencies):
         weight = 1.0 / (i + 1)
         y += weight * np.sin(2 * np.pi * f * t)
+    # Syllabic envelope modulation (3.5 Hz) simulates natural speech cadence for VAD
+    envelope = 0.5 * (1.0 + np.sin(2 * np.pi * 3.5 * t))
+    y = y * envelope
     # Normalize to desired peak amplitude
     if np.max(np.abs(y)) > 0:
         y = y / np.max(np.abs(y)) * amplitude

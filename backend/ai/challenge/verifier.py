@@ -112,7 +112,7 @@ def graded_falloff(val: float, lo: float, hi: float) -> float:
         return 1.0
     dist = (lo - val) if val < lo else (val - hi)
     span = max(abs(hi - lo), 0.2)
-    return float(np.exp(-2.0 * (dist / span)))
+    return float(np.exp(-4.0 * (dist / span)))
 
 
 class ChallengeVerifier(Component):

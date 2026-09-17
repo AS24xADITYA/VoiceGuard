@@ -112,9 +112,10 @@ def segment_windows(
     window_samples = int(window_seconds * sr)
     hop_samples = int(hop_seconds * sr)
 
-    # Reflect-pad short audio
+    # Reflect-pad short audio to exactly one window
     if len(y) < window_samples:
         y = np.pad(y, (0, window_samples - len(y)), mode="reflect")
+        return [(y, 0.0, window_seconds)]
 
     windows = []
     start = 0
@@ -124,8 +125,9 @@ def segment_windows(
         windows.append((y[start : start + window_samples], t_start, t_end))
         start += hop_samples
 
-    # If we didn't cover the end, add a final window
-    if start < len(y) and len(y) - start >= sr:  # at least 1 second remaining
+    # If we didn't cover the end, add a final tail window if >= 1s remains
+    last_end = (start - hop_samples) + window_samples
+    if len(y) - last_end >= sr:
         end_window = y[-window_samples:]
         t_start = (len(y) - window_samples) / sr
         t_end = len(y) / sr

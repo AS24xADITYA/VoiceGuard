@@ -16,6 +16,7 @@ from fastapi import FastAPI, Request, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.config import Settings, get_settings
 from app.db.session import close_db, init_db
@@ -208,6 +209,19 @@ def create_app() -> FastAPI:
             "VALIDATION_ERROR", msg, status.HTTP_400_BAD_REQUEST,
             details={"errors": errors},
         )
+
+    @app.exception_handler(StarletteHTTPException)
+    async def http_exception_handler(
+        request: Request, exc: StarletteHTTPException
+    ) -> JSONResponse:
+        code = "HTTP_ERROR"
+        message = str(exc.detail)
+        details = None
+        if isinstance(exc.detail, dict):
+            code = exc.detail.get("code", "HTTP_ERROR")
+            message = exc.detail.get("message", str(exc.detail))
+            details = exc.detail.get("details")
+        return _build_error_response(code, message, exc.status_code, details)
 
     @app.exception_handler(VoiceGuardError)
     async def voiceguard_error_handler(

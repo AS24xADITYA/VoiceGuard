@@ -102,14 +102,16 @@ def compute_snr_estimate(y: np.ndarray, sr: int = 16000) -> float:
     ])
 
     threshold = np.median(energies)
-    voiced_energy = np.mean(energies[energies >= threshold]) if np.any(energies >= threshold) else 1e-10
-    unvoiced_energy = np.mean(energies[energies < threshold]) if np.any(energies < threshold) else 1e-10
+    voiced_energy = float(np.mean(energies[energies >= threshold])) if np.any(energies >= threshold) else 0.0
+    unvoiced_energy = float(np.mean(energies[energies < threshold])) if np.any(energies < threshold) else 1e-10
 
-    if unvoiced_energy < 1e-10:
+    if voiced_energy <= 1e-10:
+        return 0.0
+    if unvoiced_energy <= 1e-10:
         return 60.0  # Very clean signal
 
     snr = 10 * np.log10(voiced_energy / unvoiced_energy)
-    return float(snr)
+    return float(np.clip(snr, 0.0, 60.0))
 
 
 def compute_clipping_ratio(y: np.ndarray) -> float:

@@ -180,10 +180,19 @@ def canonicalize(src: Path, dst: Path) -> AudioMeta:
     except subprocess.TimeoutExpired:
         raise AudioValidationError("CORRUPT_AUDIO", "Audio transcoding timed out.")
     except FileNotFoundError:
-        raise AudioValidationError(
-            "CORRUPT_AUDIO",
-            "ffmpeg not found. Ensure ffmpeg is installed and on PATH.",
-        )
+        try:
+            y, sr = sf.read(str(src), dtype="float32")
+            if y.ndim > 1:
+                y = np.mean(y, axis=1)
+            if sr != CANONICAL_SAMPLE_RATE:
+                import librosa
+                y = librosa.resample(y, orig_sr=sr, target_sr=CANONICAL_SAMPLE_RATE)
+            sf.write(str(dst), y, CANONICAL_SAMPLE_RATE, subtype="PCM_16")
+        except Exception:
+            raise AudioValidationError(
+                "CORRUPT_AUDIO",
+                "ffmpeg not found. Ensure ffmpeg is installed and on PATH.",
+            )
 
     # Load canonical audio and compute metadata
     y, sr = sf.read(str(dst), dtype="float32")

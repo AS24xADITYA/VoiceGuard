@@ -187,7 +187,8 @@ async def refresh(
             },
         )
 
-    if rt is None or rt.expires_at < now:
+    rt_exp = rt.expires_at if (rt and rt.expires_at.tzinfo is not None) else (rt.expires_at.replace(tzinfo=UTC) if rt else None)
+    if rt is None or (rt_exp is not None and rt_exp < now):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={"code": "AUTH_ERROR", "message": "Invalid or expired refresh token."},

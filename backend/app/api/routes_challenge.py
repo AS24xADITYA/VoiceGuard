@@ -122,7 +122,8 @@ async def respond_to_challenge(
             detail={"code": "CHALLENGE_ALREADY_USED", "message": "Challenge has already been completed or expired."},
         )
 
-    if now > challenge.expires_at:
+    exp_at = challenge.expires_at if challenge.expires_at.tzinfo is not None else challenge.expires_at.replace(tzinfo=UTC)
+    if now > exp_at:
         challenge.status = "EXPIRED"
         await db.commit()
         raise HTTPException(

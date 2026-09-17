@@ -42,7 +42,7 @@ def trained_fusion_artifact(tmp_path: Path) -> Path:
     clf.coef_ = np.array([[
         0.1, 2.8, -0.7, 0.4, 0.1, 2.2, 0.8, 0.5, 0.3, 0.2, 0.2, -0.1, -2.0, -0.4
     ]])
-    clf.intercept_ = np.array([-2.4])
+    clf.intercept_ = np.array([0.5])
 
     artifact_path = tmp_path / "fusion.pkl"
     with open(artifact_path, "wb") as f:

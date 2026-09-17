@@ -12,7 +12,7 @@ _engine = None
 _session_factory: async_sessionmaker[AsyncSession] | None = None
 
 
-def init_db(settings: Settings) -> None:
+def init_db(settings: Settings):
     """Initialize the async engine and session factory."""
     global _engine, _session_factory
 
@@ -25,6 +25,9 @@ def init_db(settings: Settings) -> None:
         if path_part and not path_part.startswith(":memory:"):
             from pathlib import Path
             Path(path_part).parent.mkdir(parents=True, exist_ok=True)
+        elif path_part.startswith(":memory:"):
+            from sqlalchemy.pool import StaticPool
+            pool_kwargs["poolclass"] = StaticPool
     else:
         # PostgreSQL — small pool for free-tier connection limits
         pool_kwargs.update(
@@ -45,6 +48,7 @@ def init_db(settings: Settings) -> None:
         class_=AsyncSession,
         expire_on_commit=False,
     )
+    return _engine
 
 
 async def close_db() -> None:

@@ -68,20 +68,17 @@ def create_access_token(
     now = datetime.now(UTC)
     expire = now + timedelta(minutes=settings.jwt_access_ttl_minutes)
 
+    base_claims: dict[str, Any] = {
+        "type": "access",
+        "iat": now,
+        "exp": expire,
+        "jti": secrets.token_urlsafe(16),
+    }
+
     if isinstance(subject_or_claims, dict):
-        claims: dict[str, Any] = {
-            "iat": now,
-            "exp": expire,
-            "jti": secrets.token_urlsafe(16),
-            **subject_or_claims,
-        }
+        claims = {**base_claims, **subject_or_claims}
     else:
-        claims = {
-            "sub": str(subject_or_claims),
-            "iat": now,
-            "exp": expire,
-            "jti": secrets.token_urlsafe(16),
-        }
+        claims = {**base_claims, "sub": str(subject_or_claims)}
     if extra_claims:
         claims.update(extra_claims)
     return jwt.encode(claims, settings.jwt_secret, algorithm=settings.jwt_algorithm)

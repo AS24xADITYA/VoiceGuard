@@ -203,12 +203,22 @@ class AcousticDetector(Component):
 
         inference_ms = int((time.perf_counter() - start_t) * 1000)
 
+        predicted_class = 1 if p_final >= 0.50 else 0
+        n_windows_scored = len(valid_windows)
+        n_windows_discarded = max(0, len(raw_windows) - n_windows_scored)
+        aggregation_info = {"method": "energy_weighted_top_k", "k": min(3, max(1, len(probs)))}
+
         return AcousticResult(
             spoof_probability=round(p_final, 4),
+            predicted_class=predicted_class,
             window_scores=[round(s, 4) for s in window_scores],
             window_times=window_times,
+            aggregation=aggregation_info,
             uncertainty=round(uncertainty, 4),
+            window_std=round(window_std, 4),
             is_borderline=is_borderline,
+            n_windows_scored=n_windows_scored,
+            n_windows_discarded=n_windows_discarded,
             spectrogram_path=spec_path,
             model_version=self.version,
             inference_ms=inference_ms,
