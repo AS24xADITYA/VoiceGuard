@@ -11,12 +11,14 @@ from __future__ import annotations
 
 from typing import Final
 
-import numpy as np
-import structlog
+try:
+    import structlog
 
-from ai.base import QualityReport
+    log = structlog.get_logger()
+except ImportError:
+    import logging
 
-log = structlog.get_logger()
+    log = logging.getLogger(__name__)
 
 # Quality floors from 05 §1.4
 SPEECH_RATIO_FLOOR: Final[float] = 0.20
