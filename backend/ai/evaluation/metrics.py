@@ -173,3 +173,8 @@ def compute_all_metrics(
         n_bonafide=int(np.sum(y_true == 0)),
         n_spoof=int(np.sum(y_true == 1)),
     )
+
+
+# Backward compatibility aliases
+compute_min_t_dcf = compute_min_tdcf
+evaluate_binary_predictions = compute_all_metrics
