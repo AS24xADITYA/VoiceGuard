@@ -243,6 +243,8 @@ class ComponentRegistry:
         candidate_paths = [
             Path(custom_path) if custom_path else None,
             Path(__file__).parent.parent / "app" / "metrics.json",
+            Path(__file__).parent.parent / "models" / "metrics.json",
+            Path("models/metrics.json"),
             Path("metrics.json"),
         ]
 

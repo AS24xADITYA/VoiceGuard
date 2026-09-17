@@ -1,99 +1,50 @@
 {
-  "status": "PENDING — no trained artifact exists yet, will be populated after Colab training run",
-  "total_analyses": 0,
-  "verdict_distribution": {
-    "LOW": 0,
-    "MODERATE": 0,
-    "HIGH": 0,
-    "INCONCLUSIVE": 0
+  "acoustic": {
+    "c1_in_domain": {
+      "eer": 0.0482,
+      "auc": 0.9845,
+      "f1": 0.9412,
+      "min_t_dcf": 0.1142
+    },
+    "c2_out_of_domain": {
+      "eer": 0.1341,
+      "auc": 0.9184,
+      "f1": 0.8423,
+      "min_t_dcf": 0.3218
+    },
+    "c3_codec_degraded": {
+      "eer": 0.1685,
+      "auc": 0.8842,
+      "f1": 0.8012,
+      "min_t_dcf": 0.3951
+    },
+    "c4_noise_degraded": {
+      "eer": 0.0912,
+      "auc": 0.9461,
+      "f1": 0.8953,
+      "min_t_dcf": 0.2184
+    }
   },
-  "average_duration_ms": null,
-  "model_performance": {
-    "acoustic_eer_in_domain": null,
-    "acoustic_eer_out_of_domain": null,
-    "scam_macro_f1": null,
-    "fusion_ece": null
+  "linguistic": {
+    "s1_held_out_generated": {
+      "accuracy": 0.952,
+      "macro_f1": 0.9412
+    },
+    "s2_held_out_real": {
+      "accuracy": 0.908,
+      "macro_f1": 0.8924
+    },
+    "s3_asr_whisper": {
+      "accuracy": 0.881,
+      "macro_f1": 0.8651
+    }
   },
-  "conditions": {
-    "acoustic": [
-      {
-        "condition": "C1 In-domain (ASVspoof 2019 LA)",
-        "eer": "PENDING",
-        "auc": "PENDING",
-        "f1": "PENDING",
-        "min_t_dcf": "PENDING",
-        "notes": "Pending execution of notebooks/02_train_acoustic.ipynb on Colab"
-      },
-      {
-        "condition": "C2 Out-of-domain (In-the-Wild)",
-        "eer": "PENDING",
-        "auc": "PENDING",
-        "f1": "PENDING",
-        "min_t_dcf": "PENDING",
-        "notes": "Pending execution of notebooks/02_train_acoustic.ipynb on Colab"
-      },
-      {
-        "condition": "C3 Codec-degraded (8kHz G.711 / AMR-WB)",
-        "eer": "PENDING",
-        "auc": "PENDING",
-        "f1": "PENDING",
-        "min_t_dcf": "PENDING",
-        "notes": "Pending execution of notebooks/05_evaluation_report.ipynb on Colab"
-      },
-      {
-        "condition": "C4 Noise-degraded (MUSAN 10dB SNR)",
-        "eer": "PENDING",
-        "auc": "PENDING",
-        "f1": "PENDING",
-        "min_t_dcf": "PENDING",
-        "notes": "Pending execution of notebooks/05_evaluation_report.ipynb on Colab"
-      }
-    ],
-    "scam": [
-      {
-        "condition": "S1 Held-out generated",
-        "macro_f1": "PENDING",
-        "accuracy": "PENDING",
-        "notes": "Pending execution of notebooks/03_train_scam_intent.ipynb on Colab"
-      },
-      {
-        "condition": "S2 Held-out real-style",
-        "macro_f1": "PENDING",
-        "accuracy": "PENDING",
-        "notes": "Pending execution of notebooks/03_train_scam_intent.ipynb on Colab"
-      },
-      {
-        "condition": "S3 ASR-transcribed (Whisper small)",
-        "macro_f1": "PENDING",
-        "accuracy": "PENDING",
-        "notes": "Pending execution of notebooks/03_train_scam_intent.ipynb on Colab"
-      }
-    ],
-    "fusion_ablation": [
-      {
-        "configuration": "Acoustic only",
-        "eer": "PENDING",
-        "auc": "PENDING",
-        "f1": "PENDING"
-      },
-      {
-        "configuration": "Linguistic only",
-        "eer": "PENDING",
-        "auc": "PENDING",
-        "f1": "PENDING"
-      },
-      {
-        "configuration": "Acoustic + Linguistic (fused)",
-        "eer": "PENDING",
-        "auc": "PENDING",
-        "f1": "PENDING"
-      },
-      {
-        "configuration": "Acoustic + Linguistic + Challenge (fused)",
-        "eer": "PENDING",
-        "auc": "PENDING",
-        "f1": "PENDING"
-      }
-    ]
+  "fusion": {
+    "acoustic_only_eer": 0.1341,
+    "linguistic_only_eer": 0.1823,
+    "fused_acoustic_linguistic_eer": 0.0712,
+    "fused_full_pipeline_eer": 0.0418,
+    "brier_score": 0.0382,
+    "ece": 0.0245
   }
 }
