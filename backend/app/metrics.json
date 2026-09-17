@@ -1,0 +1,99 @@
+{
+  "status": "PENDING — no trained artifact exists yet, will be populated after Colab training run",
+  "total_analyses": 0,
+  "verdict_distribution": {
+    "LOW": 0,
+    "MODERATE": 0,
+    "HIGH": 0,
+    "INCONCLUSIVE": 0
+  },
+  "average_duration_ms": null,
+  "model_performance": {
+    "acoustic_eer_in_domain": null,
+    "acoustic_eer_out_of_domain": null,
+    "scam_macro_f1": null,
+    "fusion_ece": null
+  },
+  "conditions": {
+    "acoustic": [
+      {
+        "condition": "C1 In-domain (ASVspoof 2019 LA)",
+        "eer": "PENDING",
+        "auc": "PENDING",
+        "f1": "PENDING",
+        "min_t_dcf": "PENDING",
+        "notes": "Pending execution of notebooks/02_train_acoustic.ipynb on Colab"
+      },
+      {
+        "condition": "C2 Out-of-domain (In-the-Wild)",
+        "eer": "PENDING",
+        "auc": "PENDING",
+        "f1": "PENDING",
+        "min_t_dcf": "PENDING",
+        "notes": "Pending execution of notebooks/02_train_acoustic.ipynb on Colab"
+      },
+      {
+        "condition": "C3 Codec-degraded (8kHz G.711 / AMR-WB)",
+        "eer": "PENDING",
+        "auc": "PENDING",
+        "f1": "PENDING",
+        "min_t_dcf": "PENDING",
+        "notes": "Pending execution of notebooks/05_evaluation_report.ipynb on Colab"
+      },
+      {
+        "condition": "C4 Noise-degraded (MUSAN 10dB SNR)",
+        "eer": "PENDING",
+        "auc": "PENDING",
+        "f1": "PENDING",
+        "min_t_dcf": "PENDING",
+        "notes": "Pending execution of notebooks/05_evaluation_report.ipynb on Colab"
+      }
+    ],
+    "scam": [
+      {
+        "condition": "S1 Held-out generated",
+        "macro_f1": "PENDING",
+        "accuracy": "PENDING",
+        "notes": "Pending execution of notebooks/03_train_scam_intent.ipynb on Colab"
+      },
+      {
+        "condition": "S2 Held-out real-style",
+        "macro_f1": "PENDING",
+        "accuracy": "PENDING",
+        "notes": "Pending execution of notebooks/03_train_scam_intent.ipynb on Colab"
+      },
+      {
+        "condition": "S3 ASR-transcribed (Whisper small)",
+        "macro_f1": "PENDING",
+        "accuracy": "PENDING",
+        "notes": "Pending execution of notebooks/03_train_scam_intent.ipynb on Colab"
+      }
+    ],
+    "fusion_ablation": [
+      {
+        "configuration": "Acoustic only",
+        "eer": "PENDING",
+        "auc": "PENDING",
+        "f1": "PENDING"
+      },
+      {
+        "configuration": "Linguistic only",
+        "eer": "PENDING",
+        "auc": "PENDING",
+        "f1": "PENDING"
+      },
+      {
+        "configuration": "Acoustic + Linguistic (fused)",
+        "eer": "PENDING",
+        "auc": "PENDING",
+        "f1": "PENDING"
+      },
+      {
+        "configuration": "Acoustic + Linguistic + Challenge (fused)",
+        "eer": "PENDING",
+        "auc": "PENDING",
+        "f1": "PENDING"
+      }
+    ]
+  }
+}

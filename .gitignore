@@ -1,0 +1,79 @@
+# ─── Python ───────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+*.whl
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# ─── Node / Frontend ─────────────────────────────────────────────
+node_modules/
+frontend/dist/
+frontend/.vite/
+*.tsbuildinfo
+
+# ─── IDE ──────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ─── Environment ─────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ─── Data & Models (never committed) ─────────────────────────────
+data/
+*.db
+*.sqlite3
+models/
+*.safetensors
+*.bin
+*.pth
+*.pt
+*.onnx
+*.pkl
+*.joblib
+*.npy
+*.npz
+
+# ─── Audio & media artifacts ─────────────────────────────────────
+*.wav
+*.mp3
+*.flac
+*.m4a
+*.ogg
+*.webm
+
+# ─── Generated images ────────────────────────────────────────────
+# (spectrogram/heatmap/overlay PNGs are generated artifacts)
+
+# ─── Notebooks ────────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ─── Coverage & test artifacts ────────────────────────────────────
+.coverage
+htmlcov/
+.pytest_cache/
+coverage/
+
+# ─── Docker ───────────────────────────────────────────────────────
+docker-compose.override.yml
+
+# ─── Misc ─────────────────────────────────────────────────────────
+*.log
+*.bak
+*.tmp
