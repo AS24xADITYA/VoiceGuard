@@ -19,6 +19,8 @@ import time
 from pathlib import Path
 from typing import Any, Final
 
+import numpy as np
+
 try:
     import structlog
 
@@ -28,8 +30,8 @@ except ImportError:
 
     log = logging.getLogger(__name__)
 
-DEFAULT_THRESHOLD_MODERATE: Final[float] = 0.30
-DEFAULT_THRESHOLD_HIGH: Final[float] = 0.65
+from ai.base import Component, FusionFeatures, FusionResult, QualityReport, Verdict
+from ai.fusion.features import FEATURE_NAMES
 
 DEFAULT_THRESHOLD_MODERATE: Final[float] = 0.30
 DEFAULT_THRESHOLD_HIGH: Final[float] = 0.65

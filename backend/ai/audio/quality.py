@@ -11,6 +11,8 @@ from __future__ import annotations
 
 from typing import Final
 
+import numpy as np
+
 try:
     import structlog
 
@@ -19,6 +21,8 @@ except ImportError:
     import logging
 
     log = logging.getLogger(__name__)
+
+from ai.base import QualityReport
 
 # Quality floors from 05 §1.4
 SPEECH_RATIO_FLOOR: Final[float] = 0.20
