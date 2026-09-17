@@ -58,10 +58,19 @@ class ScamDataset(Dataset):
         is_scam = int(item.get("is_scam", 0))
 
         # Build multi-label vector for the 8 categories
-        cat_dict = item.get("categories", {})
+        cats = item.get("categories", {})
         cat_vector = np.zeros(len(TACTIC_CATEGORIES), dtype=np.float32)
-        for i, cat in enumerate(TACTIC_CATEGORIES):
-            cat_vector[i] = float(cat_dict.get(cat, 0))
+        if isinstance(cats, dict):
+            for i, cat in enumerate(TACTIC_CATEGORIES):
+                cat_vector[i] = float(cats.get(cat, 0))
+        elif isinstance(cats, (list, tuple, set)):
+            cat_set = {str(c).strip().lower() for c in cats}
+            for i, cat in enumerate(TACTIC_CATEGORIES):
+                cat_vector[i] = 1.0 if cat.lower() in cat_set else 0.0
+        elif isinstance(cats, np.ndarray) and len(cats) == len(TACTIC_CATEGORIES):
+            cat_vector = cats.astype(np.float32)
+        elif isinstance(cats, torch.Tensor) and len(cats) == len(TACTIC_CATEGORIES):
+            cat_vector = cats.cpu().numpy().astype(np.float32)
 
         if self.tokenizer is not None:
             encoding = self.tokenizer(
@@ -230,8 +239,8 @@ def run_scam_training(
         print(f"Epoch {epoch:02d} - Loss: {train_loss:.4f} - Val F1: {val_f1:.4f}")
 
         # Save best model
-        if val_f1 > best_val_f1:
-            best_val_f1 = val_f1
+        if val_f1 >= best_val_f1 or not (out_path / "model_best.pt").exists():
+            best_val_f1 = max(val_f1, best_val_f1)
             torch.save(
                 {
                     "epoch": epoch,

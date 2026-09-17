@@ -186,8 +186,11 @@ class ScamIntentClassifier(Component):
 
         self.model = ScamIntentModel(base_model_name=self.base_model, pretrained=False)
         if self.model_path and self.model_path.is_file():
-            state_dict = torch.load(self.model_path, map_location="cpu")
-            if "model_state_dict" in state_dict:
+            try:
+                state_dict = torch.load(self.model_path, map_location="cpu", weights_only=False)
+            except TypeError:
+                state_dict = torch.load(self.model_path, map_location="cpu")
+            if isinstance(state_dict, dict) and "model_state_dict" in state_dict:
                 state_dict = state_dict["model_state_dict"]
             self.model.load_state_dict(state_dict)
 
