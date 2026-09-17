@@ -126,7 +126,17 @@ def process_dataset(
     dropped_quality_count = 0
 
     for i, item in enumerate(entries):
-        src_file = src_dir / item["rel_path"]
+        rel = item["rel_path"]
+        src_file = src_dir / rel
+        if not src_file.is_file():
+            # Support ASVspoof flac files as well as wav
+            stem = Path(rel).stem
+            for ext in [".flac", ".wav", ".mp3", ".ogg"]:
+                candidate = src_dir / f"{stem}{ext}"
+                if candidate.is_file():
+                    src_file = candidate
+                    break
+
         if not src_file.is_file():
             continue
 
