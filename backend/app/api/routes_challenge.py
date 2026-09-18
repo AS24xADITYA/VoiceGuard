@@ -197,11 +197,30 @@ async def respond_to_challenge(
     challenge.notes = c_res.notes
 
     # ── Re-fusion: Update analysis verdict with challenge signal ──
-    fuser = FusionEngine()
-    features = assemble_features(
-        acoustic=None,  # reconstruct from stored json if present
-        challenge=c_res,
-    )
+    from ai.registry import get_registry
+    from ai.base import FusionFeatures
+
+    fuser = get_registry().get_fuser()
+    stored_fv = (analysis.fusion_result or {}).get("feature_vector", {})
+    if stored_fv and isinstance(stored_fv, dict):
+        features = FusionFeatures(
+            acoustic_available=float(stored_fv.get("acoustic_available", 0.0)),
+            acoustic_spoof_prob=float(stored_fv.get("acoustic_spoof_prob", 0.5)),
+            acoustic_uncertainty=float(stored_fv.get("acoustic_uncertainty", 1.0)),
+            acoustic_window_std=float(stored_fv.get("acoustic_window_std", 0.0)),
+            linguistic_available=float(stored_fv.get("linguistic_available", 0.0)),
+            scam_prob=float(stored_fv.get("scam_prob", 0.5)),
+            scam_max_category=float(stored_fv.get("scam_max_category", 0.0)),
+            scam_n_categories=float(stored_fv.get("scam_n_categories", 0.0)),
+            transcript_reliable=float(stored_fv.get("transcript_reliable", 0.0)),
+            language_supported=float(stored_fv.get("language_supported", 0.0)),
+            transcript_length_norm=float(stored_fv.get("transcript_length_norm", 0.0)),
+            challenge_available=1.0,
+            challenge_consistency=float(c_res.consistency_score),
+            audio_quality_score=float(stored_fv.get("audio_quality_score", 0.8)),
+        )
+    else:
+        features = assemble_features(challenge=c_res)
     # Perform re-fusion
     fusion_result = fuser.fuse(features)
 
