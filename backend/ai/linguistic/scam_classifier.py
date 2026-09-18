@@ -149,7 +149,7 @@ class ScamIntentClassifier(Component):
         base_model: str = "xlm-roberta-base",
         device: str = "cpu",
         category_threshold: float = 0.40,
-        version: str = "scam-xlm-roberta-v0.1.0",
+        version: str = "scam-xlm-roberta-smoketest-v0",
     ) -> None:
         self._name: Final[str] = "scam_classifier"
         self._version = version
@@ -185,11 +185,26 @@ class ScamIntentClassifier(Component):
             self.tokenizer = None
 
         self.model = ScamIntentModel(base_model_name=self.base_model, pretrained=False)
-        if self.model_path and self.model_path.is_file():
+        target_path = None
+        if self.model_path:
+            candidates = [
+                self.model_path,
+                Path("backend") / self.model_path,
+                Path(__file__).parent.parent.parent / self.model_path,
+                Path("models/scam-smoketest-v0.pt"),
+                Path("backend/models/scam-smoketest-v0.pt"),
+                Path(__file__).parent.parent.parent / "models" / "scam-smoketest-v0.pt",
+            ]
+            for cand in candidates:
+                if cand.is_file():
+                    target_path = cand
+                    break
+
+        if target_path and target_path.is_file():
             try:
-                state_dict = torch.load(self.model_path, map_location="cpu", weights_only=False)
+                state_dict = torch.load(target_path, map_location="cpu", weights_only=False)
             except TypeError:
-                state_dict = torch.load(self.model_path, map_location="cpu")
+                state_dict = torch.load(target_path, map_location="cpu")
             if isinstance(state_dict, dict) and "model_state_dict" in state_dict:
                 state_dict = state_dict["model_state_dict"]
             self.model.load_state_dict(state_dict)

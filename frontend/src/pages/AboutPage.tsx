@@ -88,10 +88,11 @@ export const AboutPage: React.FC = () => {
         <h2 className="text-xl font-bold font-mono text-text-primary flex items-center gap-2">
           <Layers className="w-5 h-5 text-accent" />
           <span>2. Published Evaluation Metrics</span>
-        </h2>
+        <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono">
+          ⚠️ Model training in progress — evaluation metrics pending real evaluation pass.
+        </div>
         <p className="text-xs text-text-secondary">
-          Empirical results evaluated across standardized benchmarks. Metrics are populated directly from
-          system evaluation artifacts produced after training runs.
+          Empirical results across standardized benchmarks will populate automatically once genuine evaluation scripts complete.
         </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-1 font-mono">

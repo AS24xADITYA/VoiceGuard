@@ -44,7 +44,7 @@ class AcousticDetector(Component):
         device: str = "cpu",
         borderline_low: float = 0.35,
         borderline_high: float = 0.65,
-        version: str = "acoustic-efficientnet_b0-v0.1.0",
+        version: str = "acoustic-efficientnet-b0-smoketest-v0",
     ) -> None:
         self._name: Final[str] = "acoustic"
         self._version = version
@@ -68,10 +68,10 @@ class AcousticDetector(Component):
         return self._version
 
     def is_loaded(self) -> bool:
-        return self._is_loaded
+        return self._is_loaded and self.model is not None
 
     def load(self) -> None:
-        """Load model architecture and weights.
+        """Load acoustic detection model and weights.
 
         If model_path is provided and exists, loads the checkpoint.
         If no model_path is provided or the file is missing, initializes the architecture
@@ -85,8 +85,24 @@ class AcousticDetector(Component):
             dropout=0.3,
         )
 
-        if self.model_path and self.model_path.is_file():
-            state_dict = torch.load(self.model_path, map_location="cpu")
+        # Resolve candidate paths
+        target_path = None
+        if self.model_path:
+            candidates = [
+                self.model_path,
+                Path("backend") / self.model_path,
+                Path(__file__).parent.parent.parent / self.model_path,
+                Path("models/acoustic-smoketest-v0.pth"),
+                Path("backend/models/acoustic-smoketest-v0.pth"),
+                Path(__file__).parent.parent.parent / "models" / "acoustic-smoketest-v0.pth",
+            ]
+            for cand in candidates:
+                if cand.is_file():
+                    target_path = cand
+                    break
+
+        if target_path and target_path.is_file():
+            state_dict = torch.load(target_path, map_location="cpu")
             # Support checkpoints with 'model_state_dict' wrapper
             if "model_state_dict" in state_dict:
                 state_dict = state_dict["model_state_dict"]

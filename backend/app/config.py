@@ -45,7 +45,7 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
 
     # ── AI Models ────────────────────────────────────────────────
-    acoustic_model_id: str = "models/acoustic.pth"
+    acoustic_model_id: str = "models/acoustic-smoketest-v0.pth"
     acoustic_borderline_low: float = 0.35
     acoustic_borderline_high: float = 0.65
 
@@ -53,8 +53,8 @@ class Settings(BaseSettings):
     whisper_compute_type: Literal["int8", "float16", "float32"] = "int8"
     whisper_languages: str = "en,hi,mr,bn,ta"
 
-    scam_model_id: str = "models/scam_model.pt"
-    fusion_model_path: str = "models/fusion.pkl"
+    scam_model_id: str = "models/scam-smoketest-v0.pt"
+    fusion_model_path: str = "models/fusion-smoketest-v0.pkl"
 
     # ── Verdict thresholds ───────────────────────────────────────
     verdict_threshold_moderate: float = 0.30

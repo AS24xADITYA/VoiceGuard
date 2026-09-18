@@ -1,50 +1,22 @@
 {
+  "status": "PENDING_REAL_EVALUATION",
+  "note": "Evaluation metrics pending real training run and evaluation script execution per 13-TESTING-AND-EVALUATION.md",
   "acoustic": {
-    "c1_in_domain": {
-      "eer": 0.0482,
-      "auc": 0.9845,
-      "f1": 0.9412,
-      "min_t_dcf": 0.1142
-    },
-    "c2_out_of_domain": {
-      "eer": 0.1341,
-      "auc": 0.9184,
-      "f1": 0.8423,
-      "min_t_dcf": 0.3218
-    },
-    "c3_codec_degraded": {
-      "eer": 0.1685,
-      "auc": 0.8842,
-      "f1": 0.8012,
-      "min_t_dcf": 0.3951
-    },
-    "c4_noise_degraded": {
-      "eer": 0.0912,
-      "auc": 0.9461,
-      "f1": 0.8953,
-      "min_t_dcf": 0.2184
-    }
+    "c1_in_domain": "PENDING_REAL_EVALUATION",
+    "c2_out_of_domain": "PENDING_REAL_EVALUATION",
+    "c3_codec_degraded": "PENDING_REAL_EVALUATION",
+    "c4_noise_degraded": "PENDING_REAL_EVALUATION"
   },
   "linguistic": {
-    "s1_held_out_generated": {
-      "accuracy": 0.952,
-      "macro_f1": 0.9412
-    },
-    "s2_held_out_real": {
-      "accuracy": 0.908,
-      "macro_f1": 0.8924
-    },
-    "s3_asr_whisper": {
-      "accuracy": 0.881,
-      "macro_f1": 0.8651
-    }
+    "s1_held_out_generated": "PENDING_REAL_EVALUATION",
+    "s2_held_out_real": "PENDING_REAL_EVALUATION",
+    "s3_asr_whisper": "PENDING_REAL_EVALUATION"
   },
   "fusion": {
-    "acoustic_only_eer": 0.1341,
-    "linguistic_only_eer": 0.1823,
-    "fused_acoustic_linguistic_eer": 0.0712,
-    "fused_full_pipeline_eer": 0.0418,
-    "brier_score": 0.0382,
-    "ece": 0.0245
+    "acoustic_only_eer": "PENDING_REAL_EVALUATION",
+    "linguistic_only_eer": "PENDING_REAL_EVALUATION",
+    "fused_acoustic_linguistic_eer": "PENDING_REAL_EVALUATION",
+    "fused_full_pipeline_eer": "PENDING_REAL_EVALUATION",
+    "ece": "PENDING_REAL_EVALUATION"
   }
 }

@@ -45,11 +45,11 @@ class FusionEngine(Component):
         model_path: Path | str | None = None,
         threshold_moderate: float = DEFAULT_THRESHOLD_MODERATE,
         threshold_high: float = DEFAULT_THRESHOLD_HIGH,
-        version: str = "fusion-isotonic-v0.1.0",
+        version: str = "fusion-lr-calibrated-smoketest-v0",
     ) -> None:
         self._name: Final[str] = "fusion"
         self._version = version
-        self.model_path = Path(model_path) if model_path else Path("models/fusion.pkl")
+        self.model_path = Path(model_path) if model_path else Path("models/fusion-smoketest-v0.pkl")
         self.threshold_moderate = threshold_moderate
         self.threshold_high = threshold_high
 
@@ -75,7 +75,25 @@ class FusionEngine(Component):
     def load(self) -> None:
         """Load trained fusion model & calibrator from trained artifact."""
         start = time.perf_counter()
-        if not self.model_path or not self.model_path.is_file():
+
+        target_path = None
+        if self.model_path:
+            candidates = [
+                self.model_path,
+                Path("backend") / self.model_path,
+                Path(__file__).parent.parent.parent / self.model_path,
+                Path("models/fusion-smoketest-v0.pkl"),
+                Path("backend/models/fusion-smoketest-v0.pkl"),
+                Path(__file__).parent.parent.parent / "models" / "fusion-smoketest-v0.pkl",
+                Path("models/fusion.pkl"),
+                Path("backend/models/fusion.pkl"),
+            ]
+            for cand in candidates:
+                if cand.is_file():
+                    target_path = cand
+                    break
+
+        if not target_path or not target_path.is_file():
             self._is_loaded = False
             self.model = None
             self.calibrator = None
@@ -85,7 +103,7 @@ class FusionEngine(Component):
             return
 
         try:
-            with open(self.model_path, "rb") as f:
+            with open(target_path, "rb") as f:
                 data = pickle.load(f)
                 self.model = data.get("model")
                 self.calibrator = data.get("calibrator")
