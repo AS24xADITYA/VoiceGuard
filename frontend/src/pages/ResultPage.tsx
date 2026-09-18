@@ -93,6 +93,12 @@ function _mapSalientSpans(spans?: any[]): any[] {
   }));
 }
 
+// Safe number formatter — never crashes on null/undefined
+function _fmt(value: number | null | undefined, decimals = 1, fallback = '—'): string {
+  if (value == null || !isFinite(value)) return fallback;
+  return value.toFixed(decimals);
+}
+
 export const ResultPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -240,7 +246,7 @@ export const ResultPage: React.FC = () => {
               </span>
             </h2>
             <p className="text-xs text-text-tertiary mt-0.5">
-              Duration: {data.source.duration_seconds.toFixed(1)}s &bull; Sample rate: {data.source.sample_rate}Hz &bull; Analyzed: {new Date(data.created_at).toLocaleString()}
+              Duration: {_fmt(data.source?.duration_seconds, 1)}s &bull; Sample rate: {data.source?.sample_rate ?? '—'}Hz &bull; Analyzed: {new Date(data.created_at).toLocaleString()}
             </p>
           </div>
         </div>
@@ -280,7 +286,7 @@ export const ResultPage: React.FC = () => {
       <section>
         <AudioPlayer
           audioUrl={audioUrl}
-          durationSeconds={data.source.duration_seconds}
+          durationSeconds={data.source?.duration_seconds ?? 0}
           windowPredictions={_buildWindowPredictions(data.acoustic)}
           seekTime={seekTime}
         />
@@ -477,7 +483,7 @@ export const ResultPage: React.FC = () => {
                 <div className="p-2.5 rounded bg-bg-elevated border border-border-subtle">
                   <div className="text-text-tertiary text-[10px]">Estimated SNR</div>
                   <div className="text-text-primary font-bold">
-                    {((data.quality as any)?.snr_db ?? (data.quality as any)?.snr_estimate_db)?.toFixed(1)} dB
+                    {_fmt((data.quality as any)?.snr_db ?? (data.quality as any)?.snr_estimate_db, 1)} dB
                   </div>
                 </div>
                 <div className="p-2.5 rounded bg-bg-elevated border border-border-subtle">
@@ -489,7 +495,7 @@ export const ResultPage: React.FC = () => {
                 <div className="p-2.5 rounded bg-bg-elevated border border-border-subtle">
                   <div className="text-text-tertiary text-[10px]">DC Offset</div>
                   <div className="text-text-primary font-bold">
-                    {data.quality?.dc_offset?.toFixed(4)}
+                    {_fmt(data.quality?.dc_offset, 4)}
                   </div>
                 </div>
               </div>

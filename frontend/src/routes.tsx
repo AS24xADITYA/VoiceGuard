@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
@@ -16,7 +17,7 @@ export const AppRoutes: React.FC = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/analyze" element={<AnalyzePage />} />
-      <Route path="/analysis/:id" element={<ResultPage />} />
+      <Route path="/analysis/:id" element={<ErrorBoundary><ResultPage /></ErrorBoundary>} />
       <Route path="/history" element={<HistoryPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/settings" element={<SettingsPage />} />
