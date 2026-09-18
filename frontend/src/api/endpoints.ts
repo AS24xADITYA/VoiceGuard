@@ -46,7 +46,7 @@ export const api = {
       return res.data;
     },
     poll: async (id: string): Promise<AnalysisPollResponse> => {
-      const res = await apiClient.get(`/analyses/${id}/poll`);
+      const res = await apiClient.get(`/analyses/${id}`);
       return res.data;
     },
     get: async (id: string): Promise<AnalysisResponse> => {

@@ -170,7 +170,7 @@ export const AnalyzePage: React.FC = () => {
 
     try {
       const formData = new FormData();
-      formData.append('audio', target, file?.name || 'recorded_audio.wav');
+      formData.append('file', target, file?.name || 'recorded_audio.wav');
       if (label) formData.append('label', label);
 
       const res = await api.analyses.create(formData);

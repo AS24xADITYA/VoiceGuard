@@ -48,11 +48,15 @@ export interface WindowPrediction {
 
 export interface AcousticResult {
   spoof_probability: number;
-  uncertainty_entropy: number;
+  uncertainty_entropy?: number;
+  uncertainty?: number;
   is_borderline: boolean;
-  degraded: boolean;
-  window_predictions: WindowPrediction[];
+  degraded?: boolean;
+  window_predictions?: WindowPrediction[];
+  window_scores?: number[];
+  window_times?: number[];
   spectrogram_path?: string;
+  model_version?: string;
 }
 
 export interface TranscriptSegment {
@@ -65,12 +69,19 @@ export interface TranscriptSegment {
 
 export interface TranscriptResult {
   text: string;
-  detected_language: string;
-  language_confidence: number;
-  segments: TranscriptSegment[];
-  reliable: boolean;
+  detected_language?: string;
+  language?: string;
+  language_confidence?: number;
+  language_probability?: number;
+  segments?: TranscriptSegment[];
+  reliable?: boolean;
+  is_reliable?: boolean;
   low_reliability_reason?: string | null;
-  degraded: boolean;
+  degraded?: boolean;
+  mean_confidence?: number;
+  word_count?: number;
+  hallucination_flags?: string[];
+  language_supported?: boolean;
 }
 
 export interface SalientSpan {
@@ -83,22 +94,28 @@ export interface SalientSpan {
 
 export interface ScamResult {
   scam_probability: number;
-  detected_tactics: string[];
-  tactic_confidences: Record<string, number>;
+  detected_tactics?: string[];
+  triggered_categories?: string[];
+  category_scores?: Record<string, number>;
+  tactic_confidences?: Record<string, number>;
   salient_spans: SalientSpan[];
-  degraded: boolean;
+  degraded?: boolean;
 }
 
 export interface FusionResult {
   verdict: VerdictType;
-  calibrated_probability: number;
-  raw_fusion_score: number;
+  calibrated_probability?: number;
+  risk_probability?: number;
+  raw_fusion_score?: number;
   confidence: number;
-  summary: string;
-  guidance: string;
+  summary?: string;
+  guidance?: string;
   reasons: string[];
-  applied_overrides: AppliedOverride[];
-  feature_contributions: FeatureContribution[];
+  applied_overrides?: AppliedOverride[];
+  overrides_applied?: string[];
+  feature_contributions?: FeatureContribution[];
+  contributions?: Record<string, number>;
+  feature_vector?: number[];
 }
 
 export interface AxisExtents {

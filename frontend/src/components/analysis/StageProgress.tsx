@@ -16,8 +16,25 @@ export const STAGES_ORDER: StageItem[] = [
   { key: 'EXPLANATION', label: 'Generating Grad-CAM attribution' },
 ];
 
+// Map backend stage names to frontend stage keys
+const STAGE_ALIAS: Record<string, StageName> = {
+  INGESTING: 'AUDIO_PREPARATION',
+  ANALYZING_ACOUSTIC: 'ACOUSTIC_INFERENCE',
+  TRANSCRIPTION: 'TRANSCRIPTION',
+  SCORING_INTENT: 'SCAM_DETECTION',
+  FUSING: 'FUSION',
+  EXPLAINING: 'EXPLANATION',
+  COMPLETE: 'COMPLETE',
+  // Also accept the frontend names directly
+  AUDIO_PREPARATION: 'AUDIO_PREPARATION',
+  ACOUSTIC_INFERENCE: 'ACOUSTIC_INFERENCE',
+  SCAM_DETECTION: 'SCAM_DETECTION',
+  FUSION: 'FUSION',
+  EXPLANATION: 'EXPLANATION',
+};
+
 export interface StageProgressProps {
-  currentStage?: StageName | null;
+  currentStage?: StageName | string | null;
   progressPct?: number;
   stageTimings?: Record<string, number>; // in seconds or ms
 }
@@ -27,7 +44,9 @@ export const StageProgress: React.FC<StageProgressProps> = ({
   progressPct = 0,
   stageTimings = {},
 }) => {
-  const currentIndex = STAGES_ORDER.findIndex((s) => s.key === currentStage);
+  // Normalise backend stage name to frontend stage key
+  const mappedStage = STAGE_ALIAS[currentStage || ''] || currentStage;
+  const currentIndex = STAGES_ORDER.findIndex((s) => s.key === mappedStage);
   const activeIdx = currentIndex === -1 ? 0 : currentIndex;
 
   return (

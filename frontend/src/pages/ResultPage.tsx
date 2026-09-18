@@ -17,7 +17,7 @@ import {
   ArrowLeft,
 } from 'lucide-react';
 import { api } from '../api/endpoints';
-import { AnalysisResponse, ChallengeVerifyResponse, VerdictType } from '../types/api';
+import { AnalysisResponse, ChallengeVerifyResponse, FusionResult, VerdictType } from '../types/api';
 import { COPY } from '../i18n/en';
 import { VerdictCard } from '../components/analysis/VerdictCard';
 import { SignalCard } from '../components/analysis/SignalCard';
@@ -28,6 +28,70 @@ import { AudioPlayer } from '../components/analysis/AudioPlayer';
 import { ChallengePanel } from '../components/analysis/ChallengePanel';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
+
+// ── Helpers to bridge backend response field names to frontend types ──
+
+function _verdictSummary(verdict?: string, risk?: number): string {
+  const prob = risk != null ? `${(risk * 100).toFixed(0)}%` : 'unknown';
+  switch (verdict) {
+    case 'HIGH':
+      return `This audio presents a HIGH risk (${prob}) of being synthetically generated or used in a scam.`;
+    case 'MODERATE':
+      return `Moderate risk (${prob}) detected. Some indicators of synthetic or scam audio are present.`;
+    case 'LOW':
+      return `Low risk (${prob}). No significant indicators of synthetic audio or scam intent were detected.`;
+    default:
+      return 'Analysis completed without conclusive confidence.';
+  }
+}
+
+function _verdictGuidance(verdict?: string): string {
+  switch (verdict) {
+    case 'HIGH':
+      return 'Do NOT trust this audio. Verify the speaker through an independent, trusted channel before taking any action.';
+    case 'MODERATE':
+      return 'Exercise caution. Verify the speaker through secondary trusted channels before acting on any requests.';
+    case 'LOW':
+      return 'This audio appears authentic, but always maintain healthy skepticism with unsolicited calls.';
+    default:
+      return 'Verify the speaker through secondary trusted channels.';
+  }
+}
+
+function _mapContributions(contributions?: Record<string, number> | null, featureVector?: number[] | null): any[] {
+  if (!contributions) return [];
+  return Object.entries(contributions).map(([feature, contribution], i) => ({
+    feature,
+    value: featureVector?.[i] ?? 0,
+    contribution,
+    label: feature.replace(/_/g, ' '),
+  }));
+}
+
+function _buildWindowPredictions(acoustic?: any): any[] {
+  if (!acoustic) return [];
+  // Backend may return window_predictions directly or window_scores + window_times separately
+  if (acoustic.window_predictions) return acoustic.window_predictions;
+  const scores = acoustic.window_scores || [];
+  const times = acoustic.window_times || [];
+  return scores.map((prob: number, i: number) => ({
+    window_index: i,
+    start_sec: times[i] ?? i * 2,
+    end_sec: times[i + 1] ?? (i + 1) * 2,
+    raw_prob: prob,
+  }));
+}
+
+function _mapSalientSpans(spans?: any[]): any[] {
+  if (!spans || spans.length === 0) return [];
+  return spans.map((s: any) => ({
+    text: s.text,
+    start_char: s.start_char ?? s.start ?? 0,
+    end_char: s.end_char ?? s.end ?? 0,
+    attribution_weight: s.attribution_weight ?? s.weight ?? 0,
+    tactics: s.tactics || [],
+  }));
+}
 
 export const ResultPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -143,16 +207,17 @@ export const ResultPage: React.FC = () => {
     ? (api.artifacts.getUrl(data.id, heatmapArtifact.id) ?? heatmapArtifact.download_url)
     : null;
 
-  // Fusion & verdict metadata
-  const fusion = data.fusion || {
-    verdict: 'INCONCLUSIVE' as VerdictType,
-    calibrated_probability: 0.5,
-    confidence: 0.5,
-    summary: 'Analysis completed without conclusive confidence.',
-    guidance: 'Verify the speaker through secondary trusted channels.',
-    reasons: [],
-    applied_overrides: [],
-    feature_contributions: [],
+  // Fusion & verdict metadata — map backend field names to frontend expectations
+  const rawFusion: Partial<FusionResult> & Record<string, any> = data.fusion || {};
+  const fusion = {
+    verdict: (rawFusion.verdict || 'INCONCLUSIVE') as VerdictType,
+    calibrated_probability: rawFusion.calibrated_probability ?? rawFusion.risk_probability ?? 0.5,
+    confidence: rawFusion.confidence ?? 0.5,
+    summary: rawFusion.summary || _verdictSummary(rawFusion.verdict, rawFusion.risk_probability),
+    guidance: rawFusion.guidance || _verdictGuidance(rawFusion.verdict),
+    reasons: rawFusion.reasons || [],
+    applied_overrides: rawFusion.applied_overrides || (rawFusion.overrides_applied || []).map((r: string) => ({ rule: r, reason: r })),
+    feature_contributions: rawFusion.feature_contributions || _mapContributions(rawFusion.contributions, rawFusion.feature_vector),
   };
 
   return (
@@ -216,7 +281,7 @@ export const ResultPage: React.FC = () => {
         <AudioPlayer
           audioUrl={audioUrl}
           durationSeconds={data.source.duration_seconds}
-          windowPredictions={data.acoustic?.window_predictions || []}
+          windowPredictions={_buildWindowPredictions(data.acoustic)}
           seekTime={seekTime}
         />
       </section>
@@ -233,8 +298,8 @@ export const ResultPage: React.FC = () => {
             title="Acoustic Spoof Detection"
             score={data.acoustic?.spoof_probability ?? 0}
             scoreLabel="Spoof Probability"
-            status={data.acoustic?.degraded ? 'degraded' : 'available'}
-            reason={data.acoustic?.degraded ? 'Low speech duration or high clipping' : undefined}
+            status={data.degraded_branches?.includes('acoustic') ? 'degraded' : 'available'}
+            reason={data.degraded_branches?.includes('acoustic') ? 'Low speech duration or high clipping' : undefined}
           >
             <div className="space-y-2 pt-2 border-t border-border-subtle/50 text-xs">
               <div className="flex justify-between text-text-tertiary font-mono">
@@ -244,7 +309,7 @@ export const ResultPage: React.FC = () => {
               <div className="flex justify-between text-text-tertiary font-mono">
                 <span>Uncertainty Entropy:</span>
                 <span className="text-text-primary">
-                  {data.acoustic?.uncertainty_entropy ? data.acoustic.uncertainty_entropy.toFixed(3) : '0.124'}
+                  {(data.acoustic?.uncertainty_entropy ?? data.acoustic?.uncertainty) ? (data.acoustic?.uncertainty_entropy ?? data.acoustic?.uncertainty)?.toFixed(3) : '0.124'}
                 </span>
               </div>
               {data.acoustic?.is_borderline && (
@@ -260,20 +325,20 @@ export const ResultPage: React.FC = () => {
             title="Linguistic Scam Intent"
             score={data.scam?.scam_probability ?? 0}
             scoreLabel="Extortion Risk"
-            status={data.scam?.degraded ? 'degraded' : 'available'}
-            reason={data.scam?.degraded ? 'Transcript below minimum length' : undefined}
+            status={data.degraded_branches?.includes('scam') ? 'degraded' : 'available'}
+            reason={data.degraded_branches?.includes('scam') ? 'Transcript below minimum length' : undefined}
           >
             <div className="space-y-2 pt-2 border-t border-border-subtle/50 text-xs">
               <div className="flex justify-between text-text-tertiary font-mono">
                 <span>Language Detected:</span>
                 <span className="text-text-primary uppercase">
-                  {data.transcript?.detected_language || 'EN'} (
-                  {Math.round((data.transcript?.language_confidence || 1) * 100)}%)
+                  {data.transcript?.detected_language || data.transcript?.language || 'EN'} (
+                  {Math.round((data.transcript?.language_confidence ?? data.transcript?.language_probability ?? 1) * 100)}%)
                 </span>
               </div>
               <div className="flex flex-wrap gap-1 pt-1">
-                {(data.scam?.detected_tactics || []).length > 0 ? (
-                  data.scam?.detected_tactics.map((tac) => (
+                {(data.scam?.detected_tactics || data.scam?.triggered_categories || []).length > 0 ? (
+                  (data.scam?.detected_tactics || data.scam?.triggered_categories || []).map((tac: string) => (
                     <span
                       key={tac}
                       className="px-2 py-0.5 rounded text-[10px] font-mono bg-bg-elevated border border-border-subtle text-text-secondary"
@@ -336,10 +401,10 @@ export const ResultPage: React.FC = () => {
         <TranscriptViewer
           text={data.transcript?.text || ''}
           segments={data.transcript?.segments || []}
-          salientSpans={data.scam?.salient_spans || []}
-          language={data.transcript?.detected_language || 'en'}
-          confidence={data.transcript?.language_confidence || 1.0}
-          reliable={data.transcript?.reliable ?? true}
+          salientSpans={_mapSalientSpans(data.scam?.salient_spans)}
+          language={data.transcript?.detected_language || data.transcript?.language || 'en'}
+          confidence={data.transcript?.language_confidence ?? data.transcript?.language_probability ?? 1.0}
+          reliable={data.transcript?.reliable ?? data.transcript?.is_reliable ?? true}
           lowReliabilityReason={data.transcript?.low_reliability_reason}
           onSeek={(t) => setSeekTime(t)}
         />
@@ -406,19 +471,19 @@ export const ResultPage: React.FC = () => {
                 <div className="p-2.5 rounded bg-bg-elevated border border-border-subtle">
                   <div className="text-text-tertiary text-[10px]">VAD Speech Ratio</div>
                   <div className="text-text-primary font-bold">
-                    {(data.quality?.vad_speech_ratio * 100).toFixed(1)}%
+                    {(((data.quality as any)?.vad_speech_ratio ?? (data.quality as any)?.speech_ratio ?? 0) * 100).toFixed(1)}%
                   </div>
                 </div>
                 <div className="p-2.5 rounded bg-bg-elevated border border-border-subtle">
                   <div className="text-text-tertiary text-[10px]">Estimated SNR</div>
                   <div className="text-text-primary font-bold">
-                    {data.quality?.snr_db?.toFixed(1)} dB
+                    {((data.quality as any)?.snr_db ?? (data.quality as any)?.snr_estimate_db)?.toFixed(1)} dB
                   </div>
                 </div>
                 <div className="p-2.5 rounded bg-bg-elevated border border-border-subtle">
                   <div className="text-text-tertiary text-[10px]">Clipping Rate</div>
                   <div className="text-text-primary font-bold">
-                    {(data.quality?.clipping_rate * 100).toFixed(3)}%
+                    {(((data.quality as any)?.clipping_rate ?? (data.quality as any)?.clipping_ratio ?? 0) * 100).toFixed(3)}%
                   </div>
                 </div>
                 <div className="p-2.5 rounded bg-bg-elevated border border-border-subtle">
