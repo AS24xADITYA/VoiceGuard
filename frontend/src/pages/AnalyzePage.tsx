@@ -87,7 +87,8 @@ export const AnalyzePage: React.FC = () => {
         if (res.status === 'COMPLETE') {
           navigate(`/analysis/${analysisId}`);
         } else if (res.status === 'FAILED' || res.status === 'ERROR') {
-          setValidationError('Analysis pipeline failed to complete. Please try another audio file.');
+          const errMsg = (res as any).error_message || 'Analysis pipeline failed to complete.';
+          setValidationError(`${errMsg} Please try another audio file.`);
           setIsSubmitting(false);
           setAnalysisId(null);
         } else {

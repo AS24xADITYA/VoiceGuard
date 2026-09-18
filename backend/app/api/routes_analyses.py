@@ -235,6 +235,17 @@ async def get_analysis(
             elapsed_ms=analysis.total_duration_ms,
         )
 
+    # If failed, return a poll-like envelope with the error details
+    if analysis.status == "FAILED":
+        return {
+            "id": analysis.id,
+            "status": "FAILED",
+            "stage": analysis.stage,
+            "progress_pct": analysis.progress_pct,
+            "error_code": analysis.error_code,
+            "error_message": analysis.error_message,
+        }
+
     # Full complete analysis response
     storage = get_storage()
     artifact_items = [

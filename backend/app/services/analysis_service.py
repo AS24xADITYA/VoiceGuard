@@ -58,12 +58,20 @@ async def process_analysis_background(
         analysis.started_at = datetime.now(UTC)
         await db.commit()
 
-        # Define stage update callback
+        # Define stage update callback — uses a SEPARATE session to avoid
+        # concurrent commits on the main processing session (fixes "transaction is closed")
         async def update_stage(stage_name: str) -> None:
-            progress = STAGE_PROGRESS_MAP.get(stage_name, 0)
-            analysis.stage = stage_name
-            analysis.progress_pct = progress
-            await db.commit()
+            try:
+                async with async_session_factory() as stage_db:
+                    stage_stmt = select(Analysis).where(Analysis.id == analysis_id)
+                    stage_analysis = (await stage_db.execute(stage_stmt)).scalar_one_or_none()
+                    if stage_analysis:
+                        progress = STAGE_PROGRESS_MAP.get(stage_name, 0)
+                        stage_analysis.stage = stage_name
+                        stage_analysis.progress_pct = progress
+                        await stage_db.commit()
+            except Exception:
+                pass  # Stage updates are non-critical, don't crash the pipeline
 
         loop = asyncio.get_running_loop()
 
@@ -77,6 +85,9 @@ async def process_analysis_background(
 
         try:
             result: PipelineResult = await run_pipeline(temp_audio_path, context=ctx)
+
+            # Refresh the analysis from DB since stage callbacks used separate sessions
+            await db.refresh(analysis)
 
             # Store artifacts into storage backend
             canonical_path = result.audio_meta.canonical_path
@@ -233,10 +244,24 @@ async def process_analysis_background(
 
         except Exception as e:
             log.error("analysis_processing_failed", analysis_id=analysis_id, error=str(e))
-            analysis.status = "FAILED"
-            analysis.error_code = "MODEL_ERROR"
-            analysis.error_message = str(e)
-            await db.commit()
+            try:
+                analysis.status = "FAILED"
+                analysis.error_code = "MODEL_ERROR"
+                analysis.error_message = str(e)[:500]
+                await db.commit()
+            except Exception:
+                # Session is broken — use a fresh session to record the failure
+                try:
+                    async with async_session_factory() as err_db:
+                        err_stmt = select(Analysis).where(Analysis.id == analysis_id)
+                        err_analysis = (await err_db.execute(err_stmt)).scalar_one_or_none()
+                        if err_analysis:
+                            err_analysis.status = "FAILED"
+                            err_analysis.error_code = "MODEL_ERROR"
+                            err_analysis.error_message = str(e)[:500]
+                            await err_db.commit()
+                except Exception:
+                    log.error("failed_to_record_error", analysis_id=analysis_id)
         finally:
             # Clean up local temporary upload files
             try:
