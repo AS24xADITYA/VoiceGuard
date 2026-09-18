@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import tempfile
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Annotated
 
@@ -59,8 +59,8 @@ async def issue_new_challenge(
 
     # Issue challenge definition
     chal_obj = issue_challenge(challenge_type)
-    now = datetime.now(UTC)
-    expires_at = datetime.fromtimestamp(now.timestamp() + 60.0, tz=UTC)  # 60s expiry per 05 §4.5
+    now = datetime.now(UTC).replace(tzinfo=None)
+    expires_at = now + timedelta(seconds=60)  # 60s expiry per 05 §4.5
 
     record = Challenge(
         analysis_id=analysis_id,
@@ -113,7 +113,7 @@ async def respond_to_challenge(
             detail={"code": "NOT_FOUND", "message": "Challenge not found."},
         )
 
-    now = datetime.now(UTC)
+    now = datetime.now(UTC).replace(tzinfo=None)
 
     # Anti-replay: single-use and expiration check per 05 §4.5
     if challenge.status != "ISSUED":
@@ -122,8 +122,11 @@ async def respond_to_challenge(
             detail={"code": "CHALLENGE_ALREADY_USED", "message": "Challenge has already been completed or expired."},
         )
 
-    exp_at = challenge.expires_at if challenge.expires_at.tzinfo is not None else challenge.expires_at.replace(tzinfo=UTC)
-    if now > exp_at:
+    # Normalize expires_at to naive for comparison (SQLite strips tz)
+    exp_at = challenge.expires_at
+    if exp_at is not None and getattr(exp_at, 'tzinfo', None) is not None:
+        exp_at = exp_at.replace(tzinfo=None)
+    if exp_at is not None and now > exp_at:
         challenge.status = "EXPIRED"
         await db.commit()
         raise HTTPException(

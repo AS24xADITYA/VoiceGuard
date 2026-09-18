@@ -120,7 +120,7 @@ async def login(
         )
 
     # Update last login
-    user.last_login_at = datetime.now(UTC)
+    user.last_login_at = datetime.now(UTC).replace(tzinfo=None)
 
     access_token = create_access_token({"sub": user.id, "email": user.email})
     refresh_token, token_hash, expires_at = create_refresh_token()
@@ -168,7 +168,7 @@ async def refresh(
     stmt = select(RefreshToken).where(RefreshToken.token_hash == t_hash)
     rt = (await db.execute(stmt)).scalar_one_or_none()
 
-    now = datetime.now(UTC)
+    now = datetime.now(UTC).replace(tzinfo=None)
 
     # Replay detection: If token was already revoked, revoke the entire family for this user!
     if rt is not None and rt.revoked_at is not None:
@@ -187,7 +187,10 @@ async def refresh(
             },
         )
 
-    rt_exp = rt.expires_at if (rt and rt.expires_at.tzinfo is not None) else (rt.expires_at.replace(tzinfo=UTC) if rt else None)
+    # Normalize expires_at to naive for comparison (SQLite strips tz)
+    rt_exp = rt.expires_at if rt else None
+    if rt_exp is not None and getattr(rt_exp, 'tzinfo', None) is not None:
+        rt_exp = rt_exp.replace(tzinfo=None)
     if rt is None or (rt_exp is not None and rt_exp < now):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -241,7 +244,7 @@ async def logout(
     db: Annotated[AsyncSession, Depends(get_db)],
 ) -> Response:
     t_hash = hash_token(body.refresh_token)
-    stmt = update(RefreshToken).where(RefreshToken.token_hash == t_hash).values(revoked_at=datetime.now(UTC))
+    stmt = update(RefreshToken).where(RefreshToken.token_hash == t_hash).values(revoked_at=datetime.now(UTC).replace(tzinfo=None))
     await db.execute(stmt)
     await db.commit()
     return Response(status_code=status.HTTP_204_NO_CONTENT)

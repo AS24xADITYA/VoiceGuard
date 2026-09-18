@@ -36,7 +36,10 @@ except ImportError:
 
 
 def _utcnow() -> datetime:
-    return datetime.now(UTC)
+    # Return a naive datetime so SQLite (which strips tz anyway) is consistent.
+    # datetime.now(UTC) produces tz-aware; SQLite reads it back as naive —
+    # mixing the two causes "can't subtract offset-naive and offset-aware" errors.
+    return datetime.now(UTC).replace(tzinfo=None)
 
 
 class User(Base):

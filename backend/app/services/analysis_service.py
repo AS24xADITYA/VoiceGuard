@@ -55,7 +55,7 @@ async def process_analysis_background(
             return
 
         analysis.status = "RUNNING"
-        analysis.started_at = datetime.now(UTC)
+        analysis.started_at = datetime.now(UTC).replace(tzinfo=None)
         await db.commit()
 
         # Define stage update callback — uses a SEPARATE session to avoid
@@ -141,10 +141,15 @@ async def process_analysis_background(
             analysis.status = "COMPLETE"
             analysis.stage = "COMPLETE"
             analysis.progress_pct = 100
-            analysis.completed_at = datetime.now(UTC)
+            completed_at_naive = datetime.now(UTC).replace(tzinfo=None)
+            analysis.completed_at = completed_at_naive
             if analysis.started_at:
+                started = analysis.started_at
+                # Normalize to naive in case DB returned tz-aware (defensive)
+                if getattr(started, 'tzinfo', None) is not None:
+                    started = started.replace(tzinfo=None)
                 analysis.total_duration_ms = int(
-                    (analysis.completed_at - analysis.started_at).total_seconds() * 1000
+                    (completed_at_naive - started).total_seconds() * 1000
                 )
 
             analysis.duration_seconds = result.audio_meta.duration_seconds

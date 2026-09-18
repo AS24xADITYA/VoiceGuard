@@ -47,7 +47,7 @@ def create_refresh_token(ttl_days: int = 14) -> tuple[str, str, datetime]:
     """Generate a refresh token, its SHA-256 hash, and expiration datetime."""
     raw = generate_refresh_token()
     token_hash = hash_token(raw)
-    expires_at = datetime.now(UTC) + timedelta(days=ttl_days)
+    expires_at = datetime.now(UTC).replace(tzinfo=None) + timedelta(days=ttl_days)
     return raw, token_hash, expires_at
 
 
