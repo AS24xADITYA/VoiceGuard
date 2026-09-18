@@ -92,14 +92,20 @@ class AcousticDetector(Component):
                 self.model_path,
                 Path("backend") / self.model_path,
                 Path(__file__).parent.parent.parent / self.model_path,
+            ]
+        else:
+            candidates = [
+                Path("models/acoustic.pth"),
+                Path("backend/models/acoustic.pth"),
+                Path(__file__).parent.parent.parent / "models" / "acoustic.pth",
                 Path("models/acoustic-smoketest-v0.pth"),
                 Path("backend/models/acoustic-smoketest-v0.pth"),
                 Path(__file__).parent.parent.parent / "models" / "acoustic-smoketest-v0.pth",
             ]
-            for cand in candidates:
-                if cand.is_file():
-                    target_path = cand
-                    break
+        for cand in candidates:
+            if cand.is_file():
+                target_path = cand
+                break
 
         if target_path and target_path.is_file():
             state_dict = torch.load(target_path, map_location="cpu")

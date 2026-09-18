@@ -82,16 +82,20 @@ class FusionEngine(Component):
                 self.model_path,
                 Path("backend") / self.model_path,
                 Path(__file__).parent.parent.parent / self.model_path,
+            ]
+        else:
+            candidates = [
+                Path("models/fusion.pkl"),
+                Path("backend/models/fusion.pkl"),
+                Path(__file__).parent.parent.parent / "models" / "fusion.pkl",
                 Path("models/fusion-smoketest-v0.pkl"),
                 Path("backend/models/fusion-smoketest-v0.pkl"),
                 Path(__file__).parent.parent.parent / "models" / "fusion-smoketest-v0.pkl",
-                Path("models/fusion.pkl"),
-                Path("backend/models/fusion.pkl"),
             ]
-            for cand in candidates:
-                if cand.is_file():
-                    target_path = cand
-                    break
+        for cand in candidates:
+            if cand.is_file():
+                target_path = cand
+                break
 
         if not target_path or not target_path.is_file():
             self._is_loaded = False

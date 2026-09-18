@@ -191,14 +191,20 @@ class ScamIntentClassifier(Component):
                 self.model_path,
                 Path("backend") / self.model_path,
                 Path(__file__).parent.parent.parent / self.model_path,
+            ]
+        else:
+            candidates = [
+                Path("models/scam_model.pt"),
+                Path("backend/models/scam_model.pt"),
+                Path(__file__).parent.parent.parent / "models" / "scam_model.pt",
                 Path("models/scam-smoketest-v0.pt"),
                 Path("backend/models/scam-smoketest-v0.pt"),
                 Path(__file__).parent.parent.parent / "models" / "scam-smoketest-v0.pt",
             ]
-            for cand in candidates:
-                if cand.is_file():
-                    target_path = cand
-                    break
+        for cand in candidates:
+            if cand.is_file():
+                target_path = cand
+                break
 
         if target_path and target_path.is_file():
             try:

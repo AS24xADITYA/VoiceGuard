@@ -45,3 +45,55 @@ def test_speaker_disjointness_leakage_aborts():
 
     assert "FATAL: Speaker disjointness violation detected" in str(exc_info.value)
     assert "SPK_02" in str(exc_info.value)
+
+
+def test_wavefake_protocol_generation(tmp_path: Path):
+    """Verify WaveFake protocol builder assigns disjoint chapters."""
+    from prepare_datasets import build_wavefake_protocol
+    import soundfile as sf
+    import numpy as np
+
+    fake_dir = tmp_path / "wavefake" / "ljspeech_melgan"
+    real_dir = tmp_path / "wavefake" / "bona_fide"
+    fake_dir.mkdir(parents=True)
+    real_dir.mkdir(parents=True)
+
+    dummy = np.zeros(16000, dtype=np.float32)
+    # LJ001 -> train, LJ045 -> dev
+    sf.write(str(real_dir / "LJ001-0001.wav"), dummy, 16000)
+    sf.write(str(fake_dir / "LJ045-0002.wav"), dummy, 16000)
+
+    proto_out = tmp_path / "proto.csv"
+    build_wavefake_protocol(tmp_path / "wavefake", proto_out)
+    assert proto_out.is_file()
+
+    import csv
+    with open(proto_out, "r") as f:
+        rows = list(csv.DictReader(f))
+    assert len(rows) == 2
+    splits = {r["split"] for r in rows}
+    assert "train" in splits
+    assert "dev" in splits
+
+
+def test_in_the_wild_protocol_generation(tmp_path: Path):
+    """Verify In-the-Wild protocol builder assigns all files to eval."""
+    from prepare_datasets import build_in_the_wild_protocol
+    import soundfile as sf
+    import numpy as np
+
+    itw_dir = tmp_path / "itw"
+    itw_dir.mkdir()
+    dummy = np.zeros(16000, dtype=np.float32)
+    sf.write(str(itw_dir / "sample1.wav"), dummy, 16000)
+
+    proto_out = tmp_path / "itw_proto.csv"
+    build_in_the_wild_protocol(itw_dir, proto_out)
+    assert proto_out.is_file()
+
+    import csv
+    with open(proto_out, "r") as f:
+        rows = list(csv.DictReader(f))
+    assert len(rows) == 1
+    assert rows[0]["split"] == "eval"
+

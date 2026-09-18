@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -65,6 +66,128 @@ def verify_speaker_disjointness(manifest_entries: list[dict[str, Any]]) -> None:
         raise ValueError("\n".join(error_msg))
 
 
+def build_wavefake_protocol(audio_dir: Path | str, output_protocol: Path | str) -> Path:
+    """Generate speaker/chapter-disjoint protocol for WaveFake corpus (16 §1.2).
+
+    Assigns chapters/subsets disjointly:
+      - Train split: LJ001 - LJ040 (~80%)
+      - Dev split: LJ041 - LJ050 (~20%)
+    """
+    root = Path(audio_dir)
+    out_proto = Path(output_protocol)
+    out_proto.parent.mkdir(parents=True, exist_ok=True)
+
+    entries: list[dict[str, Any]] = []
+    wav_files = list(root.rglob("*.wav")) + list(root.rglob("*.flac"))
+
+    print(f"Discovered {len(wav_files)} audio files in WaveFake root: {root}")
+
+    for w in wav_files:
+        rel = w.relative_to(root)
+        stem = w.stem
+        # Detect speaker / chapter prefix e.g. LJ001, LJ025
+        match = re.match(r"(LJ\d{3})", stem, re.IGNORECASE)
+        speaker_id = match.group(1).upper() if match else f"SPK_{abs(hash(stem)) % 50:03d}"
+
+        # Determine split based on chapter ID to guarantee strict disjointness
+        chap_num = int(speaker_id[2:]) if speaker_id.startswith("LJ") and speaker_id[2:].isdigit() else int(speaker_id[-2:])
+        split = "train" if chap_num <= 40 else "dev"
+
+        # Determine label and attack
+        parent_name = w.parent.name.lower()
+        if any(b in parent_name for b in ("real", "bona_fide", "ljspeech-1.1", "clean")):
+            label = 0
+            attack_id = "-"
+        else:
+            label = 1
+            # Infer vocoder type from folder name
+            attack_id = parent_name.replace("ljspeech_", "").replace("_", "-")
+
+        entries.append({
+            "path": str(w.resolve()),
+            "speaker_id": speaker_id,
+            "split": split,
+            "label": label,
+            "attack_id": attack_id,
+        })
+
+    with open(out_proto, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=["path", "speaker_id", "split", "label", "attack_id"])
+        writer.writeheader()
+        writer.writerows(entries)
+
+    print(f"✓ Generated WaveFake protocol at {out_proto} ({len(entries)} items)")
+    return out_proto
+
+
+def build_in_the_wild_protocol(audio_dir: Path | str, output_protocol: Path | str) -> Path:
+    """Generate evaluation protocol for In-the-Wild corpus (16 §1.3).
+
+    All utterances belong to out-of-domain evaluation (split='eval').
+    """
+    root = Path(audio_dir)
+    out_proto = Path(output_protocol)
+    out_proto.parent.mkdir(parents=True, exist_ok=True)
+
+    entries: list[dict[str, Any]] = []
+
+    # Check for meta.csv
+    meta_csvs = list(root.rglob("*.csv"))
+    meta_file = None
+    for m in meta_csvs:
+        if "meta" in m.name.lower() or "label" in m.name.lower():
+            meta_file = m
+            break
+
+    if meta_file and meta_file.is_file():
+        print(f"Parsing In-the-Wild metadata CSV: {meta_file}")
+        with open(meta_file, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                fname = row.get("file") or row.get("filename") or row.get("path")
+                spk = row.get("speaker") or "itw_speaker"
+                lbl_raw = str(row.get("label", "")).lower()
+                is_spoof = 0 if "bona" in lbl_raw or lbl_raw in ("0", "real") else 1
+
+                # Locate actual file
+                cand = root / fname if fname else None
+                if not cand or not cand.is_file():
+                    found = list(root.rglob(f"{Path(fname).stem}.*")) if fname else []
+                    cand = found[0] if found else None
+
+                if cand and cand.is_file():
+                    entries.append({
+                        "path": str(cand.resolve()),
+                        "speaker_id": spk,
+                        "split": "eval",
+                        "label": is_spoof,
+                        "attack_id": "in_the_wild_spoof" if is_spoof else "-",
+                    })
+    else:
+        # Infer from folder names: bona_fide/real vs spoof/fake
+        wav_files = list(root.rglob("*.wav")) + list(root.rglob("*.mp3")) + list(root.rglob("*.flac"))
+        print(f"Scanning directory hierarchy for {len(wav_files)} files...")
+        for w in wav_files:
+            parent_name = w.parent.name.lower()
+            is_spoof = 0 if any(b in parent_name for b in ("real", "bona_fide", "genuine")) else 1
+            spk = w.parent.parent.name if is_spoof else w.parent.name
+            entries.append({
+                "path": str(w.resolve()),
+                "speaker_id": spk,
+                "split": "eval",
+                "label": is_spoof,
+                "attack_id": "in_the_wild_spoof" if is_spoof else "-",
+            })
+
+    with open(out_proto, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=["path", "speaker_id", "split", "label", "attack_id"])
+        writer.writeheader()
+        writer.writerows(entries)
+
+    print(f"✓ Generated In-the-Wild evaluation protocol at {out_proto} ({len(entries)} items)")
+    return out_proto
+
+
 def process_dataset(
     protocol_path: Path | str,
     audio_dir: Path | str,
@@ -98,11 +221,12 @@ def process_dataset(
         if delimiter:
             reader = csv.DictReader(f)
             for row in reader:
+                p_val = row.get("filename") or row.get("path") or row.get("rel_path")
                 entries.append({
-                    "rel_path": row.get("filename") or row.get("path"),
+                    "rel_path": p_val,
                     "speaker_id": row.get("speaker_id", "unknown"),
                     "split": row.get("split", "train"),
-                    "label": 1 if row.get("label", "").lower() in ("spoof", "1") else 0,
+                    "label": 1 if str(row.get("label", "")).lower() in ("spoof", "1") else 0,
                     "attack_id": row.get("attack_id", "-"),
                 })
         else:
@@ -127,15 +251,19 @@ def process_dataset(
 
     for i, item in enumerate(entries):
         rel = item["rel_path"]
-        src_file = src_dir / rel
-        if not src_file.is_file():
-            # Support ASVspoof flac files as well as wav
-            stem = Path(rel).stem
-            for ext in [".flac", ".wav", ".mp3", ".ogg"]:
-                candidate = src_dir / f"{stem}{ext}"
-                if candidate.is_file():
-                    src_file = candidate
-                    break
+        # If absolute path already provided, use directly
+        candidate_p = Path(rel)
+        if candidate_p.is_file():
+            src_file = candidate_p
+        else:
+            src_file = src_dir / rel
+            if not src_file.is_file():
+                stem = Path(rel).stem
+                for ext in [".flac", ".wav", ".mp3", ".ogg"]:
+                    cand = src_dir / f"{stem}{ext}"
+                    if cand.is_file():
+                        src_file = cand
+                        break
 
         if not src_file.is_file():
             continue
@@ -151,9 +279,13 @@ def process_dataset(
                 continue
 
         # Quality check
-        y, sr = sf.read(str(target_wav), dtype="float32")
-        q_report = assess_quality(y, sr=sr)
-        if not q_report.passed:
+        try:
+            y, sr = sf.read(str(target_wav), dtype="float32")
+            q_report = assess_quality(y, sr=sr)
+            if not q_report.passed:
+                dropped_quality_count += 1
+                continue
+        except Exception:
             dropped_quality_count += 1
             continue
 
@@ -219,14 +351,26 @@ def process_dataset(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="VoiceGuard acoustic dataset preprocessor per 06 §2.6")
-    parser.add_argument("--protocol", type=str, required=True, help="Path to protocol table or CSV")
+    parser.add_argument("--protocol", type=str, default=None, help="Path to protocol table or CSV")
     parser.add_argument("--audio-dir", type=str, required=True, help="Path to raw audio directory")
     parser.add_argument("--output-dir", type=str, required=True, help="Path to write canonical audio and manifests")
+    parser.add_argument("--dataset-type", type=str, default="protocol", choices=["protocol", "wavefake", "in_the_wild"], help="Dataset format type")
     parser.add_argument("--precompute-specs", action="store_true", default=True, help="Precompute spectrogram shards")
     args = parser.parse_args()
 
+    protocol_file = args.protocol
+    if args.dataset_type == "wavefake":
+        proto_path = Path(args.output_dir) / "wavefake_protocol.csv"
+        protocol_file = str(build_wavefake_protocol(args.audio_dir, proto_path))
+    elif args.dataset_type == "in_the_wild":
+        proto_path = Path(args.output_dir) / "in_the_wild_protocol.csv"
+        protocol_file = str(build_in_the_wild_protocol(args.audio_dir, proto_path))
+
+    if not protocol_file:
+        raise ValueError("Must provide either --protocol or --dataset-type with 'wavefake' or 'in_the_wild'")
+
     process_dataset(
-        protocol_path=args.protocol,
+        protocol_path=protocol_file,
         audio_dir=args.audio_dir,
         output_dir=args.output_dir,
         precompute_specs=args.precompute_specs,
