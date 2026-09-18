@@ -24,13 +24,24 @@ export const SpectrogramViewer: React.FC<SpectrogramViewerProps> = ({
   const [selectedWindowIdx, setSelectedWindowIdx] = useState<number>(0);
 
   const activeWindow = windows[selectedWindowIdx] || windows[0];
-  const axisExtents: AxisExtents = activeWindow?.axis_extents || {
-    time_start_s: 0.0,
-    time_end_s: 4.0,
-    freq_min_hz: 0,
-    freq_max_hz: 8000,
+
+  const rawExtents = (activeWindow as any)?.axis_extents || (windows[0] as any)?.axis_extents || {};
+  const axisExtents: AxisExtents = {
+    time_start_s: Number(rawExtents.time_start_s ?? rawExtents.t_min ?? 0.0),
+    time_end_s: Number(rawExtents.time_end_s ?? rawExtents.t_max ?? 4.0),
+    freq_min_hz: Number(rawExtents.freq_min_hz ?? rawExtents.f_min ?? 0),
+    freq_max_hz: Number(rawExtents.freq_max_hz ?? rawExtents.f_max ?? 8000),
   };
-  const peakRegions: PeakRegion[] = activeWindow?.peak_regions || [];
+
+  const rawPeaks: any[] = activeWindow?.peak_regions || [];
+  const peakRegions: PeakRegion[] = rawPeaks.map((r: any) => ({
+    time_start_s: Number(r.time_start_s ?? r.t_start_s ?? 0),
+    time_end_s: Number(r.time_end_s ?? r.t_end_s ?? 0),
+    freq_start_hz: Number(r.freq_start_hz ?? r.f_low_hz ?? 0),
+    freq_end_hz: Number(r.freq_end_hz ?? r.f_high_hz ?? 0),
+    intensity: Number(r.intensity ?? r.mean_weight ?? 0),
+    description: r.description || '',
+  }));
 
   // Alt text generation per 09 §7
   const altText =
@@ -86,7 +97,7 @@ export const SpectrogramViewer: React.FC<SpectrogramViewerProps> = ({
                   : 'bg-bg-elevated border-border-subtle text-text-secondary hover:bg-bg-overlay'
               }`}
             >
-              Window #{w.window_index} ({w.start_time_s.toFixed(1)}s – {w.end_time_s.toFixed(1)}s)
+              Window #{w.window_index ?? idx} ({Number((w as any).start_time_s ?? (w as any).t_start_s ?? 0).toFixed(1)}s – {Number((w as any).end_time_s ?? (w as any).t_end_s ?? 0).toFixed(1)}s)
             </button>
           ))}
         </div>

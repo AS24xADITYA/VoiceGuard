@@ -130,7 +130,7 @@ export const ChallengePanel: React.FC<ChallengePanelProps> = ({
                 Challenge Directive: {challengeData.challenge_type.replace('_', ' ')}
               </span>
               <span className="text-xs font-mono text-text-tertiary">
-                Target: ~{challengeData.expected_duration_s.toFixed(1)}s
+                Target: ~{Number(challengeData.expected_duration_s ?? 0).toFixed(1)}s
               </span>
             </div>
 
@@ -243,7 +243,7 @@ export const ChallengePanel: React.FC<ChallengePanelProps> = ({
             <div className="p-3 rounded-md bg-bg-elevated border border-border-subtle">
               <span className="text-text-tertiary font-mono block">Consistency Score:</span>
               <span className="text-base font-mono font-bold text-text-primary">
-                {(verifyResult.consistency_score * 100).toFixed(1)}%
+                {(Number(verifyResult.consistency_score ?? 0) * 100).toFixed(1)}%
               </span>
             </div>
             <div className="p-3 rounded-md bg-bg-elevated border border-border-subtle">
@@ -283,8 +283,8 @@ export const ChallengePanel: React.FC<ChallengePanelProps> = ({
                   <div key={feat} className="p-2 rounded bg-bg-surface border border-border-subtle">
                     <div className="text-text-tertiary text-[10px]">{feat}</div>
                     <div className="text-text-primary font-bold">
-                      {delta > 0 ? '+' : ''}
-                      {delta.toFixed(3)}
+                      {Number(delta ?? 0) > 0 ? '+' : ''}
+                      {Number(delta ?? 0).toFixed(3)}
                     </div>
                   </div>
                 ))}

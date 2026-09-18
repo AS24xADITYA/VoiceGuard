@@ -100,7 +100,7 @@ class Segment:
     end: float
     text: str
     avg_logprob: float
-    confidence: float
+    confidence: float = 0.0
 
 
 @dataclass(frozen=True)

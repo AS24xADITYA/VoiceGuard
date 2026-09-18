@@ -123,11 +123,11 @@ export const TranscriptViewer: React.FC<TranscriptViewerProps> = ({
               <span
                 key={idx}
                 className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono bg-bg-surface border border-risk-high/30 text-risk-high"
-                title={`Attribution weight: ${span.attribution_weight.toFixed(3)} | Tactics: ${span.tactics.join(', ')}`}
+                title={`Attribution weight: ${Number(span.attribution_weight ?? 0).toFixed(3)} | Tactics: ${(span.tactics || []).join(', ')}`}
               >
                 <span>&ldquo;{span.text}&rdquo;</span>
                 <span className="text-[10px] uppercase font-sans font-semibold px-1 rounded bg-risk-high-bg text-risk-high">
-                  {span.tactics[0] || 'risk'}
+                  {(span.tactics || [])[0] || 'risk'}
                 </span>
               </span>
             ))}

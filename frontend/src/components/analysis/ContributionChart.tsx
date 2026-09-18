@@ -21,8 +21,16 @@ export const ContributionChart: React.FC<ContributionChartProps> = ({
   contributions = [],
   maxItems = 5,
 }) => {
+  const validContributions = (contributions || [])
+    .filter((c) => c != null)
+    .map((c: any) => ({
+      feature: c.feature || 'unknown',
+      label: c.label || (c.feature ? FEATURE_LABELS[c.feature] : undefined),
+      contribution: Number(c.contribution ?? c.value ?? 0),
+    }));
+
   // Sort by absolute contribution and take top maxItems
-  const sorted = [...contributions]
+  const sorted = [...validContributions]
     .sort((a, b) => Math.abs(b.contribution) - Math.abs(a.contribution))
     .slice(0, maxItems);
 

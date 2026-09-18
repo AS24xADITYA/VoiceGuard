@@ -93,7 +93,7 @@ export const VerdictCard: React.FC<VerdictCardProps> = ({
                   {meta.title}
                 </h1>
                 <span className="text-xs font-mono uppercase px-2.5 py-0.5 rounded bg-bg-surface border border-border-subtle text-text-secondary">
-                  Confidence: {Math.round(confidence * 100)}%
+                  Confidence: {Math.round(Number(confidence ?? 0.5) * 100)}%
                 </span>
               </div>
               <p className="text-sm font-medium text-text-secondary mt-0.5">{meta.sub}</p>

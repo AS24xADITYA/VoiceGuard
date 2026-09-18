@@ -222,6 +222,7 @@ async def process_analysis_background(
                     "target_layer": result.explanation.target_layer,
                     "target_class": result.explanation.target_class,
                     "windows": result.explanation.windows,
+                    "axis_extents": result.explanation.axis_extents,
                     "disclaimer": result.explanation.disclaimer,
                 }
 

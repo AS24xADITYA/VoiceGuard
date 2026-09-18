@@ -306,10 +306,13 @@ class GradCAMExplainer(Component):
                         "window_index": w_idx,
                         "t_start_s": win["t_start"],
                         "t_end_s": win["t_end"],
+                        "start_time_s": win["t_start"],
+                        "end_time_s": win["t_end"],
                         "score": win["score"],
                         "spectrogram_path": str(spec_png.resolve()),
                         "heatmap_path": str(heat_png.resolve()),
                         "overlay_path": str(overlay_png.resolve()),
+                        "axis_extents": global_extents,
                         "peak_regions": [p.to_dict() for p in peaks],
                         "peak_descriptions": [p.describe() for p in peaks],
                     })

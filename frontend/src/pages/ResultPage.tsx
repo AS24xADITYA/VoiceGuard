@@ -315,7 +315,7 @@ export const ResultPage: React.FC = () => {
               <div className="flex justify-between text-text-tertiary font-mono">
                 <span>Uncertainty Entropy:</span>
                 <span className="text-text-primary">
-                  {(data.acoustic?.uncertainty_entropy ?? data.acoustic?.uncertainty) ? (data.acoustic?.uncertainty_entropy ?? data.acoustic?.uncertainty)?.toFixed(3) : '0.124'}
+                  {_fmt(data.acoustic?.uncertainty_entropy ?? data.acoustic?.uncertainty, 3, '0.124')}
                 </span>
               </div>
               {data.acoustic?.is_borderline && (
@@ -477,7 +477,7 @@ export const ResultPage: React.FC = () => {
                 <div className="p-2.5 rounded bg-bg-elevated border border-border-subtle">
                   <div className="text-text-tertiary text-[10px]">VAD Speech Ratio</div>
                   <div className="text-text-primary font-bold">
-                    {(((data.quality as any)?.vad_speech_ratio ?? (data.quality as any)?.speech_ratio ?? 0) * 100).toFixed(1)}%
+                    {_fmt(((data.quality as any)?.vad_speech_ratio ?? (data.quality as any)?.speech_ratio ?? 0) * 100, 1)}%
                   </div>
                 </div>
                 <div className="p-2.5 rounded bg-bg-elevated border border-border-subtle">
@@ -489,7 +489,7 @@ export const ResultPage: React.FC = () => {
                 <div className="p-2.5 rounded bg-bg-elevated border border-border-subtle">
                   <div className="text-text-tertiary text-[10px]">Clipping Rate</div>
                   <div className="text-text-primary font-bold">
-                    {(((data.quality as any)?.clipping_rate ?? (data.quality as any)?.clipping_ratio ?? 0) * 100).toFixed(3)}%
+                    {_fmt(((data.quality as any)?.clipping_rate ?? (data.quality as any)?.clipping_ratio ?? 0) * 100, 3)}%
                   </div>
                 </div>
                 <div className="p-2.5 rounded bg-bg-elevated border border-border-subtle">

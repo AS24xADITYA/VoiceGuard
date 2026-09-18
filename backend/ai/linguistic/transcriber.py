@@ -198,6 +198,7 @@ class Transcriber(Component):
                     end=round(seg.end, 2),
                     text=seg_text,
                     avg_logprob=round(getattr(seg, "avg_logprob", 0.0), 3),
+                    confidence=round(seg_conf, 3),
                 )
             )
             confidences.append(seg_conf)

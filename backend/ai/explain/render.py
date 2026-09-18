@@ -17,7 +17,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Final
+from typing import Any, Final
 
 import matplotlib
 matplotlib.use("Agg")
@@ -47,7 +47,14 @@ class AxisExtents:
     f_max: float
 
     def to_dict(self) -> dict[str, float]:
-        return asdict(self)
+        d = asdict(self)
+        d.update({
+            "time_start_s": self.t_min,
+            "time_end_s": self.t_max,
+            "freq_min_hz": self.f_min,
+            "freq_max_hz": self.f_max,
+        })
+        return d
 
 
 @dataclass(frozen=True)
@@ -68,8 +75,17 @@ class PeakRegion:
             f"(weight: {self.mean_weight:.2f})"
         )
 
-    def to_dict(self) -> dict[str, float]:
-        return asdict(self)
+    def to_dict(self) -> dict[str, Any]:
+        d = asdict(self)
+        d.update({
+            "time_start_s": self.t_start_s,
+            "time_end_s": self.t_end_s,
+            "freq_start_hz": self.f_low_hz,
+            "freq_end_hz": self.f_high_hz,
+            "intensity": self.mean_weight,
+            "description": self.describe(),
+        })
+        return d
 
 
 def render_spectrogram(
