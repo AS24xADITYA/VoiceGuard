@@ -44,7 +44,7 @@ class AcousticDetector(Component):
         device: str = "cpu",
         borderline_low: float = 0.35,
         borderline_high: float = 0.65,
-        version: str = "acoustic-efficientnet-b0-smoketest-v0",
+        version: str = "acoustic-efficientnet-b0-v1.0",
     ) -> None:
         self._name: Final[str] = "acoustic"
         self._version = version

@@ -45,7 +45,7 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
 
     # ── AI Models ────────────────────────────────────────────────
-    acoustic_model_id: str = "models/acoustic-smoketest-v0.pth"
+    acoustic_model_id: str = "models/acoustic.pth"
     acoustic_borderline_low: float = 0.35
     acoustic_borderline_high: float = 0.65
 

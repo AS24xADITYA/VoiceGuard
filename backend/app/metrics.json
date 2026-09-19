@@ -1,22 +1,144 @@
 {
-  "status": "PENDING_REAL_EVALUATION",
-  "note": "Evaluation metrics pending real training run and evaluation script execution per 13-TESTING-AND-EVALUATION.md",
-  "acoustic": {
-    "c1_in_domain": "PENDING_REAL_EVALUATION",
-    "c2_out_of_domain": "PENDING_REAL_EVALUATION",
-    "c3_codec_degraded": "PENDING_REAL_EVALUATION",
-    "c4_noise_degraded": "PENDING_REAL_EVALUATION"
+  "evaluation_timestamp": "2026-09-19T11:42:10.711458+00:00",
+  "status": "EVALUATED_GENUINE",
+  "model": {
+    "checkpoint": "model_best.pt",
+    "backbone": "efficientnet_b0",
+    "operating_threshold": 0.2594
   },
-  "linguistic": {
-    "s1_held_out_generated": "PENDING_REAL_EVALUATION",
-    "s2_held_out_real": "PENDING_REAL_EVALUATION",
-    "s3_asr_whisper": "PENDING_REAL_EVALUATION"
+  "conditions": {
+    "c1_in_domain": {
+      "eer": 0.0,
+      "eer_threshold": 0.2594,
+      "min_tdcf": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auc_roc": 1.0,
+      "ece": 0.1361,
+      "confusion_matrix": [
+        [
+          2548,
+          0
+        ],
+        [
+          0,
+          22296
+        ]
+      ],
+      "total_samples": 24844,
+      "n_bonafide": 2548,
+      "n_spoof": 22296
+    },
+    "c2_out_of_domain": {
+      "eer": 0.4698,
+      "eer_threshold": 0.8458,
+      "min_tdcf": 1.0,
+      "accuracy": 0.3669,
+      "precision": 0.373,
+      "recall": 0.9537,
+      "f1": 0.5362,
+      "auc_roc": 0.5141,
+      "ece": 0.4741,
+      "confusion_matrix": [
+        [
+          26,
+          17507
+        ],
+        [
+          506,
+          10413
+        ]
+      ],
+      "total_samples": 28452,
+      "n_bonafide": 17533,
+      "n_spoof": 10919
+    },
+    "c3_codec_degraded": {
+      "eer": 0.0431,
+      "eer_threshold": 0.8387,
+      "min_tdcf": 0.8857,
+      "accuracy": 0.9065,
+      "precision": 0.9056,
+      "recall": 1.0,
+      "f1": 0.9505,
+      "auc_roc": 0.9868,
+      "ece": 0.1465,
+      "confusion_matrix": [
+        [
+          225,
+          2323
+        ],
+        [
+          1,
+          22295
+        ]
+      ],
+      "total_samples": 24844,
+      "n_bonafide": 2548,
+      "n_spoof": 22296
+    },
+    "c4_noise_degraded_10db": {
+      "eer": 0.3147,
+      "eer_threshold": 0.0038,
+      "min_tdcf": 0.8097,
+      "accuracy": 0.4589,
+      "precision": 0.9983,
+      "recall": 0.3977,
+      "f1": 0.5688,
+      "auc_roc": 0.763,
+      "ece": 0.6304,
+      "confusion_matrix": [
+        [
+          2533,
+          15
+        ],
+        [
+          13429,
+          8867
+        ]
+      ],
+      "total_samples": 24844,
+      "n_bonafide": 2548,
+      "n_spoof": 22296
+    }
   },
-  "fusion": {
-    "acoustic_only_eer": "PENDING_REAL_EVALUATION",
-    "linguistic_only_eer": "PENDING_REAL_EVALUATION",
-    "fused_acoustic_linguistic_eer": "PENDING_REAL_EVALUATION",
-    "fused_full_pipeline_eer": "PENDING_REAL_EVALUATION",
-    "ece": "PENDING_REAL_EVALUATION"
+  "generalization_gap": {
+    "c1_to_c2_eer_gap": 0.4698,
+    "c1_to_c2_auc_gap": 0.4859,
+    "interpretation": "Cross-corpus degradation on unseen acoustic environments."
+  },
+  "c1_per_attack_metrics": {
+    "A01": {
+      "samples": 3716,
+      "eer_or_miss_rate": 0.0,
+      "mean_score": 0.8521
+    },
+    "A02": {
+      "samples": 3716,
+      "eer_or_miss_rate": 0.0,
+      "mean_score": 0.8471
+    },
+    "A03": {
+      "samples": 3716,
+      "eer_or_miss_rate": 0.0,
+      "mean_score": 0.8481
+    },
+    "A04": {
+      "samples": 3716,
+      "eer_or_miss_rate": 0.0,
+      "mean_score": 0.8486
+    },
+    "A05": {
+      "samples": 3716,
+      "eer_or_miss_rate": 0.0,
+      "mean_score": 0.847
+    },
+    "A06": {
+      "samples": 3716,
+      "eer_or_miss_rate": 0.0,
+      "mean_score": 0.8504
+    }
   }
 }
