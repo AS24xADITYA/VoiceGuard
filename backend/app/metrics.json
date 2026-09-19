@@ -4,32 +4,32 @@
   "model": {
     "checkpoint": "model_best.pt",
     "backbone": "efficientnet_b0",
-    "operating_threshold": 0.2594
+    "operating_threshold": 0.0049
   },
   "conditions": {
     "c1_in_domain": {
-      "eer": 0.0,
-      "eer_threshold": 0.2594,
-      "min_tdcf": 0.0,
-      "accuracy": 1.0,
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
-      "auc_roc": 1.0,
-      "ece": 0.1361,
+      "eer": 0.1496,
+      "eer_threshold": 0.0049,
+      "min_tdcf": 0.3786,
+      "accuracy": 0.8506,
+      "precision": 0.9801,
+      "recall": 0.8506,
+      "f1": 0.9108,
+      "auc_roc": 0.871,
+      "ece": 0.3264,
       "confusion_matrix": [
         [
-          2548,
-          0
+          6254,
+          1101
         ],
         [
-          0,
-          22296
+          9545,
+          54337
         ]
       ],
-      "total_samples": 24844,
-      "n_bonafide": 2548,
-      "n_spoof": 22296
+      "total_samples": 71237,
+      "n_bonafide": 7355,
+      "n_spoof": 63882
     },
     "c2_out_of_domain": {
       "eer": 0.4698,
@@ -105,40 +105,88 @@
     }
   },
   "generalization_gap": {
-    "c1_to_c2_eer_gap": 0.4698,
-    "c1_to_c2_auc_gap": 0.4859,
+    "c1_to_c2_eer_gap": 0.3202,
+    "c1_to_c2_auc_gap": 0.3569,
     "interpretation": "Cross-corpus degradation on unseen acoustic environments."
   },
   "c1_per_attack_metrics": {
-    "A01": {
-      "samples": 3716,
-      "eer_or_miss_rate": 0.0,
-      "mean_score": 0.8521
+    "A07": {
+      "samples": 4914,
+      "description": "Vocoder (Neural / WaveNet)",
+      "mean_score": 0.8513,
+      "eer_or_miss_rate": 0.0001
     },
-    "A02": {
-      "samples": 3716,
-      "eer_or_miss_rate": 0.0,
-      "mean_score": 0.8471
+    "A08": {
+      "samples": 4914,
+      "description": "Neural vocoder (WaveRNN)",
+      "mean_score": 0.8484,
+      "eer_or_miss_rate": 0.001
     },
-    "A03": {
-      "samples": 3716,
-      "eer_or_miss_rate": 0.0,
-      "mean_score": 0.8481
+    "A09": {
+      "samples": 4914,
+      "description": "Vocoder (World)",
+      "mean_score": 0.846,
+      "eer_or_miss_rate": 0.0
     },
-    "A04": {
-      "samples": 3716,
-      "eer_or_miss_rate": 0.0,
-      "mean_score": 0.8486
+    "A10": {
+      "samples": 4914,
+      "description": "Neural vocoder (MelGAN)",
+      "mean_score": 0.6105,
+      "eer_or_miss_rate": 0.0181
     },
-    "A05": {
-      "samples": 3716,
-      "eer_or_miss_rate": 0.0,
-      "mean_score": 0.847
+    "A11": {
+      "samples": 4914,
+      "description": "Griffin-Lim vocoder",
+      "mean_score": 0.8345,
+      "eer_or_miss_rate": 0.0034
     },
-    "A06": {
-      "samples": 3716,
-      "eer_or_miss_rate": 0.0,
-      "mean_score": 0.8504
+    "A12": {
+      "samples": 4914,
+      "description": "Neural vocoder (WaveGlow)",
+      "mean_score": 0.521,
+      "eer_or_miss_rate": 0.0072
+    },
+    "A13": {
+      "samples": 4914,
+      "description": "VC (CycleGAN)",
+      "mean_score": 0.6427,
+      "eer_or_miss_rate": 0.0067
+    },
+    "A14": {
+      "samples": 4914,
+      "description": "VC (StarGAN)",
+      "mean_score": 0.8424,
+      "eer_or_miss_rate": 0.0022
+    },
+    "A15": {
+      "samples": 4914,
+      "description": "VC (Spectral mapping)",
+      "mean_score": 0.5464,
+      "eer_or_miss_rate": 0.0279
+    },
+    "A16": {
+      "samples": 4914,
+      "description": "WaveNet TTS + Griffin-Lim",
+      "mean_score": 0.8495,
+      "eer_or_miss_rate": 0.0003
+    },
+    "A17": {
+      "samples": 4914,
+      "description": "Neural TTS (Tacotron 2 + WaveGlow)",
+      "mean_score": 0.0137,
+      "eer_or_miss_rate": 0.7662
+    },
+    "A18": {
+      "samples": 4914,
+      "description": "Neural TTS (Transformer + WaveNet)",
+      "mean_score": 0.0132,
+      "eer_or_miss_rate": 0.783
+    },
+    "A19": {
+      "samples": 4914,
+      "description": "Neural TTS (FastSpeech + MelGAN)",
+      "mean_score": 0.8418,
+      "eer_or_miss_rate": 0.0011
     }
   }
 }

@@ -136,15 +136,45 @@ def fetch_sms_spam_corpus(max_samples: int = 5500) -> list[dict[str, Any]]:
 
 
 def fetch_phishing_email_corpus(max_samples: int = 3000) -> list[dict[str, Any]]:
-    """Fetch public phishing/fraud email corpus and strip headers per 06 §3.2."""
+    """Fetch public phishing/fraud email corpus (Enron-Spam) and strip headers per 06 §3.2."""
     records: list[dict[str, Any]] = []
-    print("Fetching Phishing / Fraud Email corpus...")
-    
+    print("Fetching Enron-Spam / Phishing Email corpus...")
+
+    # 1. Primary: Hugging Face SetFit/enron_spam (real Enron spam/ham corpus per 06 §3.2)
+    try:
+        import datasets
+
+        ds = datasets.load_dataset("SetFit/enron_spam", split="train")
+        for item in ds:
+            body = _clean_text(item.get("text", "") or item.get("message", ""))
+            if len(body) < 25:
+                continue
+            words = body.split()[:180]  # truncate per 06 §3.2
+            truncated = " ".join(words)
+            is_scam = int(item.get("label", 1))
+            tactics = _infer_tactics_from_text(truncated) if is_scam else {cat: 0 for cat in TACTIC_CATEGORIES}
+            records.append({
+                "text": truncated,
+                "language": "en",
+                "script": "latin",
+                "is_scam": is_scam,
+                "categories": tactics,
+                "source": "email_corpus",
+            })
+            if len(records) >= max_samples:
+                break
+        if len(records) >= 50:
+            print(f"Loaded {len(records)} items from SetFit/enron_spam.")
+            random.shuffle(records)
+            return records[:max_samples]
+    except Exception as e:
+        print(f"Hugging Face Enron-Spam download deferred ({e}), falling back to direct URLs...")
+
     urls = [
         "https://raw.githubusercontent.com/mwitiderrick/phishing-email-detection/master/phishing_emails.json",
         "https://raw.githubusercontent.com/subhash-b/Phishing-Email-Detection/master/phishing_data.csv",
     ]
-    
+
     loaded = False
     for url in urls:
         try:
