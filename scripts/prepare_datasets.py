@@ -349,14 +349,84 @@ def process_dataset(
     return summary
 
 
+def prepare_huggingface_asvspoof(output_dir: Path | str, precompute_specs: bool = True) -> dict[str, Any]:
+    """Load official Bisher/ASVspoof_2019_LA from Hugging Face and prepare canonical audio and specs."""
+    from datasets import load_dataset
+    out_dir = Path(output_dir)
+    canonical_dir = out_dir / "canonical"
+    specs_dir = out_dir / "specs"
+    canonical_dir.mkdir(parents=True, exist_ok=True)
+    if precompute_specs:
+        specs_dir.mkdir(parents=True, exist_ok=True)
+
+    manifest_entries: list[dict[str, Any]] = []
+    print("Loading Bisher/ASVspoof_2019_LA train & validation splits from Hugging Face...")
+    for hf_split, split_label in [("train", "train"), ("validation", "dev")]:
+        ds = load_dataset("Bisher/ASVspoof_2019_LA", split=hf_split)
+        print(f"Loaded {len(ds)} samples for partition: {split_label}")
+        for i, item in enumerate(ds):
+            fname = item.get("audio_file_name") or f"{split_label}_{i:06d}.flac"
+            stem = Path(fname).stem
+            wav_path = canonical_dir / f"{stem}.wav"
+
+            y = np.array(item["audio"]["array"], dtype=np.float32)
+            sr = item["audio"]["sampling_rate"]
+            if not wav_path.is_file():
+                sf.write(str(wav_path), y, sr)
+
+            label = 0 if item["key"] == 0 or str(item["key"]).lower() == "bonafide" else 1
+            entry: dict[str, Any] = {
+                "path": str(wav_path.resolve()),
+                "speaker_id": item["speaker_id"],
+                "split": split_label,
+                "label": label,
+                "attack_id": item.get("system_id", "-"),
+                "duration_s": round(len(y) / sr, 2),
+            }
+            if precompute_specs:
+                spec_path = specs_dir / f"{stem}.npy"
+                if not spec_path.is_file():
+                    mel = log_mel(y, sr=sr)
+                    norm_spec = normalize_spectrogram(mel)
+                    np.save(spec_path, norm_spec)
+                entry["npy_path"] = str(spec_path.resolve())
+
+            manifest_entries.append(entry)
+            if (i + 1) % 2000 == 0:
+                print(f"  [{split_label}] Processed {i + 1}/{len(ds)} samples...")
+
+    verify_speaker_disjointness(manifest_entries)
+    print("✓ Speaker disjointness verified across splits.")
+
+    manifest_json = out_dir / "manifest.json"
+    with open(manifest_json, "w", encoding="utf-8") as f:
+        json.dump(manifest_entries, f, indent=2)
+
+    manifest_csv = out_dir / "manifest.csv"
+    with open(manifest_csv, "w", newline="", encoding="utf-8") as f:
+        if manifest_entries:
+            writer = csv.DictWriter(f, fieldnames=list(manifest_entries[0].keys()))
+            writer.writeheader()
+            writer.writerows(manifest_entries)
+
+    return {"total_files_accepted": len(manifest_entries)}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="VoiceGuard acoustic dataset preprocessor per 06 §2.6")
     parser.add_argument("--protocol", type=str, default=None, help="Path to protocol table or CSV")
-    parser.add_argument("--audio-dir", type=str, required=True, help="Path to raw audio directory")
+    parser.add_argument("--audio-dir", type=str, default=None, help="Path to raw audio directory")
     parser.add_argument("--output-dir", type=str, required=True, help="Path to write canonical audio and manifests")
-    parser.add_argument("--dataset-type", type=str, default="protocol", choices=["protocol", "wavefake", "in_the_wild"], help="Dataset format type")
+    parser.add_argument("--dataset-type", type=str, default="protocol", choices=["protocol", "wavefake", "in_the_wild", "hf_asvspoof"], help="Dataset format type")
     parser.add_argument("--precompute-specs", action="store_true", default=True, help="Precompute spectrogram shards")
     args = parser.parse_args()
+
+    if args.dataset_type == "hf_asvspoof":
+        prepare_huggingface_asvspoof(args.output_dir, precompute_specs=args.precompute_specs)
+        return
+
+    if not args.audio_dir:
+        raise ValueError("--audio-dir is required when not using hf_asvspoof")
 
     protocol_file = args.protocol
     if args.dataset_type == "wavefake":
