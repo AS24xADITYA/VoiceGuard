@@ -51,6 +51,7 @@ credentials.json
 # ─── Data & Database (never committed) ───────────────────────────
 data/
 backend/data/
+!backend/data/scam/s2_heldout_real_test.json
 *.db
 *.db-journal
 *.db-wal
