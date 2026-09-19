@@ -264,8 +264,27 @@ def _get_embedded_phishing_patterns() -> list[dict[str, Any]]:
     return out
 
 
-def generate_multilingual_speech_corpus(n_per_lang: int = 1500) -> list[dict[str, Any]]:
-    """Generate balanced multilingual scam AND benign transcripts across 5 languages."""
+def partition_scenarios(items: list[Any], split: str) -> list[Any]:
+    """Partition scenario templates so train, val, and test share zero underlying templates."""
+    if split == "all" or len(items) <= 2:
+        return items
+    n = len(items)
+    n_test = max(1, int(n * 0.15))
+    n_val = max(1, int(n * 0.15))
+    n_train = n - n_val - n_test
+    if n_train < 1:
+        n_train = 1
+    if split == "train":
+        return items[:n_train]
+    elif split == "val":
+        return items[n_train : n_train + n_val]
+    elif split == "test":
+        return items[n_train + n_val :]
+    return items
+
+
+def generate_multilingual_speech_corpus(n_per_lang: int = 1500, target_split: str = "all") -> list[dict[str, Any]]:
+    """Generate balanced multilingual scam AND benign transcripts across 5 languages with template-level split isolation."""
     records: list[dict[str, Any]] = []
 
     # English templates
@@ -385,9 +404,21 @@ def generate_multilingual_speech_corpus(n_per_lang: int = 1500) -> list[dict[str
             return prefix + text
         return text
 
+    # Select partitioned scenarios for this target split
+    sel_en_scam = partition_scenarios(en_scam_scenarios, target_split)
+    sel_en_benign = partition_scenarios(en_benign_scenarios, target_split)
+    sel_hi_scam = partition_scenarios(hi_scam_scenarios, target_split)
+    sel_hi_benign = partition_scenarios(hi_benign_scenarios, target_split)
+    sel_mr_scam = partition_scenarios(mr_scam_scenarios, target_split)
+    sel_mr_benign = partition_scenarios(mr_benign_scenarios, target_split)
+    sel_bn_scam = partition_scenarios(bn_scam_scenarios, target_split)
+    sel_bn_benign = partition_scenarios(bn_benign_scenarios, target_split)
+    sel_ta_scam = partition_scenarios(ta_scam_scenarios, target_split)
+    sel_ta_benign = partition_scenarios(ta_benign_scenarios, target_split)
+
     # Expand English
-    for _ in range(n_per_lang // len(en_scam_scenarios) + 1):
-        for txt, cats in en_scam_scenarios:
+    for _ in range(n_per_lang // max(1, len(sel_en_scam)) + 1):
+        for txt, cats in sel_en_scam:
             full_txt = add_disfluency(txt, "en")
             cat_d = {c: (1 if c in cats else 0) for c in TACTIC_CATEGORIES}
             records.append({
@@ -398,8 +429,8 @@ def generate_multilingual_speech_corpus(n_per_lang: int = 1500) -> list[dict[str
                 "categories": cat_d,
                 "source": "generated_scam",
             })
-    for _ in range(n_per_lang // len(en_benign_scenarios) + 1):
-        for txt in en_benign_scenarios:
+    for _ in range(n_per_lang // max(1, len(sel_en_benign)) + 1):
+        for txt in sel_en_benign:
             full_txt = add_disfluency(txt, "en")
             records.append({
                 "text": full_txt,
@@ -411,8 +442,8 @@ def generate_multilingual_speech_corpus(n_per_lang: int = 1500) -> list[dict[str
             })
 
     # Expand Hindi
-    for _ in range(n_per_lang // len(hi_scam_scenarios) + 1):
-        for txt, cats, sc in hi_scam_scenarios:
+    for _ in range(n_per_lang // max(1, len(sel_hi_scam)) + 1):
+        for txt, cats, sc in sel_hi_scam:
             full_txt = add_disfluency(txt, "hi")
             cat_d = {c: (1 if c in cats else 0) for c in TACTIC_CATEGORIES}
             records.append({
@@ -423,8 +454,8 @@ def generate_multilingual_speech_corpus(n_per_lang: int = 1500) -> list[dict[str
                 "categories": cat_d,
                 "source": "generated_scam",
             })
-    for _ in range(n_per_lang // len(hi_benign_scenarios) + 1):
-        for txt, sc in hi_benign_scenarios:
+    for _ in range(n_per_lang // max(1, len(sel_hi_benign)) + 1):
+        for txt, sc in sel_hi_benign:
             full_txt = add_disfluency(txt, "hi")
             records.append({
                 "text": full_txt,
@@ -436,8 +467,8 @@ def generate_multilingual_speech_corpus(n_per_lang: int = 1500) -> list[dict[str
             })
 
     # Expand Marathi
-    for _ in range(n_per_lang // len(mr_scam_scenarios) + 1):
-        for txt, cats in mr_scam_scenarios:
+    for _ in range(n_per_lang // max(1, len(sel_mr_scam)) + 1):
+        for txt, cats in sel_mr_scam:
             full_txt = add_disfluency(txt, "mr")
             cat_d = {c: (1 if c in cats else 0) for c in TACTIC_CATEGORIES}
             records.append({
@@ -448,8 +479,8 @@ def generate_multilingual_speech_corpus(n_per_lang: int = 1500) -> list[dict[str
                 "categories": cat_d,
                 "source": "generated_scam",
             })
-    for _ in range(n_per_lang // len(mr_benign_scenarios) + 1):
-        for txt in mr_benign_scenarios:
+    for _ in range(n_per_lang // max(1, len(sel_mr_benign)) + 1):
+        for txt in sel_mr_benign:
             full_txt = add_disfluency(txt, "mr")
             records.append({
                 "text": full_txt,
@@ -461,8 +492,8 @@ def generate_multilingual_speech_corpus(n_per_lang: int = 1500) -> list[dict[str
             })
 
     # Expand Bengali
-    for _ in range(n_per_lang // len(bn_scam_scenarios) + 1):
-        for txt, cats in bn_scam_scenarios:
+    for _ in range(n_per_lang // max(1, len(sel_bn_scam)) + 1):
+        for txt, cats in sel_bn_scam:
             full_txt = add_disfluency(txt, "bn")
             cat_d = {c: (1 if c in cats else 0) for c in TACTIC_CATEGORIES}
             records.append({
@@ -473,8 +504,8 @@ def generate_multilingual_speech_corpus(n_per_lang: int = 1500) -> list[dict[str
                 "categories": cat_d,
                 "source": "generated_scam",
             })
-    for _ in range(n_per_lang // len(bn_benign_scenarios) + 1):
-        for txt in bn_benign_scenarios:
+    for _ in range(n_per_lang // max(1, len(sel_bn_benign)) + 1):
+        for txt in sel_bn_benign:
             full_txt = add_disfluency(txt, "bn")
             records.append({
                 "text": full_txt,
@@ -486,8 +517,8 @@ def generate_multilingual_speech_corpus(n_per_lang: int = 1500) -> list[dict[str
             })
 
     # Expand Tamil
-    for _ in range(n_per_lang // len(ta_scam_scenarios) + 1):
-        for txt, cats in ta_scam_scenarios:
+    for _ in range(n_per_lang // max(1, len(sel_ta_scam)) + 1):
+        for txt, cats in sel_ta_scam:
             full_txt = add_disfluency(txt, "ta")
             cat_d = {c: (1 if c in cats else 0) for c in TACTIC_CATEGORIES}
             records.append({
@@ -498,8 +529,8 @@ def generate_multilingual_speech_corpus(n_per_lang: int = 1500) -> list[dict[str
                 "categories": cat_d,
                 "source": "generated_scam",
             })
-    for _ in range(n_per_lang // len(ta_benign_scenarios) + 1):
-        for txt in ta_benign_scenarios:
+    for _ in range(n_per_lang // max(1, len(sel_ta_benign)) + 1):
+        for txt in sel_ta_benign:
             full_txt = add_disfluency(txt, "ta")
             records.append({
                 "text": full_txt,
@@ -514,51 +545,116 @@ def generate_multilingual_speech_corpus(n_per_lang: int = 1500) -> list[dict[str
     return records
 
 
-def balance_and_split_corpus(
-    all_records: list[dict[str, Any]],
-    train_ratio: float = 0.80,
-    val_ratio: float = 0.10,
-    test_ratio: float = 0.10,
-) -> dict[str, list[dict[str, Any]]]:
-    """Enforce 06 §3.5 language balancing (English <= 35%, min 15% per other language)."""
+def balance_corpus_split(
+    records: list[dict[str, Any]],
+    target_non_en: int = 1200,
+) -> list[dict[str, Any]]:
+    """Balance a split so English <= 35% and each Indian language has equal >= 15% representation."""
     random.seed(42)
-
     by_lang: dict[str, list[dict[str, Any]]] = {l: [] for l in SUPPORTED_LANGUAGES}
-    for r in all_records:
+    for r in records:
         l = r.get("language", "en")
         if l in by_lang:
             by_lang[l].append(r)
 
-    # Determine target counts per language to balance
-    non_en_counts = [len(by_lang[l]) for l in ["hi", "mr", "bn", "ta"]]
-    min_non_en = min(non_en_counts) if non_en_counts else 1000
-    target_non_en = max(1200, min_non_en)
-
     balanced_pool: list[dict[str, Any]] = []
 
-    # Sample non-English languages
+    # Non-English languages each receive target_non_en
     for l in ["hi", "mr", "bn", "ta"]:
         items = by_lang[l]
+        if not items:
+            continue
         if len(items) < target_non_en:
             items = items * (target_non_en // len(items) + 1)
         sampled = items[:target_non_en]
         balanced_pool.extend(sampled)
 
-    # Cap English at <= 35% of total
+    # English strictly capped at 1.5 * target_non_en: 1.5 / (4 + 1.5) = 27.27% (<= 35% cap)
     target_en = min(len(by_lang["en"]), int(target_non_en * 1.5))
     sampled_en = by_lang["en"][:target_en]
     balanced_pool.extend(sampled_en)
 
     random.shuffle(balanced_pool)
+    return balanced_pool
 
-    n_total = len(balanced_pool)
-    n_train = int(train_ratio * n_total)
-    n_val = int(val_ratio * n_total)
 
-    train_set = balanced_pool[:n_train]
-    val_set = balanced_pool[n_train : n_train + n_val]
-    s1_test_set = balanced_pool[n_train + n_val :]
+def prepare_full_scam_dataset(output_dir: Path | str) -> dict[str, Any]:
+    """Execute complete dataset assembly and write strictly disjoint, balanced split files."""
+    out_dir = Path(output_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
 
+    print("=== Assembling Multilingual Scam-Intent Dataset per 06 §3.2 & §3.5 ===")
+
+    # 1. Real SMS Spam/Ham (20% share, deduplicated prior to partitioning)
+    raw_sms = fetch_sms_spam_corpus(max_samples=4000)
+    seen_sms: set[str] = set()
+    sms_dedup: list[dict[str, Any]] = []
+    for r in raw_sms:
+        k = r["text"].strip().lower()
+        if k not in seen_sms:
+            seen_sms.add(k)
+            sms_dedup.append(r)
+    random.seed(42)
+    random.shuffle(sms_dedup)
+    n_sms = len(sms_dedup)
+    sms_train = sms_dedup[: int(0.80 * n_sms)]
+    sms_val = sms_dedup[int(0.80 * n_sms) : int(0.90 * n_sms)]
+    sms_test = sms_dedup[int(0.90 * n_sms) :]
+
+    # 2. Real Phishing/Fraud Emails (20% share, deduplicated prior to partitioning)
+    raw_phish = fetch_phishing_email_corpus(max_samples=3000)
+    seen_phish: set[str] = set()
+    phish_dedup: list[dict[str, Any]] = []
+    for r in raw_phish:
+        k = r["text"].strip().lower()
+        if k not in seen_phish:
+            seen_phish.add(k)
+            phish_dedup.append(r)
+    random.seed(42)
+    random.shuffle(phish_dedup)
+    n_phish = len(phish_dedup)
+    phish_train = phish_dedup[: int(0.80 * n_phish)]
+    phish_val = phish_dedup[int(0.80 * n_phish) : int(0.90 * n_phish)]
+    phish_test = phish_dedup[int(0.90 * n_phish) :]
+
+    # 3. Multilingual Generated Share (60% share, isolated at scenario template level)
+    multi_train = generate_multilingual_speech_corpus(n_per_lang=1200, target_split="train")
+    multi_val = generate_multilingual_speech_corpus(n_per_lang=150, target_split="val")
+    multi_test = generate_multilingual_speech_corpus(n_per_lang=150, target_split="test")
+
+    # Locate S2 real test set to ensure strict negative isolation (zero overlap)
+    s2_candidates = [
+        Path("backend/data/scam/s2_heldout_real_test.json"),
+        Path("data/scam/s2_heldout_real_test.json"),
+        Path(__file__).parent.parent.parent / "data" / "scam" / "s2_heldout_real_test.json",
+        Path("/content/VoiceGuard/backend/data/scam/s2_heldout_real_test.json"),
+    ]
+    s2_reserved: set[str] = set()
+    for s2_p in s2_candidates:
+        if s2_p.exists():
+            with open(s2_p, "r", encoding="utf-8") as f:
+                s2_records = json.load(f)
+            s2_reserved = {r["text"].strip().lower() for r in s2_records}
+            print(f"[OK] Loaded {len(s2_reserved)} reserved S2 real-style test items for zero-leakage filtering.")
+            break
+
+    # Combine partitions
+    train_pool = sms_train + phish_train + multi_train
+    val_pool = sms_val + phish_val + multi_val
+    test_pool = sms_test + phish_test + multi_test
+
+    # Strictly purge any text present in S2 from all training and tuning pools
+    if s2_reserved:
+        train_pool = [r for r in train_pool if r["text"].strip().lower() not in s2_reserved]
+        val_pool = [r for r in val_pool if r["text"].strip().lower() not in s2_reserved]
+        test_pool = [r for r in test_pool if r["text"].strip().lower() not in s2_reserved]
+
+    # Enforce language balancing independently on each partition
+    train_set = balance_corpus_split(train_pool, target_non_en=1200)
+    val_set = balance_corpus_split(val_pool, target_non_en=150)
+    s1_test_set = balance_corpus_split(test_pool, target_non_en=150)
+
+    # Assign split metadata
     for r in train_set:
         r["split"] = "train"
     for r in val_set:
@@ -566,75 +662,67 @@ def balance_and_split_corpus(
     for r in s1_test_set:
         r["split"] = "test"
 
-    return {
-        "train": train_set,
-        "val": val_set,
-        "s1_test": s1_test_set,
-    }
+    # Enforce strict text-level disjointness across splits
+    train_texts = {r["text"].strip().lower() for r in train_set}
+    val_texts = {r["text"].strip().lower() for r in val_set}
 
+    # Remove any collision from test and val to guarantee absolute 0 leakage
+    s1_test_set = [r for r in s1_test_set if r["text"].strip().lower() not in train_texts and r["text"].strip().lower() not in val_texts]
+    s1_texts = {r["text"].strip().lower() for r in s1_test_set}
 
-def prepare_full_scam_dataset(output_dir: Path | str) -> dict[str, Any]:
-    """Execute complete dataset assembly and write split files."""
-    out_dir = Path(output_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
+    assert len(train_texts.intersection(s1_texts)) == 0, "Train and S1 Test share texts!"
+    assert len(val_texts.intersection(s1_texts)) == 0, "Val and S1 Test share texts!"
+    print("[OK] Strict Disjointness Verified: 0 overlapping texts between Train, Val, and S1 Test.")
 
-    print("=== Assembling Multilingual Scam-Intent Dataset per 06 §3.2 ===")
-    
-    # 1. Real SMS Spam/Ham (20%)
-    sms_data = fetch_sms_spam_corpus(max_samples=4000)
-    
-    # 2. Real Phishing/Fraud Emails (20%)
-    phishing_data = fetch_phishing_email_corpus(max_samples=3000)
-    
-    # 3. Multilingual Generated Share (BOTH scam AND benign across 5 languages)
-    multilingual_data = generate_multilingual_speech_corpus(n_per_lang=1600)
-    
-    all_records = sms_data + phishing_data + multilingual_data
-    random.seed(42)
-    random.shuffle(all_records)
-
-    splits = balance_and_split_corpus(all_records)
+    if s2_reserved:
+        s2_overlap = train_texts.intersection(s2_reserved)
+        assert len(s2_overlap) == 0, f"Critical: {len(s2_overlap)} items overlap between Train and S2!"
+        print(f"[OK] Zero-Leakage Confirmed: S2 Real Test Set ({len(s2_reserved)} items) is 100% disjoint from training corpus.")
 
     train_file = out_dir / "train.json"
     val_file = out_dir / "val.json"
     s1_test_file = out_dir / "s1_test.json"
 
     with open(train_file, "w", encoding="utf-8") as f:
-        json.dump(splits["train"], f, indent=2, ensure_ascii=False)
+        json.dump(train_set, f, indent=2, ensure_ascii=False)
     with open(val_file, "w", encoding="utf-8") as f:
-        json.dump(splits["val"], f, indent=2, ensure_ascii=False)
+        json.dump(val_set, f, indent=2, ensure_ascii=False)
     with open(s1_test_file, "w", encoding="utf-8") as f:
-        json.dump(splits["s1_test"], f, indent=2, ensure_ascii=False)
+        json.dump(s1_test_set, f, indent=2, ensure_ascii=False)
 
-    # Compute statistics
+    # Compute training language percentages
+    total_train = len(train_set)
+    train_lang_counts: dict[str, int] = {}
+    for r in train_set:
+        l = r["language"]
+        train_lang_counts[l] = train_lang_counts.get(l, 0) + 1
+
+    train_lang_pcts = {l: f"{(count / total_train) * 100:.2f}%" for l, count in sorted(train_lang_counts.items())}
+
     stats: dict[str, Any] = {
-        "total_records": len(all_records),
-        "train_count": len(splits["train"]),
-        "val_count": len(splits["val"]),
-        "s1_test_count": len(splits["s1_test"]),
-        "language_distribution": {},
-        "scam_distribution": {"scam": 0, "benign": 0},
+        "total_records": len(train_set) + len(val_set) + len(s1_test_set),
+        "train_count": len(train_set),
+        "val_count": len(val_set),
+        "s1_test_count": len(s1_test_set),
+        "train_language_distribution": train_lang_counts,
+        "train_language_percentages": train_lang_pcts,
+        "scam_distribution": {"scam": sum(1 for r in train_set if r["is_scam"] == 1), "benign": sum(1 for r in train_set if r["is_scam"] == 0)},
         "tactic_distribution": {t: 0 for t in TACTIC_CATEGORIES},
     }
 
-    for r in splits["train"] + splits["val"] + splits["s1_test"]:
-        l = r["language"]
-        stats["language_distribution"][l] = stats["language_distribution"].get(l, 0) + 1
+    for r in train_set:
         if r["is_scam"] == 1:
-            stats["scam_distribution"]["scam"] += 1
             for cat, val in r.get("categories", {}).items():
                 if val == 1 and cat in stats["tactic_distribution"]:
                     stats["tactic_distribution"][cat] += 1
-        else:
-            stats["scam_distribution"]["benign"] += 1
 
     stats_file = out_dir / "dataset_manifest.json"
     with open(stats_file, "w", encoding="utf-8") as f:
         json.dump(stats, f, indent=2)
 
     print(f"Dataset summary: Train: {stats['train_count']} | Val: {stats['val_count']} | S1 Test: {stats['s1_test_count']}")
-    print("Language distribution:", stats["language_distribution"])
-    print("Scam vs Benign:", stats["scam_distribution"])
+    print("Train Language Percentages (06 §3.5):", train_lang_pcts)
+    print("Scam vs Benign in Train:", stats["scam_distribution"])
 
     return stats
 

@@ -275,9 +275,31 @@ def run_full_scam_evaluation(
             except Exception:
                 existing_metrics = {}
 
+        # If acoustic metrics are missing in loaded dict, check baseline paths to preserve C1-C4 data
+        if "acoustic" not in existing_metrics:
+            fallback_candidates = [
+                Path("backend/app/metrics.json"),
+                Path("backend/models/metrics.json"),
+                Path("models/metrics.json"),
+                Path("/content/VoiceGuard/backend/app/metrics.json"),
+                Path("/content/VoiceGuard/backend/models/metrics.json"),
+            ]
+            for fb in fallback_candidates:
+                if fb.exists():
+                    try:
+                        with open(fb, "r", encoding="utf-8") as f:
+                            fb_data = json.load(f)
+                            if "acoustic" in fb_data:
+                                existing_metrics["acoustic"] = fb_data["acoustic"]
+                                print(f"✓ Loaded and preserved authentic acoustic C1-C4 metrics from: {fb}")
+                                break
+                    except Exception:
+                        pass
+
         existing_metrics["evaluation_timestamp"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
         existing_metrics["linguistic_scam"] = linguistic_summary
 
+        m_p.parent.mkdir(parents=True, exist_ok=True)
         with open(m_p, "w", encoding="utf-8") as f:
             json.dump(existing_metrics, f, indent=2)
         print(f"✓ Successfully updated metrics in: {m_p}")
