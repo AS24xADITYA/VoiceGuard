@@ -39,6 +39,22 @@ STAGE_PROGRESS_MAP: dict[str, int] = {
 }
 
 
+import numpy as np
+
+
+def _sanitize_for_json(val: Any) -> Any:
+    """Recursively convert NumPy scalars, arrays, and datetimes into standard Python types."""
+    if isinstance(val, dict):
+        return {k: _sanitize_for_json(v) for k, v in val.items()}
+    if isinstance(val, (list, tuple)):
+        return [_sanitize_for_json(v) for v in val]
+    if isinstance(val, np.ndarray):
+        return val.tolist()
+    if isinstance(val, (np.floating, np.integer, np.bool_, np.generic)):
+        return val.item()
+    return val
+
+
 async def process_analysis_background(
     analysis_id: str,
     temp_audio_path: Path,
@@ -152,11 +168,11 @@ async def process_analysis_background(
                     (completed_at_naive - started).total_seconds() * 1000
                 )
 
-            analysis.duration_seconds = result.audio_meta.duration_seconds
-            analysis.sample_rate = result.audio_meta.sample_rate
-            analysis.file_size_bytes = result.audio_meta.file_size_bytes
+            analysis.duration_seconds = float(result.audio_meta.duration_seconds)
+            analysis.sample_rate = int(result.audio_meta.sample_rate)
+            analysis.file_size_bytes = int(result.audio_meta.file_size_bytes)
 
-            analysis.quality = {
+            analysis.quality = _sanitize_for_json({
                 "duration_s": result.quality.duration_s,
                 "speech_ratio": result.quality.speech_ratio,
                 "snr_estimate_db": result.quality.snr_estimate_db,
@@ -164,22 +180,22 @@ async def process_analysis_background(
                 "dc_offset": result.quality.dc_offset,
                 "passed": result.quality.passed,
                 "failures": result.quality.failures,
-            }
+            })
 
             if result.acoustic:
-                analysis.acoustic_result = {
+                analysis.acoustic_result = _sanitize_for_json({
                     "spoof_probability": result.acoustic.spoof_probability,
                     "window_scores": result.acoustic.window_scores,
                     "window_times": result.acoustic.window_times,
                     "uncertainty": result.acoustic.uncertainty,
                     "is_borderline": result.acoustic.is_borderline,
                     "model_version": result.acoustic.model_version,
-                }
-                analysis.acoustic_spoof_prob = result.acoustic.spoof_probability
-                analysis.is_borderline = result.acoustic.is_borderline
+                })
+                analysis.acoustic_spoof_prob = float(result.acoustic.spoof_probability) if result.acoustic.spoof_probability is not None else None
+                analysis.is_borderline = bool(result.acoustic.is_borderline)
 
             if result.transcript:
-                analysis.transcript_result = {
+                analysis.transcript_result = _sanitize_for_json({
                     "text": result.transcript.text,
                     "language": result.transcript.language,
                     "language_probability": result.transcript.language_probability,
@@ -188,11 +204,11 @@ async def process_analysis_background(
                     "is_reliable": result.transcript.is_reliable,
                     "word_count": result.transcript.word_count,
                     "hallucination_flags": result.transcript.hallucination_flags,
-                }
+                })
                 analysis.detected_language = result.transcript.language
 
             if result.scam:
-                analysis.scam_result = {
+                analysis.scam_result = _sanitize_for_json({
                     "scam_probability": result.scam.scam_probability,
                     "category_scores": result.scam.category_scores,
                     "triggered_categories": result.scam.triggered_categories,
@@ -200,11 +216,11 @@ async def process_analysis_background(
                         {"start": s.start, "end": s.end, "weight": s.weight, "text": s.text}
                         for s in result.scam.salient_spans
                     ],
-                }
-                analysis.scam_probability = result.scam.scam_probability
+                })
+                analysis.scam_probability = float(result.scam.scam_probability) if result.scam.scam_probability is not None else None
 
             if result.fusion:
-                analysis.fusion_result = {
+                analysis.fusion_result = _sanitize_for_json({
                     "risk_probability": result.fusion.risk_probability,
                     "verdict": result.fusion.verdict.value,
                     "confidence": result.fusion.confidence,
@@ -212,23 +228,23 @@ async def process_analysis_background(
                     "contributions": result.fusion.contributions,
                     "reasons": result.fusion.reasons,
                     "overrides_applied": result.fusion.overrides_applied,
-                }
-                analysis.risk_probability = result.fusion.risk_probability
+                })
+                analysis.risk_probability = float(result.fusion.risk_probability) if result.fusion.risk_probability is not None else None
                 analysis.verdict = result.fusion.verdict.value
 
             if result.explanation:
-                analysis.explanation_result = {
+                analysis.explanation_result = _sanitize_for_json({
                     "method": result.explanation.method,
                     "target_layer": result.explanation.target_layer,
                     "target_class": result.explanation.target_class,
                     "windows": result.explanation.windows,
                     "axis_extents": result.explanation.axis_extents,
                     "disclaimer": result.explanation.disclaimer,
-                }
+                })
 
-            analysis.stage_timings_ms = result.stage_timings_ms
-            analysis.model_versions = result.model_versions
-            analysis.degraded_branches = result.degraded_branches
+            analysis.stage_timings_ms = _sanitize_for_json(result.stage_timings_ms)
+            analysis.model_versions = _sanitize_for_json(result.model_versions)
+            analysis.degraded_branches = _sanitize_for_json(result.degraded_branches)
 
             # Auto-issue challenge if borderline per 08 §3.1
             if auto_challenge and analysis.is_borderline:

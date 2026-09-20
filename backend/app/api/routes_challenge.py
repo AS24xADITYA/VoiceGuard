@@ -191,9 +191,12 @@ async def respond_to_challenge(
     challenge.status = "COMPLETED" if c_res.passed else "FAILED"
     challenge.responded_at = now
     challenge.response_audio_sha256 = compute_sha256(canonical_resp_path)
-    challenge.consistency_score = c_res.consistency_score
-    challenge.passed = c_res.passed
-    challenge.feature_deltas = c_res.feature_deltas
+    challenge.consistency_score = float(c_res.consistency_score)
+    challenge.passed = bool(c_res.passed)
+    challenge.feature_deltas = {
+        k: float(v) if isinstance(v, (int, float)) else v
+        for k, v in c_res.feature_deltas.items()
+    }
     challenge.notes = c_res.notes
 
     # ── Re-fusion: Update analysis verdict with challenge signal ──
@@ -224,13 +227,13 @@ async def respond_to_challenge(
     # Perform re-fusion
     fusion_result = fuser.fuse(features)
 
-    analysis.risk_probability = fusion_result.risk_probability
+    analysis.risk_probability = float(fusion_result.risk_probability)
     analysis.verdict = fusion_result.verdict.value
     if analysis.fusion_result:
         updated_fusion = dict(analysis.fusion_result)
         updated_fusion["re_fused_with_challenge"] = True
-        updated_fusion["challenge_consistency"] = c_res.consistency_score
-        updated_fusion["risk_probability"] = fusion_result.risk_probability
+        updated_fusion["challenge_consistency"] = float(c_res.consistency_score)
+        updated_fusion["risk_probability"] = float(fusion_result.risk_probability)
         updated_fusion["verdict"] = fusion_result.verdict.value
         analysis.fusion_result = updated_fusion
 

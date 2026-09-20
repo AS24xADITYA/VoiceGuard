@@ -12,6 +12,25 @@ _engine = None
 _session_factory: async_sessionmaker[AsyncSession] | None = None
 
 
+import json
+from typing import Any
+import numpy as np
+
+
+def _json_serializer(obj: Any) -> str:
+    """JSON serializer supporting NumPy scalars, arrays, and datetimes."""
+    def _default(o: Any) -> Any:
+        if isinstance(o, np.ndarray):
+            return o.tolist()
+        if isinstance(o, (np.floating, np.integer, np.bool_, np.generic)):
+            return o.item()
+        if hasattr(o, "isoformat"):
+            return o.isoformat()
+        raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+
+    return json.dumps(obj, default=_default)
+
+
 def init_db(settings: Settings):
     """Initialize the async engine and session factory."""
     global _engine, _session_factory
@@ -41,6 +60,7 @@ def init_db(settings: Settings):
         settings.database_url,
         echo=False,
         connect_args=connect_args,
+        json_serializer=_json_serializer,
         **pool_kwargs,
     )
     _session_factory = async_sessionmaker(
