@@ -53,8 +53,8 @@ class Settings(BaseSettings):
     whisper_compute_type: Literal["int8", "float16", "float32"] = "int8"
     whisper_languages: str = "en,hi,mr,bn,ta"
 
-    scam_model_id: str = "models/scam-smoketest-v0.pt"
-    fusion_model_path: str = "models/fusion-smoketest-v0.pkl"
+    scam_model_id: str = "models/scam_model.pt"
+    fusion_model_path: str = "models/fusion.pkl"
 
     # ── Verdict thresholds ───────────────────────────────────────
     verdict_threshold_moderate: float = 0.30
