@@ -89,6 +89,7 @@ export const AboutPage: React.FC = () => {
         <h2 className="text-xl font-bold font-mono text-text-primary flex items-center gap-2">
           <Layers className="w-5 h-5 text-accent" />
           <span>2. Published Evaluation Metrics</span>
+        </h2>
         <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono">
           ⚠️ Model training in progress — evaluation metrics pending real evaluation pass.
         </div>
