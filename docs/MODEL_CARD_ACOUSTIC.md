@@ -21,14 +21,23 @@
 - **Loss Function**: Weighted Cross-Entropy with label smoothing (`0.05`).
 - **Training Script**: `backend/ai/acoustic/train.py` & `notebooks/02_train_acoustic.ipynb`.
 
-## Performance & Evaluation Status
-> **PENDING** — No trained model artifact exists yet. Model training will be executed on Google Colab using `notebooks/02_train_acoustic.ipynb`. Per `13-TESTING-AND-EVALUATION.md` §12, rule 1, no performance metric is recorded until produced by an empirical evaluation run.
+## Performance & Empirical Evaluation (Conditions C1–C4)
+Evaluated per `13-TESTING-AND-EVALUATION.md` §6 across 124,533 audio utterances:
 
-- **In-Domain EER (ASVspoof 2019 Eval)**: PENDING
-- **In-Domain AUC-ROC**: PENDING
-- **In-Domain min t-DCF**: PENDING
-- **Out-of-Domain EER (In-the-Wild)**: PENDING
-- **Out-of-Domain AUC-ROC**: PENDING
+- **Operating Decision Threshold ($\tau_{\text{acoustic}}$)**: **0.0049** (calibrated on in-domain validation split)
+- **In-Domain EER (C1, ASVspoof 2019 LA Eval, 71,237 clips)**: **14.96%** (0.1496)
+- **In-Domain AUC-ROC (C1)**: **0.8710**
+- **In-Domain min t-DCF (C1)**: **0.3786**
+- **In-Domain Macro F1 (C1)**: **0.9108**
+- **Out-of-Domain EER (C2, In-the-Wild, 28,452 clips)**: **46.98%** (0.4698)
+- **Out-of-Domain AUC-ROC (C2)**: **0.5141**
+- **Codec-Degraded EER (C3, G.711/OPUS, 24,844 clips)**: **4.31%** (0.0431)
+- **Noise-Degraded EER (C4, 10 dB SNR, 24,844 clips)**: **31.47%** (0.3147)
+
+### Cross-Corpus Generalization & Attack Sensitivity
+- **C1 → C2 Generalization Gap**: +32.02% EER degradation on unseen modern generative architectures.
+- **Neural Vocoders (A07–A12)**: Detection miss rate is < 0.02%, showing high sensitivity to vocoder phase artifacts.
+- **Advanced Synthesis (A17/A18)**: High miss rates (A17: 17.46%, A18: 80.20%), where modern waveform-matching synthesizers bypass spectral anomaly detection.
 
 ## Known Failure Modes
 - Low-bitrate telephony codecs (e.g., AMR 4.75 kbps, G.711) introduce severe spectral cutoff above 3.5 kHz, which can degrade acoustic detector confidence.

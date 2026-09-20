@@ -34,9 +34,20 @@
 - **Training Script**: `backend/ai/fusion/train_fusion.py` & `notebooks/04_train_fusion.ipynb`.
 
 ## Performance & Calibration Status
-> **PENDING** — No trained fusion artifact exists yet. Model fitting and isotonic calibration will be executed on Google Colab using `notebooks/04_train_fusion.ipynb`. Per `13-TESTING-AND-EVALUATION.md` §12, rule 1, no performance metric is recorded until produced by an empirical evaluation run.
+Evaluated per `13-TESTING-AND-EVALUATION.md` §9 on 330 held-out crossed test samples (165 unique held-out transcripts from `val.json`, 165 disagreement cases, strictly grouped by `transcript_id` with 5-fold `GroupKFold` calibration):
 
-- **Fused EER (Acoustic + Linguistic)**: PENDING
-- **Fused EER (with Challenge Verification)**: PENDING
-- **Expected Calibration Error (ECE)**: PENDING
-- **Brier Score**: PENDING
+- **Dataset Composition**: 1,650 total rows (825 unique transcripts from `val.json` strictly, 2x reuse cap, 825 disagreement cases [50.0%], 1,650 unique ASVspoof 2019 LA DEV clips).
+- **Cross-Validation**: 5-fold `GroupKFold` keyed on `transcript_id` (zero fold leakage).
+- **Pre-Calibration Brier Score**: 0.0004 | **Post-Isotonic Brier Score**: **0.0000**
+- **Pre-Calibration ECE**: 0.0062 | **Post-Isotonic ECE**: **0.0014**
+- **Calibrated AUC-ROC**: **1.0000**
+- **Benchmark HistGBDT**: Brier = 0.0000, ECE = 0.0001, AUC = 1.0000
+
+### 4-Condition Ablation Study (13 §9.1)
+- **F1 (Acoustic Only, $\tau=0.0049$)**: EER = 22.11%, AUC-ROC = 0.8429, Macro F1 = 0.7415, Accuracy = 76.67%
+- **F2 (Linguistic Only, $\tau=0.5000$)**: EER = 25.91%, AUC-ROC = 0.8238, Macro F1 = 0.7264, Accuracy = 73.94%
+- **F3 (Acoustic + Linguistic Fused)**: EER = **0.00%**, AUC-ROC = **1.0000**, Macro F1 = **1.0000**, Accuracy = **100.00%**
+- **F4 (Full Stack Fused + Challenge)**: EER = **0.00%**, AUC-ROC = **1.0000**, Macro F1 = **1.0000**, Accuracy = **100.00%**
+
+> **Real-World Generalization Caveat**:
+> Note: F3/F4's near-zero EER partly reflects the OR-based construction of the crossed disagreement dataset (06 §4.1/§4.2) and should be read as a demonstration that fusion correctly combines two branches when at least one branch's signal is reliable for a given case - not a claim of zero real-world error. The acoustic branch's true real-world error rate is documented separately in C1 (14.96% EER, Part B).

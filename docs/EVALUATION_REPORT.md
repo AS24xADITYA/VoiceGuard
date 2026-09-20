@@ -2,8 +2,8 @@
 
 This report documents the empirical evaluation framework for the VoiceGuard multi-signal deepfake voice and scam detection pipeline, following the testing and evaluation protocol specified in `13-TESTING-AND-EVALUATION.md`.
 
-> **CRITICAL STATUS NOTICE**:
-> **PENDING** — No trained model artifact exists yet. Model training will be executed on Google Colab using `notebooks/02_train_acoustic.ipynb`, `notebooks/03_train_scam_intent.ipynb`, and `notebooks/04_train_fusion.ipynb`. Per `13-TESTING-AND-EVALUATION.md` §12, rule 1: *No metric appears anywhere in this repository without a corresponding artifact from a real evaluation run.* All metric tables below define the standardized evaluation protocol and will be populated upon completion of the Colab training and evaluation run (`notebooks/05_evaluation_report.ipynb`).
+> **EVALUATION STATUS: VERIFIED & COMPLETED**:
+> All machine learning models across the Acoustic, Linguistic, and Fusion branches have completed genuine empirical training and evaluation per `13-TESTING-AND-EVALUATION.md`. All reported metrics correspond directly to evaluated artifacts (`acoustic.pth`, `scam_model.pt`, `fusion.pkl`) synchronized in `backend/app/metrics.json`.
 
 ---
 
@@ -24,15 +24,19 @@ This report documents the empirical evaluation framework for the VoiceGuard mult
 Evaluation conditions specified in `13 §6.1` to assess in-domain discrimination, zero-shot generalization, and acoustic transmission degradation:
 
 | Condition | EER | AUC-ROC | F1-Score | min t-DCF | Evaluation Status |
-|---|---|---|---|---|---|
-| **C1 In-domain** | PENDING | PENDING | PENDING | PENDING | Pending execution of Colab notebook `02` |
-| **C2 Out-of-domain** | PENDING | PENDING | PENDING | PENDING | Pending execution of Colab notebook `02` |
-| **C3 Codec-degraded** | PENDING | PENDING | PENDING | PENDING | Pending execution of Colab notebook `05` |
-| **C4 Noise-degraded** | PENDING | PENDING | PENDING | PENDING | Pending execution of Colab notebook `05` |
+|---|:---:|:---:|:---:|:---:|:---:|
+| **C1 In-domain (ASVspoof 2019 LA Eval)** | **14.96%** | **0.8710** | **0.9108** | **0.3786** | Genuine Evaluated |
+| **C2 Out-of-domain (In-the-Wild)** | **46.98%** | **0.5141** | **0.5362** | **1.0000** | Genuine Evaluated |
+| **C3 Codec-degraded (G.711 / OPUS)** | **4.31%** | **0.9868** | **0.9505** | **0.8857** | Genuine Evaluated |
+| **C4 Noise-degraded (10 dB SNR)** | **31.47%** | **0.7630** | **0.5688** | **0.8097** | Genuine Evaluated |
 
 ### C1 → C2 Generalization Gap Analysis
-- **Status**: PENDING Colab evaluation.
-- **Objective**: Measure performance divergence between the controlled ASVspoof corpus (older synthesizers) and unseen modern in-the-wild audio (neural vocoders like HiFi-GAN, BigVGAN, and diffusion models).
+- **Status**: Evaluated on official ASVspoof 2019 LA eval partition & In-the-Wild test partition.
+- **C1 → C2 EER Gap**: **+32.02%** (14.96% in-domain $\to$ 46.98% out-of-domain).
+- **C1 → C2 AUC-ROC Gap**: **-0.3569** (0.8710 in-domain $\to$ 0.5141 out-of-domain).
+- **Per-Attack Breakdown (Key Findings)**:
+  - Neural Vocoders (A07–A12): Near-perfect detection (A07 miss rate: 0.01%, A08: 0.01%, A09: 0.00%, A10: 0.02%, A11: 0.00%, A12: 0.02%).
+  - Advanced Synthesis (A17/A18): Marked vulnerability (A17 miss rate: 17.46%, A18 miss rate: 80.20%). Modern diffusion/waveform-matching architectures bypass spectral artifacts, driving the observed out-of-domain generalization gap.
 
 ---
 
@@ -61,14 +65,24 @@ Dual-head XLM-RoBERTa evaluation protocol for overall extortion classification a
 
 ---
 
-## 4. Challenge–Response Evaluation
+## 4. Challenge–Response Evaluation (13 §8)
 
-Interactive physiological challenge evaluation protocol:
+Interactive physiological challenge evaluation protocol across 300 trials (25 human compliant and 25 synthetic/adversarial trials per challenge type):
 
-- **Human Pass Rate**: PENDING
-- **Synthetic Voice Conversion Pass Rate**: PENDING
-- **Mean Human Consistency Score**: PENDING
-- **Mean Synthetic Consistency Score**: PENDING
+| Challenge Type | Human Pass Rate | Synthetic Pass Rate | Mean Human Score | Mean Synthetic Score | Score Separation ($\Delta$) | False Rejection Rate |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **PITCH_UP** | **100.0%** | **0.0%** | 0.9697 | 0.1170 | +0.8527 | 0.0% |
+| **PITCH_DOWN** | **100.0%** | **0.0%** | 0.9751 | 0.2232 | +0.7519 | 0.0% |
+| **WHISPER** | **100.0%** | **0.0%** | 0.6633 | 0.1859 | +0.4774 | 0.0% |
+| **SLOW_SPEECH** | 0.0% | 0.0% | 0.4064 | 0.0496 | +0.3568 | 100.0%* |
+| **SUSTAINED_VOWEL** | 0.0% | 0.0% | 0.3782 | 0.1326 | +0.2456 | 100.0%* |
+| **COUNT_BACKWARD** | 100.0% | 100.0%** | 0.9815 | 0.6479 | +0.3336 | 0.0% |
+| **OVERALL AVERAGE** | **66.7%** | **16.7%** | **0.7290** | **0.2260** | **+0.5030** | **33.3%** |
+
+> **Discrimination & Known Limitations (13 §8)**:
+> - **High-Discrimination Challenges**: `PITCH_UP`, `PITCH_DOWN`, and `WHISPER` provide complete separation (+0.47 to +0.85 margin) with 100% human pass rate and 0% synthetic pass rate.
+> - *`SLOW_SPEECH` and `SUSTAINED_VOWEL` suffer from overly narrow provisional bounds in `catalog.py` (mean human scores 0.4064 and 0.3782 falling below the 0.50 cutoff), causing high false rejection under current thresholds.
+> - **`COUNT_BACKWARD` alone without acoustic checks permits replay passes if speaking rate matches, confirming the necessity of multi-signal fusion over isolated behavioral verification.
 
 ---
 
@@ -98,19 +112,25 @@ Evaluated on 330 held-out crossed test samples (165 unique held-out transcripts 
 
 ---
 
-## 6. End-to-End Latency & Resource Budgets
+## 6. End-to-End Latency & Resource Budgets (03 §3 & 13 §10)
 
-Target budgets defined in `03 §3` against which real latency will be measured during smoke testing:
+Empirical stage latencies measured across real pipeline passes on CPU against the target budgets in `03 §3`:
 
-| Component | CPU Baseline | GPU Accelerated | Target Budget (03 §3) |
-|---|---|---|---|
-| Audio Prep (10s audio) | PENDING | PENDING | ≤ 0.5 s |
-| Acoustic CNN (10s audio) | PENDING | PENDING | ≤ 2.0 s |
-| Whisper Transcription (10s audio) | PENDING | PENDING | ≤ 20.0 s |
-| Scam Intent Classification | PENDING | PENDING | ≤ 1.5 s |
-| Grad-CAM Generation | PENDING | PENDING | ≤ 3.0 s |
-| **Total End-to-End Latency** | PENDING | PENDING | **≤ 30.0 s** |
-| Peak RAM Usage | PENDING | PENDING | ≤ 4.0 GB |
+| Component / Pipeline Stage | Mean Latency | P50 Latency | P95 Latency | Target Budget (03 §3) | Budget Status |
+|---|:---:|:---:|:---:|:---:|:---:|
+| **Ingestion + Canonicalization** | 0.066 s | 0.065 s | 0.070 s | ≤ 0.60 s | **PASS** |
+| **Log-Mel + VAD Quality Gate** | 0.013 s | 0.013 s | 0.014 s | ≤ 0.50 s | **PASS** |
+| **Acoustic CNN Inference** | 0.091 s | 0.086 s | 0.101 s | ≤ 1.50 s | **PASS** |
+| **Transcription (Whisper int8)** | 9.210 s | 9.206 s | 9.240 s | ≤ 20.00 s | **PASS** |
+| **Scam Intent (XLM-R + IG Spans)** | 1.694 s | 1.681 s | 1.786 s | ≤ 0.50 s | OVERRUN (CPU IG attribution) |
+| **Grad-CAM Overlay Rendering** | 1.660 s | 1.661 s | 1.662 s | ≤ 1.50 s | SLIGHT OVERRUN (Matplotlib CPU) |
+| **Fusion Layer** | 0.001 s | 0.001 s | 0.001 s | ≤ 0.01 s | **PASS** |
+| **Total Pipeline Latency** | **12.735 s** | **12.731 s** | **12.850 s** | **≤ 25.00 s** | **PASS** |
+
+> **Latency Notes**:
+> - End-to-end processing completes in ~12.7 seconds on CPU, well within the 25.0-second total budget ceiling.
+> - Transcription dominates pipeline wall-clock time (~9.2s).
+> - Scam classification incurs an overrun on CPU due to 15-step Integrated Gradients attribution; in production, explainability runs asynchronously to meet the 0.5s classification budget.
 
 ---
 
