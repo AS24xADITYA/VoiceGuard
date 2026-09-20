@@ -74,19 +74,27 @@ Interactive physiological challenge evaluation protocol:
 
 ## 5. Fusion Layer Evaluation
 
-### 5.1 Ablation Study
+### 5.1 Ablation Study (13 §9.1 & 13 §9.3)
 
-| Configuration | EER | AUC-ROC | Macro F1 |
-|---|---|---|---|
-| Acoustic only | PENDING | PENDING | PENDING |
-| Linguistic only | PENDING | PENDING | PENDING |
-| **Acoustic + Linguistic (Fused)** | PENDING | PENDING | PENDING |
-| **Acoustic + Linguistic + Challenge (Full Pipeline)** | PENDING | PENDING | PENDING |
+Evaluated on 330 held-out crossed test samples (165 unique held-out transcripts from `val.json`, 165 disagreement cases, strictly grouped by `transcript_id` via `GroupShuffleSplit` and 5-fold `GroupKFold` internal calibration):
+
+| Configuration | Condition | Decision Threshold ($\tau$) | EER | AUC-ROC | Macro F1 | Accuracy | Status |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| Acoustic only | F1 | 0.0049 | 22.11% | 0.8429 | 0.7415 | 76.67% | Genuine Evaluated |
+| Linguistic only | F2 | 0.5000 | 25.91% | 0.8238 | 0.7264 | 73.94% | Genuine Evaluated |
+| **Acoustic + Linguistic (Fused)** | F3 | 0.5000 | **0.00%** | **1.0000** | **1.0000** | **100.00%** | Genuine Evaluated |
+| **Acoustic + Linguistic + Challenge (Full Stack)** | F4 | 0.5000 | **0.00%** | **1.0000** | **1.0000** | **100.00%** | Genuine Evaluated |
+
+> Note: F3/F4's near-zero EER partly reflects the OR-based construction of the crossed disagreement dataset (06 §4.1/§4.2) and should be read as a demonstration that fusion correctly combines two branches when at least one branch's signal is reliable for a given case - not a claim of zero real-world error. The acoustic branch's true real-world error rate is documented separately in C1 (14.96% EER, Part B).
 
 ### 5.2 Probability Calibration
-- **Pre-calibration Expected Calibration Error (ECE)**: PENDING
-- **Post-isotonic Calibration ECE**: PENDING
-- **Brier Score**: PENDING
+- **Pre-calibration Brier Score**: 0.0004
+- **Post-isotonic Calibration Brier Score**: 0.0000 (improvement: -0.0004)
+- **Pre-calibration Expected Calibration Error (ECE)**: 0.0062
+- **Post-isotonic Calibration ECE**: 0.0014 (improvement: -0.0048)
+- **Calibrated AUC-ROC**: 1.0000
+- **Calibrated Log Loss**: 0.0014
+- **Benchmark HistGBDT**: Brier = 0.0000, ECE = 0.0001, AUC = 1.0000
 
 ---
 

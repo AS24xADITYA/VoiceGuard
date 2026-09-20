@@ -550,6 +550,7 @@
   "fusion": {
     "status": "EVALUATED_GENUINE",
     "description": "Multi-signal logistic regression with isotonic calibration fitted on real pipeline forward passes (val.json and ASVspoof dev)",
+    "caveat": "Note: F3/F4's near-zero EER partly reflects the OR-based construction of the crossed disagreement dataset (06 §4.1/§4.2) and should be read as a demonstration that fusion correctly combines two branches when at least one branch's signal is reliable for a given case - not a claim of zero real-world error. The acoustic branch's true real-world error rate is documented separately in C1 (14.96% EER, Part B).",
     "dataset_summary": {
       "total_rows": 1650,
       "disagreement_rows": 825,
