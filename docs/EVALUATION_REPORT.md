@@ -19,16 +19,17 @@ This report documents the empirical evaluation framework for the VoiceGuard mult
 
 ---
 
-## 2. Acoustic Classifier Evaluation (Conditions C1 to C4)
+## 2. Acoustic Classifier Evaluation (Conditions C1 to C5)
 
-Evaluation conditions specified in `13 §6.1` to assess in-domain discrimination, zero-shot generalization, and acoustic transmission degradation:
+Evaluation conditions specified to assess in-domain discrimination, zero-shot generalization, acoustic transmission degradation, and real-world consumer microphone performance:
 
-| Condition | EER | AUC-ROC | F1-Score | min t-DCF | Evaluation Status |
+| Condition | EER / Metric | AUC-ROC | F1-Score | min t-DCF / FPR | Evaluation Status |
 |---|:---:|:---:|:---:|:---:|:---:|
 | **C1 In-domain (ASVspoof 2019 LA Eval)** | **14.96%** | **0.8710** | **0.9108** | **0.3786** | Genuine Evaluated |
 | **C2 Out-of-domain (In-the-Wild)** | **46.98%** | **0.5141** | **0.5362** | **1.0000** | Genuine Evaluated |
 | **C3 Codec-degraded (G.711 / OPUS)** | **4.31%** | **0.9868** | **0.9505** | **0.8857** | Genuine Evaluated |
 | **C4 Noise-degraded (10 dB SNR)** | **31.47%** | **0.7630** | **0.5688** | **0.8097** | Genuine Evaluated |
+| **C5 Consumer-Microphone Genuine Speech** | **FPR: 100.00%** | N/A (1-class) | N/A | **Mean: 0.8500** | Genuine Evaluated |
 
 ### C1 → C2 Generalization Gap Analysis
 - **Status**: Evaluated on official ASVspoof 2019 LA eval partition & In-the-Wild test partition.
@@ -37,6 +38,15 @@ Evaluation conditions specified in `13 §6.1` to assess in-domain discrimination
 - **Per-Attack Breakdown (Key Findings)**:
   - Neural Vocoders (A07–A12): Near-perfect detection (A07 miss rate: 0.01%, A08: 0.01%, A09: 0.00%, A10: 0.02%, A11: 0.00%, A12: 0.02%).
   - Advanced Synthesis (A17/A18): Marked vulnerability (A17 miss rate: 17.46%, A18 miss rate: 80.20%). Modern diffusion/waveform-matching architectures bypass spectral artifacts, driving the observed out-of-domain generalization gap.
+
+### Condition C5: Consumer-Microphone Genuine Speech False Positive Analysis
+- **Corpus**: 31 genuine human speech recordings from ordinary consumer hardware (30 FLEURS mobile phone/laptop crowdsourced clips across male/female speakers, plus 1 live browser laptop microphone recording in a typical reverberant room).
+- **Operating Threshold ($\tau_{\text{acoustic}}$)**: 0.0049.
+- **Key Empirical Results**:
+  - **False Positive Rate**: **100.00%** (31/31 genuine human recordings scored above 0.0049).
+  - **Score Distribution**: Mean spoof probability **0.8500**, Median **0.8500**, Min **0.8328**, Max **0.8549**.
+  - **Fraction $\ge 0.80$**: **100.00%** (all 31 clips received $\ge 0.80$ spoof probability).
+- **Root Cause & Operational Impact**: The CNN was trained exclusively on anechoic, studio-grade speech (ASVspoof 2019 LA). Typical consumer microphones introduce room reverberation, high-frequency attenuation, and ambient room noise floor that the pristine-trained model maps directly to synthetic vocoder artifacts. Consequently, uncalibrated consumer-microphone recordings cannot be screened by the acoustic branch alone, and downstream OR-based fusion must be contextualized with linguistic intent and challenge-response signals.
 
 ---
 

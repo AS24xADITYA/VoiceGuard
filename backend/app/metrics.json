@@ -102,6 +102,21 @@
       "total_samples": 24844,
       "n_bonafide": 2548,
       "n_spoof": 22296
+    },
+    "c5_consumer_microphone_genuine": {
+      "description": "Genuine human speech recorded via consumer microphones (laptop and mobile phone microphones in ordinary room acoustics)",
+      "total_samples": 31,
+      "operating_threshold": 0.0049,
+      "false_positive_count": 31,
+      "false_positive_rate": 1.0,
+      "mean_spoof_prob": 0.85,
+      "median_spoof_prob": 0.85,
+      "std_spoof_prob": 0.0045,
+      "min_spoof_prob": 0.8328,
+      "max_spoof_prob": 0.8549,
+      "fraction_above_0_50": 1.0,
+      "fraction_above_0_80": 1.0,
+      "status": "EVALUATED_GENUINE"
     }
   },
   "generalization_gap": {

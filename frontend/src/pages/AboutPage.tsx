@@ -192,6 +192,19 @@ export const AboutPage: React.FC = () => {
               whereas English (F1 0.8889), Hindi (F1 0.7805), and Tamil (F1 0.8095) achieve production-grade reliability.
             </p>
           </div>
+
+          <div className="p-4 rounded-xl bg-bg-surface border border-rose-500/30 space-y-1">
+            <strong className="text-rose-400 block font-mono">6. Consumer Microphone Distribution Gap (Condition C5)</strong>
+            <p>
+              Empirical evaluation across consumer microphones (laptop and mobile phone recordings in ordinary room acoustics)
+              reveals a <strong>100.00% False Positive Rate</strong> at the 0.0049 operating threshold, with acoustic
+              spoof probabilities clustering at ~0.85 on genuine human speech. The acoustic CNN was trained exclusively
+              on anechoic, studio-grade speech (ASVspoof 2019 LA), and misinterprets room reverberation, ambient background noise,
+              and consumer microphone frequency responses as synthetic vocoder artifacts. The acoustic branch alone cannot
+              reliably screen uncalibrated consumer-microphone recordings, requiring multi-signal fusion with linguistic intent
+              and physiological challenge–response verification.
+            </p>
+          </div>
         </div>
       </section>
 

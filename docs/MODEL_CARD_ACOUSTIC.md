@@ -21,8 +21,8 @@
 - **Loss Function**: Weighted Cross-Entropy with label smoothing (`0.05`).
 - **Training Script**: `backend/ai/acoustic/train.py` & `notebooks/02_train_acoustic.ipynb`.
 
-## Performance & Empirical Evaluation (Conditions C1–C4)
-Evaluated per `13-TESTING-AND-EVALUATION.md` §6 across 124,533 audio utterances:
+## Performance & Empirical Evaluation (Conditions C1–C5)
+Evaluated per `13-TESTING-AND-EVALUATION.md` §6 across 124,564 audio utterances:
 
 - **Operating Decision Threshold ($\tau_{\text{acoustic}}$)**: **0.0049** (calibrated on in-domain validation split)
 - **In-Domain EER (C1, ASVspoof 2019 LA Eval, 71,237 clips)**: **14.96%** (0.1496)
@@ -33,12 +33,15 @@ Evaluated per `13-TESTING-AND-EVALUATION.md` §6 across 124,533 audio utterances
 - **Out-of-Domain AUC-ROC (C2)**: **0.5141**
 - **Codec-Degraded EER (C3, G.711/OPUS, 24,844 clips)**: **4.31%** (0.0431)
 - **Noise-Degraded EER (C4, 10 dB SNR, 24,844 clips)**: **31.47%** (0.3147)
+- **Consumer-Microphone Genuine Speech FPR (C5, 31 clips)**: **100.00%** (Mean score: **0.8500**, Median: **0.8500**, Range: `[0.8328, 0.8549]`)
 
 ### Cross-Corpus Generalization & Attack Sensitivity
 - **C1 → C2 Generalization Gap**: +32.02% EER degradation on unseen modern generative architectures.
 - **Neural Vocoders (A07–A12)**: Detection miss rate is < 0.02%, showing high sensitivity to vocoder phase artifacts.
 - **Advanced Synthesis (A17/A18)**: High miss rates (A17: 17.46%, A18: 80.20%), where modern waveform-matching synthesizers bypass spectral anomaly detection.
+- **Condition C5 Usability Finding**: The acoustic branch exhibits an acute domain shift on ordinary consumer hardware (laptop/phone mics with room reverb and ambient noise), outputting ~0.85 spoof probability on 100% of tested genuine human speech.
 
 ## Known Failure Modes
+- **Consumer Microphone & Room Acoustics Collapse**: Normal consumer microphones and room acoustics create spectral distortions outside ASVspoof 2019 training distribution, triggering a 100% false positive rate at the 0.0049 threshold.
 - Low-bitrate telephony codecs (e.g., AMR 4.75 kbps, G.711) introduce severe spectral cutoff above 3.5 kHz, which can degrade acoustic detector confidence.
 - Zero-shot diffusion vocoders with continuous-time sampling generate clean harmonics that reduce detector confidence.
