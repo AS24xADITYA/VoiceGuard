@@ -1,0 +1,4752 @@
+[
+  {
+    "text": "This is Agent Mark Davis calling from the Internal Revenue Service. An arrest warrant has been issued in your name for Delinquent Federal Taxis. You must call back immediately or local share of deputies will take you into custody.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "This is Agent Mark Davis calling from the Internal Revenue Service. An arrest warrant has been issued in your name for delinquent federal taxes. You must call back immediately or local sheriff deputies will take you into custody."
+  },
+  {
+    "text": "Security alert from Chase Bank fraud division, and an authorized via transfer of 1,450 dollars to an offshore account is currently pending. To cancel this transaction immediately, please read the six-digit confirmation code we just texted to your device.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Security alert from Chase Bank Fraud Division. An unauthorized wire transfer of $1,450 to an offshore account is currently pending. To cancel this transaction immediately, please read the 6-digit confirmation code we just texted to your device."
+  },
+  {
+    "text": "Grandma, it's me. Please don't tell mom and dad. I got arrested after a car accident in Mexico. The public defenduses, I need $3,000 for bail via transfer right now or they'll keep me in jail. Over the weekend.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 1,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 1,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Grandma, it's me... please don't tell mom and dad, I got arrested after a car accident in Mexico. The public defender says I need $3,000 for bail wire transfer right now or they'll keep me in jail over the weekend."
+  },
+  {
+    "text": "Hello, I am calling from Microsoft Windows Technical Support Department. Our Global Service have detected that your personal computer is severely infected with ransomware. Please turn on your PC and download any desk so our engineer can fix it.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 1
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hello, I am calling from Microsoft Windows Technical Support department. Our global servers have detected that your personal computer is severely infected with ransomware. Please turn on your PC and download AnyDesk so our engineer can fix it."
+  },
+  {
+    "text": "This is officer Reynolds from U.S. Customs and Border Protection. We have intercepted a suspicious parcel addressed to your name containing illegal narcotics and fraudulent passports. Press 1 immediately to connect with federal investigators.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "This is Officer Reynolds from US Customs and Border Protection. We have intercepted a suspicious parcel addressed to your name containing illegal narcotics and fraudulent passports. Press 1 immediately to connect with federal investigators."
+  },
+  {
+    "text": "Addison power electric notice. Your electric service is scheduled for immediate disconnection within 45 minutes due to an overdue. Balance of $385. To avoid permanent shutoff, Call our direct-billioned line and pay using a prepaid money park card.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Edison Power electric notice. Your electric service is scheduled for immediate disconnection within 45 minutes due to an overdue balance of $385. To avoid permanent shutoff, call our direct billing line and pay using a prepaid MoneyPak card."
+  },
+  {
+    "text": "Amazon customer protection department alert and order for an Apple iPhone 15 Pro Max for $1,399 was charged to your card. If you did not authorize this purchase, please confirm your 16-digit debit card number and CVV to process a full refund.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Amazon Customer Protection department alert. An order for an Apple iPhone 15 Pro Max for $1,399 was charged to your card. If you did not authorize this purchase, please confirm your 16-digit debit card number and CVV to process a full refund."
+  },
+  {
+    "text": "Important notice from the Social Security Administration. Your SSN has been permanently suspended due to suspicious financial money laundering activities in. Texas. Press one right now to speak with a legal officer before legal action proceeds.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Important notice from the Social Security Administration. Your SSN has been permanently suspended due to suspicious financial money laundering activities in Texas. Press 1 right now to speak with a legal officer before legal action proceeds."
+  },
+  {
+    "text": "Congratulations! This is publisher's clearinghouse calling live. You have won a mega second prize of $2.5 million and a brand new Mercedes-Benz. To release the price cash here's check, you must pay the federal insurance fee of $750",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Congratulations, this is Publishers Clearing House calling live. You have won our mega second prize of $2.5 million and a brand new Mercedes Benz. To release the prize cashier's check, you must pay the federal insurance fee of $750 via wire."
+  },
+  {
+    "text": "Hello. This is Inspector Henderson with the Metropolitan Police Department. We have detected that your vehicle was used in an armed robbery. A bench warrant has been issued for your arrest unless you pay the bond deposit immediately.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hello, this is Inspector Henderson with the Metropolitan Police department. We have detected that your vehicle was used in an armed robbery. A bench warrant has been issued for your arrest unless you pay the bond deposit immediately."
+  },
+  {
+    "text": "Hi, Grandpa. I'm Interribable Trouble. I lost my wallet and passport while traveling in Spain and I'm at the police station. Please Western Union $1500 to the Consulate Officer whose number I'm giving you right now. Don't tell anyone.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 1,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 1,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hi grandpa, I am in terrible trouble. I lost my wallet and passport while traveling in Spain and I'm at the police station. Please Western Union $1,500 to the consulate officer whose number I'm giving you right now. Don't tell anyone!"
+  },
+  {
+    "text": "Wells Fago Automated Alert. Your debit card has been restricted due to repeated invalid pin attempts. To restore 24-hour access, press one and enter your 4-digit pin followed by the the last four digits of your social security number.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Wells Fargo automated alert: Your debit card has been restricted due to repeated invalid PIN attempts. To restore 24-hour access, press 1 and enter your 4-digit PIN followed by the last four digits of your Social Security Number."
+  },
+  {
+    "text": "This is Apple Support Security Operations. Your iCloud account has been breached from an unknown IP address in Moscow. Your personal photos and documents will be permanently deleted, unless you install a remote. Verification Utility right now.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 1
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "This is Apple Support security operations. Your iCloud account has been breached from an unknown IP address in Moscow. Your personal photos and documents will be permanently deleted unless you install our remote verification utility right now."
+  },
+  {
+    "text": "FedEx express notification, a priority delivery package for you could not be delivered due to an incorrect destination address. A red delivery fee of $4.95 is required. Visit the link immediately or your package will be returned to customs.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "FedEx express notification: A priority delivery package for you could not be delivered due to an incorrect destination address. A redelivery fee of $4.95 is required. Visit the link immediately or your package will be returned to customs."
+  },
+  {
+    "text": "Notice from the Federal Trade Commission fraud desk, we found your identity linked to a nationwide bank fraud ring. To protect your remaining assets, you are legally required to transfer your savings into a secure federal escrow account.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Notice from the Federal Trade Commission fraud desk. We found your identity linked to a nationwide bank fraud ring. To protect your remaining assets, you are legally required to transfer your savings into a secure federal escrow account."
+  },
+  {
+    "text": "AT&T Billing Alert. Your mobile wireless service will be suspended by 5pm today due to an unresolved billing. Discrepancy, press 1 to make an immediate credit card payment over our automated voice portal.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "AT&T billing alert: Your mobile wireless service will be suspended by 5 PM today due to an unresolved billing discrepancy. Press 1 to make an immediate credit card payment over our automated voice portal."
+  },
+  {
+    "text": "This is Detective Clark from the County Sheriff's Office. You fail to report for jury duty on Monday morning. A judge will sign the citation for contempt of court. You can resolve the $500 fine over the phone today or face arrest.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "This is Detective Clark from the County Sheriff's office. You failed to report for jury duty on Monday morning. A judge has signed a citation for contempt of court. You can resolve the $500 fine over the phone today or face arrest."
+  },
+  {
+    "text": "Bank of America fraud prevention team, we have placed a temporary freeze on your checking account. To verify your identity and lift the hold, please speak your complete account number and mother's maiden name after the tone.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Bank of America Fraud prevention team. We have placed a temporary freeze on your checking account. To verify your identity and lift the hold, please speak your complete account number and mother's maiden name after the tone."
+  },
+  {
+    "text": "Hello, I am calling from Google Business Listings. Your company profile is about to be deleted from Google Maps and search results. Pay our $199 annual renewal fee right now over the phone to keep your listing active.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hello, I am calling from Google Business listings. Your company profile is about to be deleted from Google Maps and search results. Pay our $199 annual renewal fee right now over the phone to keep your listing active."
+  },
+  {
+    "text": "urgent message from Medicare Enrollment Services. New biometric Medicare cards are being issued to all seniors. To receive your updated card without losing medical coverage, Please confirm your current Medicare ID in banking details.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Urgent message from Medicare enrollment services. New biometric Medicare cards are being issued to all seniors. To receive your updated card without losing medical coverage, please confirm your current Medicare ID and banking details."
+  },
+  {
+    "text": "This is McAfee Antivirus Billing Team. Your annual subscription has automatically renewed for $499. If you want to cancel this charge and receive a refund, you must allow our technician remote access via TeamViewer immediately.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 1
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "This is McAfee Anti-Virus billing team. Your annual subscription has automatically renewed for $499. If you want to cancel this charge and receive a refund, you must allow our technician remote access via TeamViewer immediately."
+  },
+  {
+    "text": "PayPal alert, a payment of $890 to Binance Global has been initiated from your account. If this was unauthorized, press do now to provide your login verification code to our security representative.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "PayPal alert: A payment of $890 to Binance Global has been initiated from your account. If this was unauthorized, press 2 now to provide your login verification code to our security representative."
+  },
+  {
+    "text": "This is Officer Martinez from Dina Cortex Introduction. A package with your name containing controlled substances was seized at the International Mail. Facility, cooperate with our investigation now and do not inform anyone about this call.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 1,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "This is Officer Martinez from DEA Narcotics Interdiction. A package with your name containing controlled substances was seized at the international mail facility. Cooperate with our investigation now and do not inform anyone about this call."
+  },
+  {
+    "text": "Hi Dad, my phone broke down completely so I'm using my friend's mobile. I urgently need $450 to pay the towing company or they won't release my car. Can you sell the money to my friend's number right now please?",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 1,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hi Dad, my phone broke down completely so I am using my friend's mobile. I urgently need $450 to pay the towing company or they won't release my car. Can you Zelle the money to my friend's number right now please?"
+  },
+  {
+    "text": "Crypto security team, we detected a suspicious withdrawal of 0.85 Bitcoin from your exchange wallet. Confirm your 12-word secret recovery seed phrase with a voice agent to abort the transaction. Immediately.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Crypto security team: We detected a suspicious withdrawal of 0.85 Bitcoin from your exchange wallet. Confirm your 12-word secret recovery seed phrase with our voice agent to abort the transaction immediately."
+  },
+  {
+    "text": "Hi John. This is Sarah calling from Dr. Miller's dental clinic to confirm your cleaning appointment scheduled. For tomorrow at 2.30 p.m. Please remember to bring your updated insurance card with you.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hi John, this is Sarah calling from Dr. Miller's dental clinic to confirm your cleaning appointment scheduled for tomorrow at 2:30 PM. Please remember to bring your updated insurance card with you."
+  },
+  {
+    "text": "Hey Mike, it's Dave from the auto repair shop. We finished inspecting your brakes and the rear pads are pretty worn down. It looks like it will be around $250 for parts and labor. Call us back when you get a chance.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hey Mike, it's Dave from the auto repair shop. We finished inspecting your brakes and the rear pads are pretty worn down. It looks like it will be around $250 for parts and labor. Call us back when you get a chance."
+  },
+  {
+    "text": "Hey there! Sorry I missed your call earlier this morning. Are we still good to meet for lunch around 1 o'clock? Let me know if that Delhi on 4th Street still works for you.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hey there, sorry I missed your call earlier this morning. Are we still good to meet for lunch around one o'clock? Let me know if that deli on 4th street still works for you."
+  },
+  {
+    "text": "Hello, this is UPS customer service following up on your delivery instructions for tracking number ending. In 492, Akuria will attempt delivery between 1 and 3 PM this afternoon.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hello, this is UPS customer service following up on your delivery instructions for tracking number ending in 492. Our courier will attempt delivery between 1 and 3 PM this afternoon."
+  },
+  {
+    "text": "Good morning. This is Lincoln High School attendance office notifying you that your student was marked absent for. First period home room. If this is an excused absence, please call the main office.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Good morning, this is Lincoln High School attendance office notifying you that your student was marked absent for first period homeroom. If this is an excused absence, please call the main office."
+  },
+  {
+    "text": "Hi mom, just calling to let you know that a flight landed safely in Chicago. We are picking up our luggage now and we'll be heading over to the hotel shortly. Love you.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hi Mom, just calling to let you know that our flight landed safely in Chicago. We are picking up our luggage now and will be heading over to the hotel shortly. Love you!"
+  },
+  {
+    "text": "Hello Mr. Peterson, this is Emily from the Public Library. The mystery novel you placed on hold last week is now available at the circulation desk and can be picked up until Friday.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hello Mr. Peterson, this is Emily from the public library. The mystery novel you placed on hold last week is now available at the circulation desk and can be picked up until Friday."
+  },
+  {
+    "text": "Hey bro, did you get the email I forwarded about the weekend hiking trip? Let me know if you want me to bring the camping stove or if you already packed yours.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hey bro, did you get the email I forwarded about the weekend hiking trip? Let me know if you want me to bring the camping stove or if you already packed yours."
+  },
+  {
+    "text": "Good afternoon. This is State Farm Insurance confirming that we received the inspection photos for your windshield. Replacement claim and adjuster will review them by Wednesday.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Good afternoon, this is State Farm Insurance confirming that we received the inspection photos for your windshield replacement claim. An adjuster will review them by Wednesday."
+  },
+  {
+    "text": "Hi, I was calling to check the hours for your branch location on Main Street today. Are you guys open past 5 o'clock for tele-transactions?",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hi, I was calling to check the hours for your branch location on Main Street today. Are you guys open past 5 o'clock for teller transactions?"
+  },
+  {
+    "text": "Hey Rachel, just checking in to see how you are feeling after your surgery yesterday. Don't worry about work at all. Everything is covered. Rest up and get well soon.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hey Rachel, just checking in to see how you are feeling after your surgery yesterday. Don't worry about work at all, everything is covered. Rest up and get well soon!"
+  },
+  {
+    "text": "Hello, this is Home Depot customer support calling regarding your online curbside order. All your items are assembled and ready for pick-up at B-number 3.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hello, this is Home Depot customer support calling regarding your online curbside order. All your items are assembled and ready for pickup at bay number three."
+  },
+  {
+    "text": "Hi, I ordered a large pepperoni pizza and garlic knots for take out about 20 minutes ago under the thing. Name Jason, just wanted to see if it was ready for pick-up.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hi, I ordered a large pepperoni pizza and garlic knots for takeout about twenty minutes ago under the name Jason. Just wanted to see if it was ready for pickup."
+  },
+  {
+    "text": "Hey Chris, could you send over the updated spreadsheet from yesterday's marketing meeting? I need to review the Q3 budget numbers before the afternoon call.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hey Chris, could you send over the updated spreadsheet from yesterday's marketing meeting? I need to review the Q3 budget numbers before the afternoon call."
+  },
+  {
+    "text": "Good evening. This is the Reservation Desk at Bistro Bella. We have an opening for a table of 4 this Friday at 730 p.m. if you would still like to confirm.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Good evening, this is the reservation desk at Bistro Bella. We have an opening for a table of four this Friday at 7:30 PM if you would still like to confirm your reservation."
+  },
+  {
+    "text": "Hi Dad! The kids wanted to ask if you were free to come over for a barbecue this Sunday afternoon around 4. Let us know if that fits into your schedule.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hi Dad, the kids wanted to ask if you were free to come over for a barbecue this Sunday afternoon around 4. Let us know if that fits into your schedule."
+  },
+  {
+    "text": "Hello, this is City Water Department following up on your service ticket. A technician has replaced the water meter outside your residence and water pressure is fully. Restored.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hello, this is City Water Department following up on your service ticket. A technician has replaced the water meter outside your residence and water pressure is fully restored."
+  },
+  {
+    "text": "Hey Mark. Thanks for helping me move the couch yesterday afternoon. I really appreciate it. Let me buy you dinner sometime this week to say thanks.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hey Mark, thanks for helping me move the couch yesterday afternoon. I really appreciate it, let me buy you dinner sometime this week to say thanks."
+  },
+  {
+    "text": "Hi, I'm calling to inquire about booking a grooming appointment for my golden retriever sometime next. Tuesday morning if there is an open slot available.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hi, I'm calling to inquire about booking a grooming appointment for my golden retriever sometime next Tuesday morning if there is an open slot available."
+  },
+  {
+    "text": "Hello, this is Metro Transit Authority reminding passengers that the Red Line Subway Service will. Experience maintenance delays between central and oak stations this weekend.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hello, this is Metro Transit Authority reminding passengers that the red line subway service will experience maintenance delays between Central and Oak stations this weekend."
+  },
+  {
+    "text": "Hey Susan, did you remember to turn off the coffee machine in the break room before leaving? Just making sure since I'm already halfway home on the train.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hey Susan, did you remember to turn off the coffee machine in the break room before leaving? Just making sure since I'm already halfway home on the train."
+  },
+  {
+    "text": "Good morning. This is Ace Hardware letting you know that the custom paint order you placed yesterday's mixed hand. Ready for collection at the front counter.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Good morning, this is Ace Hardware letting you know that the custom paint order you placed yesterday is mixed and ready for collection at the front counter."
+  },
+  {
+    "text": "High-grandma, just calling to see how your garden is doing with all the rain we got this week. The tomatoes we planted together must be growing fast.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hi Grandma, just calling to see how your garden is doing with all the rain we got this week. The tomatoes we planted together must be growing fast!"
+  },
+  {
+    "text": "Hello, this is the veterinary clinic calling to remind you that Max is due for his annual rabies. Vaccination and wellness examination next month.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hello, this is the veterinary clinic calling to remind you that Max is due for his annual rabies vaccination and wellness examination next month."
+  },
+  {
+    "text": "Hey Kevin, the conference call room link has been updated in the calendar invite. Let's hop on 5 minutes early so we can test the audio setup.",
+    "language": "en",
+    "script": "latin",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Hey Kevin, the conference call room link has been updated in the calendar invite. Let's hop on five minutes early so we can test the audio setup."
+  },
+  {
+    "text": "I'm Mumbai Crime Branch Saab Inspector Vijay Kumar Bhol Raheem. App's Aadhar Nambashe Kanara Bantme. Sola khate kholi gai heng jinsi 3 karoor ki mani laundering hoi hai. App Turan Skype call par ai hai. App digital arrest mein hai.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 1,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "मैं मुंबई क्राइम ब्रांच से सब-इंस्पेक्टर विजय कुमार बोल रहा हूँ। आपके आधार नंबर से केनरा बैंक में 16 खाते खोले गए हैं जिनसे 3 करोड़ की मनी लॉन्ड्रिंग हुई है। आप तुरंत स्काइप कॉल पर आइए, आप डिजिटल अरेस्ट में हैं।"
+  },
+  {
+    "text": "Bijli webhag suchna, Priya Uphokta, app ke pitchle mahini ke Bijli bil update na huni ke karan Ajrat Sadee Noobhaji app ke power connection karddiya. Jai ga, Turan thamaare bilink adhikari ko phone karin 1-5 rupee fees jama guni",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "बिजली विभाग सूचना: प्रिय उपभोक्ता, आपके पिछले महीने का बिजली बिल अपडेट न होने के कारण आज रात 9:30 बजे आपका पावर कनेक्शन काट दिया जाएगा। तुरंत हमारे बिलिंग अधिकारी को फोन करें और 150 रुपये फीस जमा करें।"
+  },
+  {
+    "text": "Bhartiya State Bank surak Shah Alat. Your Yuno khata asthai rupe se blog kar diya gaya hai. Appna khata turanth un blog karne gali apkimobile. Per Bhheja gaya chae an kongka oti p turanth bata hai.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "भारतीय स्टेट बैंक सुरक्षा अलर्ट: आपका योनो खाता अस्थायी रूप से ब्लॉक कर दिया गया है। अपना खाता तुरंत अनब्लॉक करने के लिए आपके मोबाइल पर भेजा गया 6 अंकों का ओटीपी तुरंत बताएं।"
+  },
+  {
+    "text": "یہ FedEx Customs Delhi apport se Sandesh hai. app's name is a parcel pakar agaya hai, which is in Rs. 200 gram. Heroin and Farji Passport is in the Passport. This is called CD Nakotix Control by Uruko Transfer ki jara hi hai.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "यह फेडेक्स कस्टम्स दिल्ली एयरपोर्ट से संदेश है। आपके नाम का एक पार्सल पकड़ा गया है जिसमें 200 ग्राम हेरोइन और फर्जी पासपोर्ट मिले हैं। यह कॉल सीधे नारकोटिक्स कंट्रोल ब्यूरो को ट्रांसफर की जा रही है।"
+  },
+  {
+    "text": "Badhaiho, Pradhan Muntri Mudra Yujana ke tehet app ke 10 lakh rupee ka personal loan sweetth ho. Rashi CDKate, May prapped karne keliya turanth 325 rupee ki file processing fees Jamaa karne.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "बधाई हो! प्रधानमंत्री मुद्रा योजना के तहत आपका 10 लाख रुपये का पर्सनल लोन स्वीकृत हो गया है। राशि सीधे खाते में प्राप्त करने के लिए तुरंत 3,500 रुपये की फाइल प्रोसेसिंग फीस जमा करें।"
+  },
+  {
+    "text": "your kptm wallet kyc expire hogeye hai. 24 gunti ke under kyc compalit nahi kiya 2 wallet block hogeye gha. turanth dheye gai link per klikkar ke appna card details enter curry.",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Aapke Paytm wallet ki KYC expire ho gayi hai. 24 ghante ke andar KYC complete nahi kiya toh wallet block ho jayega. Turant diye gaye link par click karke apna card details enter karein."
+  },
+  {
+    "text": "Main Supreme Court's Registry Office say Bhol Rahung. Up KKLaf non-bailable arrest warrant issue hoa hai. Mamleyko out of court settle karne ke 2825,000 rupee legal security deposit jama karne.",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Main Supreme Court ke registry office se bol raha hoon. Aapke khilaf non-bailable arrest warrant issue hua hai. Mamle ko out-of-court settle karne ke liye 25,000 rupaye legal security deposit jama karein."
+  },
+  {
+    "text": "your reliance geosim card to gante me bant kar diya jaya gak yuki documents in complete hai. same verification for a to run quick support app download curry or 9 digit code bata hai.",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 1
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Aapka Reliance Jio SIM card 2 ghante mein band kar diya jayega kyunki documents incomplete hain. SIM verification ke liye turant QuickSupport app download karein aur 9 digit code batayein."
+  },
+  {
+    "text": "Arimah, me Rahul Bhol Rahung, friend's phone call Kar Rahung. My childhood was an accident and I had taken care of the police. Case, to make Rafaad Dafaakarna, this Pandra Hazar rupee turanth transferkaru. Kisi ko batana mat.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 1,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 1,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अरे माँ, मैं राहुल बोल रहा हूँ... दोस्त के फोन से कॉल कर रहा हूँ। मेरा बहुत बड़ा एक्सीडेंट हो गया है और पुलिस ने मुझे पकड़ लिया है। केस रफा-दफा करने के लिए 15,000 रुपये तुरंत ट्रांसफर करो, किसी को बताना मत!"
+  },
+  {
+    "text": "Incum tax department notice, app k Nam par 85000 rupee card tax refund pending here. Refund claim karni ke liye app na net banking username or password verify karni.",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Income Tax Department notice: Aapke naam par 85,000 rupaye ka tax refund pending hai. Refund claim karne ke liye apna net banking username aur password verify karein."
+  },
+  {
+    "text": "Try Telecom Warning, your mobile number se illegal betting messages beij je jara hi hai. агле 30 min, your ks.m.s.m.k.s.m.k.dermini. Pro-taste karne ke lee 9.Dabaayin",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "TRAI telecom warning: Aapke mobile number se illegal betting messages bheje ja rahe hain. Agle 30 minute mein aapke saare sim cards terminate ho jayenge. Protest karne ke liye 9 dabayein."
+  },
+  {
+    "text": "Korn Banega Karol Patti Head office say Rana Pratap Singh Bhol Raheem. AAPKA 25 lakh ki Lottery Meela Gaye. Czech release Karvani ke late 12500 rupee government tax deposit curry.",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Kaun Banega Crorepati head office se Rana Pratap Singh bol raha hoon. Aapka number 25 lakh ki lottery mein laga hai. Cheque release karwane ke liye 12,500 rupaye government tax deposit karein."
+  },
+  {
+    "text": "hdfc bank alert, app kredit kaat se 48999 rupee ka transaction flip kart per hoa hai. If you don't have to do this, then you can share it with a card block.",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "HDFC Bank Alert: Aapke credit card se 48,999 rupaye ka transaction Flipkart par hua hai. Agar aapne yeh nahi kiya toh fauran card block karne ke liye OTP share karein."
+  },
+  {
+    "text": "Delhi Police Cyber Cell Notification your phone pornography trafficking investigation may trace who are here Jail jani se bachni ke liye fine amount deyai gai QR code per tu run scan ke Bahrain",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Delhi Police Cyber Cell notification: Aapka phone pornography trafficking investigation mein trace hua hai. Jail jane se bachne ke liye fine amount diye gaye QR code par turant scan karke bharein."
+  },
+  {
+    "text": "mein gas agency say bhol Raheem. Your Indian gas sub-seedy band hoochukhi hai. Sub-seedy reactivate karne ke liye appna ATM card number or expiry date verify karvai.",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Main Gas Agency se bol raha hoon. Aapki Indane gas subsidy band ho chuki hai. Subsidy reactivate karne ke liye apna ATM card number aur expiry date verify karwayein."
+  },
+  {
+    "text": "your parcel blue dot vahouse me ruka hoa he kyu ki incomplete address he 5 rupee ka read delivery fee pe curry nahi to parcel return ho jai ga",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Aapka parcel BlueDart warehouse mein ruka hua hai kyunki incomplete address hai. 5 rupaye ka re-delivery fee pay karein nahi toh parcel return ho jayega."
+  },
+  {
+    "text": "Kali impersonation, Hello Ramesh, Mesh Sharma ji Bol Rahoon meeting May Fasang. Urgent hospital emergency's late 20,000 rupee is UPID par Bhijadu. Mesham ko kaash dadaunga.",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 1,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Colleague impersonation: Hello Ramesh, main Sharma ji bol raha hoon meeting mein phasa hoon. Urgent hospital emergency ke liye 20,000 rupaye is UPI ID par bhej do, main shaam ko cash de dunga."
+  },
+  {
+    "text": "Your PAN card has been deactivated by NSD. To link Adhar with PAN immediately and prevent a 10,000 penalty. Enter your net banking credentials on our portal.",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Your PAN card has been deactivated by NSDL. To link Aadhaar with PAN immediately and prevent a 10,000 penalty, enter your net banking credentials on our portal."
+  },
+  {
+    "text": "Amazon Lucky Drop Contest. You have won a Samsung 55-inch smart TV. Pay Ecas are those who pay delivery handling charge immediately via Google Pay to dispatch the product.",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Amazon lucky draw contest: You have won a Samsung 55 inch smart TV. Pay 1,200 rupees delivery handling charge immediately via Google Pay to dispatch the product."
+  },
+  {
+    "text": "May CBI officer Rajesh Mishra Bhol Raheen. Your name is Nakotix Passellaya. Don't forget to call this call. Don't forget to go to the other room and don't forget to tell anyone.",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 1,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Main CBI officer Rajesh Mishra bol raha hoon. Aapke naam par narcotics parcel aaya hai. Is call ko disconnect mat karna, doosre room mein jaao aur kisi ko mat batao."
+  },
+  {
+    "text": "Bank of Baroda Urgent Alert App k account me k y c pending App na account chalu rakhni ke liye one dabai and app na 4 digit ATM pin enter curry",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Bank of Baroda urgent alert: Aapke account mein KYC pending hai. Apna account chalu rakhne ke liye 1 dabayein aur apna 4 digit ATM PIN enter karein."
+  },
+  {
+    "text": "Work from home opportunity, YouTube videos like Karker Ozanah 3,000 say 5,000 kamayin. Registration fee 1,000 rupee transfer curry or VIP group joint curry.",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Work from home opportunity: YouTube videos like karke rozana 3,000 se 5,000 kamayein. Registration fee 1,000 rupaye transfer karein aur VIP group join karein."
+  },
+  {
+    "text": "Airport Customs Notification Appka Vidashi Dos London say appk 550,000 pound ka gift passallaya hey jok Customs Meyatka hey clearance fee 35,000 turanth jama curry",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Airport customs notification: Aapka videshi dost London se aapke liye 50,000 pound ka gift parcel laya hai jo customs mein atka hai. Clearance fee 35,000 turant jama karein."
+  },
+  {
+    "text": "Electricity bill fraud, Priya Grahik, your business bill is not updated. Power supply turanth kath ho jaiji. B Bachni's liye dyi gai number per turanth sampark curry.",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Electricity bill fraud: Priya grahak, aapka bijli bill update nahi hua hai. Power supply turant cut ho jayegi. Bachne ke liye diye gaye number par turant sampark karein."
+  },
+  {
+    "text": "Fake tech support, main google security team say about kara-hung. Your Gmail par hikar attack is a hikar attack. Account recover karni for our remote access day.",
+    "language": "hi",
+    "script": "latin",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 1
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "Fake tech support: Main Google security team se baat kar raha hoon. Aapke Gmail par hacker attack hua hai. Account recover karne ke liye hume remote access dein."
+  },
+  {
+    "text": "Namaste bhai, Ini iRCTC per train ticket check washi, but in a single beast waiting list are here. Kyaam Kalsubha Tatkali Kota. May koshish kari.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्ते भाई, मैंने IRCTC पर ट्रेन की टिकट चेक की थी लेकिन 120 वेटिंग लिस्ट आ रही है। क्या हम कल सुबह तत्काल कोटा में कोशिश करें?"
+  },
+  {
+    "text": "Aray Bita,garh Kabara hai ho,sham kichai bhangi hai. Athe wakt rasthi se ek kilu tamatar and haradhanya leetiyana.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अरे बेटा, घर कब आ रहे हो? शाम की चाय बन गई है, आते वक्त रास्ते से एक किलो टमाटर और हरा धनिया लेते आना।"
+  },
+  {
+    "text": "Halo Rohit, Kiyatum Rajsham 4-Jewali client meeting for presentation day 3-4. 1-4 per first review",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हेलो रोहित, क्या तुम आज शाम 4 बजे वाली क्लाइंट मीटिंग के लिए प्रेजेंटेशन डेक रेडी कर चुके हो? एक बार पहले रिव्यू कर लेते हैं।"
+  },
+  {
+    "text": "Namaste Dr. Sahab. My mom's blood pressure checkup tomorrow morning 10 pm till June 7th.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्ते डॉक्टर साहब, मेरी मम्मी का ब्लड प्रेशर चेकअप कल सुबह 10 बजे के लिए रीशेड्यूल हो सकता है क्या?"
+  },
+  {
+    "text": "Arayar, Kolkab Bharat Pakeestan's match was very romantic. Akhir Yovamay Kya Shandar Yokar Dalit's Gint Bajnay.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अरे यार, कल का भारत-पाकिस्तान का मैच बहुत रोमांचक था! आखिरी ओवर में क्या शानदार यॉर्कर डाली थी गेंदबाज ने।"
+  },
+  {
+    "text": "Namaste, mein bank shakha se bhol Rahoon. Aap ka newya checkbook post dv. hizha gaya thang juvapa saa gaya hai. Kripeya branchhaka lili.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्ते, मैं बैंक शाखा से बोल रहा हूँ। आपका नया चेकबुक पोस्ट द्वारा भेजा गया था जो वापस आ गया है, कृपया ब्रांच आकर ले लें।"
+  },
+  {
+    "text": "Halo Ankel, we are going to take this Ravi Valku Nanitaal Ghum. What else do you want to tell us about our 7th Chalna?",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हेलो अंकल, हम लोग इस रविवार को नैनीताल घूमने जा रहे हैं, क्या आप और चाची हमारे साथ चलना पसंद करेंगे?"
+  },
+  {
+    "text": "Bhaiya, vujo akripaya keliya me kenik bhi jadha usni gas refiling ke kithna 4 jaliya. mujhe bil chakkar nathha.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "भैया, वो जो AC रिपेयर के लिए मैकेनिक भेजा था उसने गैस रीफिलिंग का कितना चार्ज लिया? मुझे बिल चेक करना था।"
+  },
+  {
+    "text": "Namaste madam, Bachcheka School Project Subhamit Karni's Anthim Tariq Kabhe, kyaam sum var ko jama kar sakte hai?",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्ते मैडम, बच्चे का स्कूल प्रोजेक्ट सबमिट करने की अंतिम तारीख कब है? क्या हम सोमवार को जमा कर सकते हैं?"
+  },
+  {
+    "text": "Halo! Kyaa Rajsham, Kusat Bajay Sosaiti's general body meeting community hall May tessa me perhogi.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हेलो, क्या आज शाम को 7 बजे सोसाइटी की जनरल बॉडी मीटिंग कम्युनिटी हॉल में तय समय पर होगी?"
+  },
+  {
+    "text": "Namaste, mujhe Delhi say lakna wali shatab di ekspres ka same pata kar nata. kya train same par jal rahi hai.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्ते, मुझे दिल्ली से लखनऊ वाली शताब्दी एक्सप्रेस का समय पता करना था, क्या ट्रेन समय पर चल रही है?"
+  },
+  {
+    "text": "Aray Suno, today jeeraat ke khanemi kya bhanara hiho. Agar dal makni bhanra hiho, tume paneer bhi le te hanga.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अरे सुनो, आज रात के खाने में क्या बना रहे हो? अगर दाल मखनी बन रही हो तो मैं पनीर भी लेते आऊंगा।"
+  },
+  {
+    "text": "Halo sir, your cari's suficing puri hochukhi hai. Appsham chae bha jhe pe hali wakshop se gari li sakte hai.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हेलो सर, आपकी गाड़ी की सर्विसिंग पूरी हो चुकी है। आप शाम 6 बजे से पहले वर्कशॉप से गाड़ी ले सकते हैं।"
+  },
+  {
+    "text": "ناماستے کیا لائب ریری آج شنیوار کو دو پہر دو بچے کے بعد کھلی رہے گی، مجھے کچھ کتابے لٹانی تھیں۔",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्ते, क्या लाइब्रेरी आज शनिवार को दोपहर 2 बजे के बाद खुली रहेगी? मुझे कुछ किताबें लौटानी थीं।"
+  },
+  {
+    "text": "Aray Bhai, college's assignment of 30th RasaVal ka se halkarna hai. Zara Wotseper Uska Photo Behijdo.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अरे भाई, कॉलेज के असाइनमेंट का तीसरा सवाल कैसे हल करना है? ज़रा व्हाट्सएप पर उसका फोटो भेज दो।"
+  },
+  {
+    "text": "Hello, I am Kuriar Delivery boy, bowel Rahoon. Your pateper is a parcel. What are you doing at home?",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हेलो, मैं कूरियर डिलीवरी बॉय बोल रहा हूँ। आपके पते पर एक पार्सल है, क्या आप घर पर मौजूद हैं?"
+  },
+  {
+    "text": "Namaste Avanti, BD's Shahdi's Tariq is what is it? We are going to cook train ticket for all of us.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्ते आंटी, दीदी की शादी की तारीख क्या तय हुई है? हम सबको आने के लिए ट्रेन का टिकट बुक करना है।"
+  },
+  {
+    "text": "аrey Vikas, Jim's timing today shampu kya hai. kya ham sadee chhe bha jhe sathmi vakau chshuru kar sakte hai.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अरे विकास, जिम का टाइमिंग आज शाम को क्या है? क्या हम 6:30 बजे साथ में वर्कआउट शुरू कर सकते हैं?"
+  },
+  {
+    "text": "Halo, meji app ne broadband internet plan kvaliditi check karni. A.G.E.F.T.K.K.R.E.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हेलो, मुझे अपने ब्रॉडबैंड इंटरनेट प्लान की वैलिडिटी चेक करनी थी, अगले हफ्ते कौन सा रीचार्ज सही रहेगा?"
+  },
+  {
+    "text": "Namaste, kya your medical store per year, ayur Vedik Sarpu Plubdhi, yakal Subah Mangwana Padega.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्ते, क्या आपके मेडिकल स्टोर पर यह आयुर्वेदिक सिरप उपलब्ध है या कल सुबह मंगवाना पड़ेगा?"
+  },
+  {
+    "text": "Halo, Bhai, Kalsubah office jani keli kyaam karpul karsak teh hai? My bike is a vissing huni hai.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हेलो भाई, कल सुबह ऑफिस जाने के लिए क्या हम कारपूल कर सकते हैं? मेरी बाइक की सर्विसिंग होनी है।"
+  },
+  {
+    "text": "Namaste, Bach chungi varshek khul prati yogita keliya uniform keptaq school se me legi",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्ते, बच्चों की वार्षिक खेलकूद प्रतियोगिता के लिए यूनिफॉर्म कब तक स्कूल से मिलेगी?"
+  },
+  {
+    "text": "Arisunu, bazaar sigh harate vakt medical stoze papa's sugar vali devaika pattajarul lielina.",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अरे सुनो, बाजार से घर आते वक्त मेडिकल स्टोर से पापा की शुगर वाली दवाई का पत्ता जरूर ले लेना।"
+  },
+  {
+    "text": "Halo! Kyaap Vikant per Hoonaywali Photography Wakshop's baare me jankari desak te hai?",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हेलो, क्या आप वीकेंड पर होने वाली फोटोग्राफी वर्कशॉप के बारे में जानकारी दे सकते हैं?"
+  },
+  {
+    "text": "Namaste ji, our flight's water is a little late. What can you do?",
+    "language": "hi",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्ते जी, हमारे फ्लैट का पानी का नल थोड़ा लीक कर रहा है, क्या आप प्लंबर को भेज सकते हैं?"
+  },
+  {
+    "text": "Ami Pune Saiobar crime branch Madhun Varish Kapolis Niriksak Bola Tahot. Tumcheh Adhar Kardvar Bekaya Desheer Sim Kardak Kardun Kottavadi Rupaya Anci Fasavanukh Zhali Ahe. Atta Kvarant Radhda Karnya Sathi Tabad Thop Chavukashila Hazar Rahat.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "आम्ही पुणे सायबर क्राईम ब्रँच मधून वरिष्ठ पोलिस निरीक्षक बोलत आहोत. तुमच्या आधार कार्डवर बेकायदेशीर सिम कार्ड काढून कोट्यवधी रुपयांची फसवणूक झाली आहे. अटक वॉरंट रद्द करण्यासाठी ताबडतोब चौकशीला हजर राहा."
+  },
+  {
+    "text": "महावितरण वीज कंपनी: प्रिय ग्राहक, आपले मागील महिन्याचे वीज बिल अपडेट न झाल्यामुळे आज रात्री 8:30 वाजता वीज पुरवठा खंडित केला जाईल. तात्काळ 9823123456 या क्रमांकावर संपर्क करून 200 रुपये दंड भरा.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "महावितरण वीज कंपनी: प्रिय ग्राहक, आपले मागील महिन्याचे वीज बिल अपडेट न झाल्यामुळे आज रात्री 8:30 वाजता वीज पुरवठा खंडित केला जाईल. तात्काळ 9823123456 या क्रमांकावर संपर्क करून 200 रुपये दंड भरा."
+  },
+  {
+    "text": "Bank of Maharashtra khate darana sattar kati sa ishara, aptly KYC Verification of Purnasla, aptly bank khate azats fris kelezail. Khate sa loothe vune satthi alela sahaan ki oti pi sanga.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "बँक ऑफ महाराष्ट्र खातेदारांना सतर्कतेचा इशारा: आपले केवायसी व्हेरिफिकेशन अपूर्ण असल्याने आपले बँक खाते आजच फ्रीझ केले जाईल. खाते चालू ठेवण्यासाठी आलेला 6 अंकी ओटीपी सांगा."
+  },
+  {
+    "text": "Namaskal, mi Mumbai customs vivaagatun bholatahi. Tumcya Nawawar alele kuriar ami japtakele ahi jamadhe bhande aslele drug Sahani bhanawat pasapurta. Saapadle ahi, CIBI Saukashi Taranaya sathi dandavara.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्कार, मी मुंबई कस्टम्स विभागातून बोलत आहे. तुमच्या नावावर आलेले कुरिअर आम्ही जप्त केले आहे ज्यामध्ये बंदी असलेले ड्रग्स आणि बनावट पासपोर्ट सापडले आहेत. सीबीआय चौकशी टाळण्यासाठी दंड भरा."
+  },
+  {
+    "text": "Abinandan, tumhala Pradhana Mantri Avasi Ogenyan Target Patsla Krupeyanze Anudan Manzur zhaleahi.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अभिनंदन! तुम्हाला प्रधानमंत्री आवास योजनेअंतर्गत 5 लाख रुपयांचे अनुदान मंजूर झाले आहे. ही रक्कम खात्यावर जमा करण्यासाठी त्वरित 4,200 रुपये नोंदणी शुल्क ट्रान्सफर करा."
+  },
+  {
+    "text": "तुमचे सिम कार्ड 24 तासात बंद होणार आहे कारण तुमचे पोलीस व्हेरिफिकेशन झालेले नाही. सेवा अखंड ठेवण्यासाठी एनीडेस्क ॲप डाऊनलोड करून व्हेरिफाय करा.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 1
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "तुमचे सिम कार्ड 24 तासात बंद होणार आहे कारण तुमचे पोलीस व्हेरिफिकेशन झालेले नाही. सेवा अखंड ठेवण्यासाठी एनीडेस्क ॲप डाऊनलोड करून व्हेरिफाय करा."
+  },
+  {
+    "text": "Aay! Mis Sachin Bholtoe! Majya Mitra Chagadhi Samurtha Paghad Zhalahe Ani Polis Malah Attack Karatahe! Malah Soda Vanya Sathi Tabadato Vis Hazar Rupaya Jagu-Gal Pe-Nambar Varpatho! Kondala Sangunakos!",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 1,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 1,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "आई, मी सचिन बोलतोय... माझ्या मित्राच्या गाडीचा मोठा अपघात झाला आहे आणि पोलीस मला अटक करत आहेत. मला सोडवण्यासाठी ताबडतोब 20,000 रुपये या गुगल पे नंबरवर पाठव, कोणाला सांगू नकोस!"
+  },
+  {
+    "text": "ST Mohammadar Bharati Bohr. Tumchi Lipik Padasati Nivars Aliahi. Niyukthi Padra Posta ni midavna asati tathkar 3-3 rupee security deposit Mahara.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "एसटी महामंडळ भरती बोर्ड: तुमची लिपिक पदासाठी निवड झाली आहे. नियुक्ती पत्र पोस्टाने मिळवण्यासाठी तात्काळ 3,000 रुपये सिक्युरिटी डिपॉझिट भरा."
+  },
+  {
+    "text": "Inakum taxa department kudun notice thum cha khate wa baichari sazer rupe ansa taxa rifun jama hona rahi rifun me wna sathi apple ATM carda detailsa verifaikara",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "इनकम टॅक्स डिपार्टमेंट कडून नोटीस: तुमच्या खात्यावर 42,000 रुपयांचा टॅक्स रिफंड जमा होणार आहे. रिफंड मिळवण्यासाठी आपले एटीएम कार्ड डिटेल्स व्हेरिफाय करा."
+  },
+  {
+    "text": "Mumbai hire Kurta Tune Bola Tahot. Tumcana Wavar Chek Bounsagunha Daakhal Zhalahi. Azaz Kurta Thazar Raha Kimwa Pandra Hazar Rupai Bharun Jamini Mewa.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "मुंबई हायकोर्टातून बोलत आहोत. तुमच्या नावावर चेक बाऊन्सचा गुन्हा दाखल झाला आहे. आजच कोर्टात हजर राहा किंवा 15,000 रुपये भरून जामीन मिळवा."
+  },
+  {
+    "text": "Tumcha Kredi Kardvarun Pasti Sagar Rupyanchi Sanshya Sperth Kredi Zhaliahi. Kredi Thambavna Sathi Kardan numbarhani magil cv numbar Sangha.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "तुमच्या क्रेडिट कार्डवरून 35,000 रुपयांची संशयास्पद खरेदी झाली आहे. ही खरेदी थांबवण्यासाठी कार्ड नंबर आणि मागील सीव्हीव्ही नंबर सांगा."
+  },
+  {
+    "text": "Lottery Veebhaag, thum hala Dahala Kruppi & Chikar Bakshis lagliya hai. Gadi ca insuran saani arityo taxahat Hazar Pachshir Upaya Tuari Jamakara.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "लॉटरी विभाग: तुम्हाला 10 लाख रुपयांची कार बक्षीस लागली आहे. गाडीचा इन्शुरन्स आणि आरटीओ टॅक्स 8,500 रुपये त्वरित जमा करा."
+  },
+  {
+    "text": "Gas sub-city alert, appli gharguti gas sub-city bunda zhalia hai. Sub-city punha suru karnaya sathi adhara karda andi bank pasabu katsa oti pi sanga.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "गॅस सबसिडी अलर्ट: आपली घरगुती गॅस सबसिडी बंद झाली आहे. सबसिडी पुन्हा सुरू करण्यासाठी आधार कार्ड आणि बँक पासबुकचा ओटीपी सांगा."
+  },
+  {
+    "text": "Teli Kom di partament, thum cha naava var suro asleleya dosraya mobile number varun asleil message partavelezaatahit. Tathari ne takarar niwarana sathi ek daba.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "टेलिकॉम डिपार्टमेंट: तुमच्या नावावर सुरू असलेल्या दुसऱ्या मोबाईल नंबरवरून अश्लील मेसेज पाठवले जात आहेत. तातडीने तक्रार निवारणासाठी 1 दाबा."
+  },
+  {
+    "text": "Tumsa kuriar patta chukichasla ni parseladakaleahi. Dahar upayi rhee nili vari 4-4 marun parsel soda vunya.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "तुमचा कुरिअर पत्ता चुकीचा असल्याने पार्सल अडकले आहे. 10 रुपये री-डिलिव्हरी चार्ज भरून पार्सल सोडवून घ्या."
+  },
+  {
+    "text": "Office Khalid Faisabaanuk, Aray Ramish, Mibos Bulto & Tentatari Chaka Masati Malad Daha Hazar Rupai Haviyahi. Mi Udea Paratkar Tuttu Arith Patel.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 1,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "ऑफिस कलीग फसवणूक: अरे रमेश, मी बॉस बोलतोय अत्यंत तातडीच्या कामासाठी मला 10,000 रुपये हवे आहेत, मी उद्या परत करतो त्वरित पाठव."
+  },
+  {
+    "text": "Saibar Sale Pune. Tumca mobile var bekaya deshi rapsa saapadale Aheet. Digital Arrest Taranya Sati, Twarith Screensharing App Salukara.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 1
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "सायबर सेल पुणे: तुमच्या मोबाईलवर बेकायदेशीर ॲप्स सापडले आहेत. डिजिटल अरेस्ट टाळण्यासाठी त्वरित स्क्रीन शेअरिंग ॲप चालू करा."
+  },
+  {
+    "text": "Post office savings bank, tu msi khate adhara shi link nasele ne banda karana taleahi. online link karana sati net banking login karana.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "पोस्ट ऑफिस सेव्हिंग्ज बँक: तुमचे खाते आधारशी लिंक नसल्याने बंद करण्यात आले आहे. ऑनलाइन लिंक करण्यासाठी नेट बँकिंग लॉगिन करा."
+  },
+  {
+    "text": "Pasana lonofa și un ni-a tăche viajanei doun la grupențe carzămanzul. Processing feed-on Hazarru pe google pe vărgea ma carani pe in semiava.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "पर्सनल लोन ऑफर: 0% व्याजाने 2 लाख रुपयांचे कर्ज मंजूर. प्रोसेसिंग फी 2,000 रुपये गुगल पे वर जमा करा आणि पैसे मिळवा."
+  },
+  {
+    "text": "Fadek sir parsel gota ra. Thum cha parsela madhe bhekka ya deshi rvasthu saapadla ra hai. Ami custom sofi sir kadek kol lava ta hud.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "फेडेक्स पार्सल घोटाळा: तुमच्या पार्सलमध्ये बेकायदेशीर वस्तू सापडल्या आहेत, आम्ही कस्टम्स ऑफिसरकडे कॉल लावत आहोत."
+  },
+  {
+    "text": "Pankarda deactivates haleahi. 1-2 rupee dandab harun daha minita deactivate kara na hitar bank khate gothablezahi.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "पॅन कार्ड डीॲक्टिव्हेट झाले आहे. 1,000 रुपये दंड भरून 10 मिनिटांत ॲक्टिव्हेट करा नाहीतर बँक खाते गोठवले जाईल."
+  },
+  {
+    "text": "Garabasaliya Dharos Don Hazar Kamava Faktav video like Karna Sekurity Deposit 5-Shiru Pay Patthu Naayani Activate Karna",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "घरबसल्या दररोज 2,000 कमवा, फक्त व्हिडिओ लाईक करा. सिक्युरिटी डिपॉझिट 500 रुपये पाठवून आयडी ॲक्टिव्हेट करा."
+  },
+  {
+    "text": "Tumcha phonema de gamir vayara sahi. Mobile surakshit karnaya saati amcha tantrad nya laak ses dea.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 1
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "तुमच्या फोनमध्ये गंभीर व्हायरस आहे. मोबाईल सुरक्षित करण्यासाठी आमच्या तंत्रज्ञाला ॲक्सेस द्या."
+  },
+  {
+    "text": "Paradeshi Mitra Kodun Sonehse daghi Neaslele Parcelaleahi. Vimanta Kliaran Safi Panchvi Sazar Rupaet Wari Jamakara.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "परदेशी मित्राकडून सोन्याचे दागिने असलेले पार्सल आले आहे, विमानतळ क्लिअरन्स फी 25,000 रुपये त्वरित जमा करा."
+  },
+  {
+    "text": "RBIC Adesh, tu msi zune devit karda banda hona Rahi. Navin chip karda sati karda varil sura akade sanga.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "आरबीआय चे आदेश: तुमचे जुने डेबिट कार्ड बंद होणार आहे, नवीन चिप कार्डसाठी कार्डवरील 16 आकडे सांगा."
+  },
+  {
+    "text": "Namaskar kaka, Ami Udeya Sakari Satoesta Pulehun Niganara Hoth. Du pari Bara Vajiparienta Gavi Pohotsu. Kahi Kaji Karuna Ka.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्कार काका, आम्ही उद्या सकाळी सात वाजता पुण्याहून निघणार आहोत. दुपारी बारा वाजेपर्यंत गावी पोहोचू, काही काळजी करू नका."
+  },
+  {
+    "text": "Hello. Meido. Zoshiyan Chakliniq Madun Bola Tahir. Apli Udeachi Tapasani Sandhya Karis Sahawas Ta Nishchit Karana Tahir.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हॅलो, मी डॉ. जोशी यांच्या क्लिनिक मधून बोलत आहे. आपली उद्याची तपासणी संध्याकाळी सहा वाजता निश्चित करण्यात आली आहे."
+  },
+  {
+    "text": "Aray Mahu, kaaleta sattinara yinatsa prasad kuphan zhalahuta. Sagay Pahuni Vevar Pohosli ka.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अरे भाऊ, कालचा सत्यनारायणाचा प्रसाद खूप छान झाला होता. सगळे पाहुणे वेळेवर पोहोचले का?"
+  },
+  {
+    "text": "Namaskar, Shahreethils Neha Sammilana Sati Mulanse ka upude ka diyaan hai siyaahet, Krupeya Grupoor Meshish Patava.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्कार, शाळेतील स्नेहसंमेलनासाठी मुलांचे कपडे कधी आणायचे आहेत? कृपया ग्रुपवर मेसेज पाठवा."
+  },
+  {
+    "text": "Dada, shetathil soya bin karni sekam purna zahaleahi ka bhajarat sadeh kaibhao saaluahete Sanga",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "दादा, शेतातील सोयाबीन काढणीचे काम पूर्ण झाले आहे का? बाजारात सध्या काय भाव चालू आहे ते सांगा."
+  },
+  {
+    "text": "Halo Amit, Appan Udaya Sandhya Kari Balagandharva Nattegru Hath Natak Baghaila Zaisekha 3K Book Karuka",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हॅलो अमित, आपण उद्या संध्याकाळी बालगंधर्व नाट्यगृहात नाटक बघायला जायचे का? तिकिटे बुक करू का?"
+  },
+  {
+    "text": "Aayi, Mi Bhajimandai talo Aayi. Methi Ani kothimbir Tajini Sathe Ani ki Kaibhaji Anai Chiya Heka.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "आई, मी भाजीमंडईत आलो आहे. मेथी आणि कोथिंबीर ताजी दिसतेय, आणखी काय भाजी आणायची आहे का?"
+  },
+  {
+    "text": "Namaskar sir, applai sosai teachi var shiksar wasad haran sabha iar avi vari sakari daha vastak lab haus madhe honarahi.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्कार सर, आपल्या सोसायटीची वार्षिक सर्वसाधारण सभा या रविवारी सकाळी दहा वाजता क्लब हाऊसमध्ये होणार आहे."
+  },
+  {
+    "text": "Aray Sanket, College Chia Project's final library Madhya Jamaa Karai Chia hai, tukadhi hai tuyas.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अरे संकेत, कॉलेजच्या प्रोजेक्टची फाईल लायब्ररीमध्ये जमा करायची आहे, तू कधी येतोयस?"
+  },
+  {
+    "text": "Hello, I am Chav Water Purifier Chisarvesing Karai Chiyahi. Udayadupari Technician Patvushakal ka?",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हॅलो, आमच्या वॉटर प्युरिफायरची सर्व्हिसिंग करायची आहे. उद्या दुपारी टेक्निशियन पाठवू शकाल का?"
+  },
+  {
+    "text": "Namaskar Maavashi, Deepavli Chasurti Tumi Puneala Kadee Ena Rahat, Ammi Sarvajan Watt Pahata Hoth.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्कार मावशी, दीपावलीच्या सुट्टीत तुम्ही पुण्याला कधी येणार आहात? आम्ही सर्वजण वाट पाहत आहोत."
+  },
+  {
+    "text": "Aray Mithra, Kali Chattra Katsay Photo, Khoop Sundar alayahi. Google Drive Chilink Malanak ki Patthavande.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अरे मित्रा, कालच्या ट्रेकचे फोटो खूप सुंदर आले आहेत. गुगल ड्राईव्हची लिंक मला नक्की पाठवून दे."
+  },
+  {
+    "text": "Hello! Mi Kiranadukanatun Boltoi! Tumi Dileli Vastunchi Adi Tayara hai, darapos Dilevi Vari Patvoka!",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हॅलो, मी किराणा दुकानातून बोलतोय. तुम्ही दिलेली वस्तूंची यादी तयार आहे, घरपोच डिलिव्हरी पाठवू का?"
+  },
+  {
+    "text": "Namaskar, appla bank chashakhe madhe locker suvi dha upalab daa hai ka? teasathe kunti ka gada patre laatheel?",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्कार, आपल्या बँकेच्या शाखेमध्ये लॉकर सुविधा उपलब्ध आहे का? त्यासाठी कोणती कागदपत्रे लागतील?"
+  },
+  {
+    "text": "Aray Baba, Gadi Chai Insurance Rinyu Karay Chitarek Zavar Aliahi. May online Varunta Cooka.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अरे बाबा, गाडीचे इन्शुरन्स रिन्यू करायची तारीख जवळ आली आहे, मी ऑनलाइन भरून टाकू का?"
+  },
+  {
+    "text": "Halo! Udaya Sakari Yoga Class Nehmi Chavadever Suruhonara hai ki kahi bada la hai!",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हॅलो, उद्या सकाळी योगा क्लास नेहमीच्या वेळेवर सुरू होणार आहे की काही बदल आहे?"
+  },
+  {
+    "text": "Namaskar, Amchagharasi Ranga Kam suru karaisiahi. Appani ikdayu nanda japa track deusha kalka.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्कार, आमच्या घराचे रंगकाम सुरू करायचे आहे. आपण एकदा येऊन अंदाजपत्रक देऊ शकाल का?"
+  },
+  {
+    "text": "Aresuish, Sandhya Karikri Krethe Haila Maidanavari Etoeska, Sarvanna Sadepas Vasta Bolaveliahi.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अरे सुयश, संध्याकाळी क्रिकेट खेळायला मैदानावर येतोयस का? सर्वांना साडेपाच वाजता बोलावले आहे."
+  },
+  {
+    "text": "Hello! Hotel Madhya 8 Janan Sati Table Book Karai Sehoti Aasratri 8 Vastha Zagam ALKA",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हॅलो, हॉटेलमध्ये आठ जणांसाठी टेबल बुक करायचे होते. आज रात्री आठ वाजता जागा मिळेल का?"
+  },
+  {
+    "text": "Namaskar, Mahamanda Haja Bhasatse kulha purti Mumbai Arakshan suruz hallahi ka te tapasaitse hote.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्कार, महामंडळाच्या बसचे कोल्हापूर ते मुंबई आरक्षण सुरू झाले आहे का ते तपासायचे होते."
+  },
+  {
+    "text": "Arethai, Aiza Oshadhanza dosyampatala hai. Yetana Medical Madhunna Vin Bartali Gyounye.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अरे ताई, आईचा औषधांचा डोस संपत आला आहे, येताना मेडिकलमधून नवीन बाटली घेऊन ये."
+  },
+  {
+    "text": "Halo sir, Nawin Dhara sati grewhukhar jatse vijadar siddhya ki saluahet ki abad dal mahiti havi hoti.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हॅलो सर, नवीन घरासाठी गृहकर्जाचे व्याजदर सध्या किती चालू आहेत याबद्दल माहिती हवी होती."
+  },
+  {
+    "text": "Namaskar, Appleagar jeemadhe gadi chiv water washing gani polishing kar hai chiya hai, kiti veilage gale",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "नमस्कार, आपल्या गॅरेजमध्ये गाडीची वॉटर वॉशिंग आणि पॉलिशिंग करायची आहे, किती वेळ लागेल?"
+  },
+  {
+    "text": "Arirahul, Office of Regentation Madhesh beauty thank you slide ad keli aheska.",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "अरे राहुल, ऑफिसच्या प्रेझेंटेशनमध्ये शेवटी थॅंक यू स्लाईड ॲड केली आहेस का?"
+  },
+  {
+    "text": "Hallo! Psycholze Panchar Karnaya Chiya Haye Dukan Azun Ublea Haye Ka?",
+    "language": "mr",
+    "script": "deva",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "हॅलो, सायकलचे पंक्चर काढायचे आहे, दुकान अजून उघडे आहे का?"
+  },
+  {
+    "text": "Ami Kolkata police cyber crime division THK inspector Subrotho Mukhaji Bholchi AAPNAR AADHAR KARD Babohar Kare Oboith Hobhabe Sim Tule Koti Takaar Prota Rona Kora Hwechi Akhuni Tadante Shahadjana Koli AAPNAR Birud Theg Reftari Parvana Jari Hobbe",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "আমি কলকাতা পুলিশ সাইবার ক্রাইম ডিভিশন থেকে ইন্সপেক্টর সুব্রত মুখার্জি বলছি। আপনার আধার কার্ড ব্যবহার করে অবৈধভাবে সিম তুলে কোটি টাকার প্রতারণা করা হয়েছে। এখনই তদন্তে সাহায্য না করলে আপনার বিরুদ্ধে গ্রেফতারি পরোয়ানা জারি হবে।"
+  },
+  {
+    "text": "Bidut Por Shod Jodori Shotorko Priyogra Hope Appner Bokya Bidut Bill Joma Nakarar Karunayajrat Shokal Shari Atta Taib Bidut Shonjok Bitshinokara Hope Akhuni Bidut Adhikari's number of phone Cardiffy Joma Dean",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "বিদ্যুৎ পর্ষদ জরুরী সতর্কতা: প্রিয় গ্রাহক, আপনার বকেয়া বিদ্যুৎ বিল জমা না করার কারণে আজ রাত ৮:৩০ টায় বিদ্যুৎ সংযোগ বিচ্ছিন্ন করা হবে। এখনই বিদ্যুৎ আধিকারিকের নম্বরে ফোন করে ফি জমা দিন।"
+  },
+  {
+    "text": "stage bank of India nirapoth tanotish appnir ki oisi update nathakaya appnir bank account debung etim kaad shamwik babe block koda hoesi ekhuni phonet jawa wo tippi bolun",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "স্টেট ব্যাঙ্ক অফ ইন্ডিয়া নিরাপত্তা নোটিশ: আপনার কেওয়াইসি আপডেট না থাকায় আপনার ব্যাংক অ্যাকাউন্ট এবং এটিএম কার্ড সাময়িকভাবে ব্লক করা হয়েছে। এখনই ফোনে যাওয়া ওটিপি বলুন।"
+  },
+  {
+    "text": "Namushkar, Ami Kolkata biman bhandur kashtoms bibhakheke bholsi. Aapnar nami ekti anhtur jatik parsel atuk kora huyechi. Jhar mohthe bhai ni maduk pavagatsi. Sibhai tadunto erate ekhuni jori manadin.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "নমস্কার, আমি কলকাতা বিমানবন্দর কাস্টমস বিভাগ থেকে বলছি। আপনার নামে একটি আন্তর্জাতিক পার্সেল আটক করা হয়েছে যার মধ্যে বেআইনি মাদক পাওয়া গেছে। সিবিআই তদন্ত এড়াতে এখনই জরিমানা দিন।"
+  },
+  {
+    "text": "Obinandun, appni posthim bungo shorkarir beshejjojo naithin lukeh takar onudan peitsin. Eid takar shora shori attaun tepete. Akhunitinhajar paatsu takar registration phi pathan.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "অভিনন্দন! আপনি পশ্চিমবঙ্গ সরকারের বিশেষ যোজনায় ৩ লক্ষ টাকার অনুদান পেয়েছেন। এই টাকা সরাসরি অ্যাকাউন্টে পেতে এখনই ৩,৫০০ টাকা রেজিস্ট্রেশন ফি পাঠান।"
+  },
+  {
+    "text": "Appner mobile number tiadami doig hunter mode theb ontho hueja be karun appner polish verification hoye ni. Seem Chalu, Rakti Quick Support Tap Install Corun.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 1
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "আপনার মোবাইল নম্বরটি আগামী ২ ঘণ্টার মধ্যে বন্ধ হয়ে যাবে কারণ আপনার পুলিশ ভেরিফিকেশন হয়নি। সিম চালু রাখতে কুইকসাপোর্ট অ্যাপ ইনস্টল করুন।"
+  },
+  {
+    "text": "Ma, Ami Rohit Bholchi, Bondur Fondheke Fond Gholchi Amra actor Gari accident Korechi and Polishama's lockup at night Charanor, John No Akhuni Kuri Haja Taka A. Nambore Google Pekaro Kauke Bholona",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 1,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 1,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "মা, আমি রোহিত বলছি... বন্ধুর ফোন থেকে ফোন করছি। আমরা একটা গাড়ি এক্সিডেন্ট করেছি আর পুলিশ আমাকে লকআপে আটকে রেখেছে। ছাড়ানোর জন্য এখনই ২০,০০০ টাকা এই নম্বরে গুগল পে করো, কাউকে বোলো না!"
+  },
+  {
+    "text": "Railway recruitment board. Group D-Pode appna chakrin istit hoetze. Niok patro power Jonno Obilombe Pachhajar Taka Sekyuriti Fijioma. D-ing.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "রেলওয়ে রিক্রুটমেন্ট বোর্ড: গ্রুপ ডি পদে আপনার চাকরি নিশ্চিত হয়েছে। নিয়োগপত্র পাওয়ার জন্য অবিলম্বে ৫,০০০ টাকা সিকিউরিটি ফি জমা দিন।"
+  },
+  {
+    "text": "Income Tax Doftour. You can also find out how to make a tax refund. You can also find out how to make a tax refund. Number of being verified.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "ইনকাম ট্যাক্স দফতর: আপনার অ্যাকাউন্টে ৩৬,০০০ টাকার ট্যাক্স রিফান্ড বকেয়া রয়েছে। রিফান্ড নেওয়ার জন্য আপনার এটিএম কার্ড নম্বর ও পিন ভেরিফাই করুন।"
+  },
+  {
+    "text": "High Court of Colkata Registry Aopnar biru thetchek jaliatir mamla dair hoetche Driftar arate akhuni doshhajar taka jamanot jama kurun",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "হাইকোর্ট কলকাতা রেজিস্ট্রি: আপনার বিরুদ্ধে চেক জালিয়াতির মামলা দায়ের হয়েছে। গ্রেফতার এড়াতে এখনই ১০,০০০ টাকা জামানত জমা করুন।"
+  },
+  {
+    "text": "Appner credit cardation de hojono khabi chollishaja takar khenakata hoesi Transaction battle court de cardi pichonet 3 Shankar CBC Nombur Janan",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "আপনার ক্রেডিট কার্ডে সন্দেহজনকভাবে ৪০,০০০ টাকার কেনাকাটা হয়েছে। ট্রানজ্যাকশন বাতিল করতে কার্ডের পিছনের ৩ সংখ্যার সিভিসি নম্বর জানান।"
+  },
+  {
+    "text": "Lotari Shambhad Doftore, appna nombore pochishlok khotakar prothum purushkarudheze purushkarudheze purushkarudheze purushkarudheze cheek pete athajar takashor karudheze Prothan Gurun",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "লটারি সংবাদ দফতর: আপনার নম্বরে ২৫ লক্ষ টাকার প্রথম পুরস্কার উঠেছে। পুরস্কারের চেক পেতে ৮,০০০ টাকা সরকারি ট্যাক্স প্রদান করুন।"
+  },
+  {
+    "text": "Rannar Gash Bhurtuki update Appnar Gash Bhurtuki bondhohe Gatshi Punodai Chalu Korte appnar Adharo bank details nicheet korun",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "রান্নার গ্যাস ভর্তুকি আপডেট: আপনার গ্যাসের ভর্তুকি বন্ধ হয়ে গেছে। পুনরায় চালু করতে আপনার আধার ও ব্যাংক ডিটেইলস নিশ্চিত করুন।"
+  },
+  {
+    "text": "Telecom regulatory of India, appna nomburthi ke spaam o bhai ni baata pathanohutze, appna shop sim batil karahutze.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "টেলিকম রেগুলেটরি অফ ইন্ডিয়া: আপনার নম্বর থেকে স্প্যাম ও বেআইনি বার্তা পাঠানো হচ্ছে। আপনার সব সিম বাতিল করা হচ্ছে।"
+  },
+  {
+    "text": "apnar parseller tikana oshom purno tatae atke atse parseller delibari pete dosh tata pement korun",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "আপনার পার্সেলের ঠিকানা অসম্পূর্ণ থাকায় আটকে আছে। পার্সেল ডেলিভারি পেতে ১০ টাকা পেমেন্ট করুন।"
+  },
+  {
+    "text": "Schoho Kurmi Protharona, Dada ami appnaro officer Shumit Bholsi, Jodhuri Haspatale Takar Dorkar, Akhuni Pachhajar Taka Patan Amikal Shokale Cash Day Debo.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 1,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "সহকর্মী প্রতারণা: দাদা আমি আপনার অফিসের সুমিত বলছি, জরুরী হাসপাতালে টাকার দরকার, এখনই ৫,০০০ টাকা পাঠান আমি কাল সকালে ক্যাশ দিয়ে দেব।"
+  },
+  {
+    "text": "Saibar crime buru, app nar kompiu tade be aini software garapodechi. Akhuni remote access dinno eto device siege hobby.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 1
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "সাইবার ক্রাইম ব্যুরো: আপনার কম্পিউটারে বেআইনি সফটওয়্যার ধরা পড়েছে। এখনই রিমোট অ্যাক্সেস দিন নয়তো ডিভাইস সিজ হবে।"
+  },
+  {
+    "text": "Post office savings bank Appnara account bond hohe gacha Poonodai chalu kote appnara internet banking user IDO password Dean",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "পোস্ট অফিস সেভিংস ব্যাংক: আপনার অ্যাকাউন্ট বন্ধ হয়ে গেছে। পুনরায় চালু করতে আপনার ইন্টারনেট ব্যাংকিং ইউজার আইডি ও পাসওয়ার্ড দিন।"
+  },
+  {
+    "text": "Shoghoj Lohn Offer, Korn Nothipotro Charai Dui Laptaka Lohn. File Charge Hishibai Dui Hazard Taka Patan.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "সহজ লোন অফার: কোন নথিপত্র ছাড়াই ২ লক্ষ টাকা লোন। ফাইল চার্জ হিসেবে ২,০০০ টাকা পাঠান।"
+  },
+  {
+    "text": "Kuriyaar par Selatuk, appnaar kuriyaar eshona umaduk pavagatse, ekhuni kastom sofisar ke takadeen ishputti korun.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "কুরিয়ার পার্সেল আটক: আপনার কুরিয়ারে সোনা ও মাদক পাওয়া গেছে, এখনই কাস্টমস অফিসারকে টাকা দিয়ে নিষ্পত্তি করুন।"
+  },
+  {
+    "text": "Pankard Link Notish Today's Pankard Link Shathya Adhar Link Naakol Le Dawshhajat Taka Jori Manahobi Link's Link Kare Taka Dheem",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "প্যান কার্ড লিংক নোটিশ: আজকেই প্যান কার্ডের সাথে আধার লিঙ্ক না করলে ১০,০০০ টাকা জরিমানা হবে। লিঙ্কে ক্লিক করে টাকা দিন।"
+  },
+  {
+    "text": "online video like, kore doinik 3 hazard taka i korun protome registration fee akhajard taka joma ding",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "অনলাইনে ভিডিও লাইক করে দৈনিক ৩,০০০ টাকা আয় করুন। প্রথমে রেজিস্ট্রেশন ফি ১,০০০ টাকা জমা দিন।"
+  },
+  {
+    "text": "apnard phoné bipot Johnog bhai ras rukethe Akhoni amadir security bisheshab goke phone screen share kodun",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 1
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "আপনার ফোনে বিপদজনক ভাইরাস ঢুকেছে। এখনই আমাদের সিকিউরিটি বিশেষজ্ঞকে ফোন স্ক্রিন শেয়ার করুন।"
+  },
+  {
+    "text": "Bideshi Ho Pohar Parsil, Abnar Bideshi Bondhu Dami Parsil Patechi. Biman Bondur Kliadenset Jhonno Ponero Hajar Taka Patan.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "বিদেশি উপহার পার্সেল: আপনার বিদেশি বন্ধু দামী পার্সেল পাঠিয়েছে, বিমানবন্দর ক্লিয়ারেন্সের জন্য ১৫,০০০ টাকা পাঠান।"
+  },
+  {
+    "text": "Vizhar bank of India Alert Upner David Kardir Mayath Shesh Nothun Kardir Jonok Kardir Nambur Bholun",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "রিজার্ভ ব্যাংক অফ ইন্ডিয়া অ্যালার্ট: আপনার ডেবিট কার্ডের মেয়াদ শেষ। নতুন কার্ডের জন্য কার্ডের নম্বর বলুন।"
+  },
+  {
+    "text": "Hello ma, ami office teke beru ti. Ashar shamaim mich tiar faul ni ashbu, rateki ranna ho ti.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "হ্যালো মা, আমি অফিস থেকে বেরোচ্ছি। আসার সময় মিষ্টি আর ফল নিয়ে আসব, রাতে কি রান্না হচ্ছে?"
+  },
+  {
+    "text": "Bye! Kalki shokale hauratek train cotter shomai Amraki shotar mo thestatione poleche jabu",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "ভাই, কালকে সকালে হাওড়া থেকে ট্রেন কটার সময়? আমরা কি ছটার মধ্যে স্টেশনে পৌঁছে যাব?"
+  },
+  {
+    "text": "Namushkar daktar Babu, Babar Presade Roshudhar Prescription Taakbar Review Karate Chetilam Kalki Chembar Kholachi",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "নমস্কার ডাক্তারবাবু, বাবার প্রেসারের ওষুধের প্রেসক্রিপশনটা একবার রিভিউ করাতে চেয়েছিলাম। কাল কি চেম্বার খোলা আছে?"
+  },
+  {
+    "text": "adi koshik, kalkir football match taki darun holo Shaysh muhurti golta nahole amla heri jetam",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "আরে কৌশিক, কালকের ফুটবল ম্যাচটা কী দারুণ হলো! শেষ মুহূর্তে গোলটা না হলে আমরা হেরেই যেতাম।"
+  },
+  {
+    "text": "Namushkar, ami library teke bolchi, apni je boiti je no onuroth kore chillen shedi akhun upolab thoroece.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "নমস্কার, আমি লাইব্রেরি থেকে বলছি। আপনি যে বইটির জন্য অনুরোধ করেছিলেন সেটি এখন উপলব্ধ রয়েছে।"
+  },
+  {
+    "text": "Hello dear, Poojo Chutti te apnara Kolkatae Kabe Ashtin. Amra Shabai Akshatee Khakur dekte Berob Kintu.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "হ্যালো দিদি, পুজোর ছুটিতে আপনারা কলকাতায় কবে আসছেন? আমরা সবাই একসাথে ঠাকুর দেখতে বেরোব কিন্তু।"
+  },
+  {
+    "text": "Kaku, today's kir Bajadir Mathir Dam Kamun Choltsi, ili shmath bhalo eshe kir Bajadir.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "কাকু, আজকের বাজারের মাছের দাম কেমন চলছে? ইলিশ মাছ ভালো এসেছে কি বাজারে?"
+  },
+  {
+    "text": "Namushkarsar, Amadir Abashanir Barşik Shadharun Shabha Adami Rubibar Shakal Dostai Honush Tito Habi",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "নমস্কার স্যার, আমাদের আবাসনের বার্ষিক সাধারণ সভা আগামী রবিবার সকাল দশটায় অনুষ্ঠিত হবে।"
+  },
+  {
+    "text": "Adeshubho, College Project Report Prince Koranur Juno Tui Kondokane Jatsis.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "আরে শুভ, কলেজের প্রজেক্ট রিপোর্ট প্রিন্ট করানোর জন্য তুই কোন দোকানে যাচ্ছিস?"
+  },
+  {
+    "text": "হ্যালো, আমাদের বাড়ির ওয়াটার ফিল্টারের সার্ভিসিং করাতে হবে, কাল সকালে কাউকে পাঠাতে পারবেন?",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "হ্যালো, আমাদের বাড়ির ওয়াটার ফিল্টারের সার্ভিসিং করাতে হবে, কাল সকালে কাউকে পাঠাতে পারবেন?"
+  },
+  {
+    "text": "Namushkar masima, mishti bana norshei resipita ek barama kehoat sape like patiye de beng",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "নমস্কার মাসিমা, মিষ্টি বানানোর সেই রেসিপিটা একবার আমাকে হোয়াটসঅ্যাপে লিখে পাঠিয়ে দেবেন?"
+  },
+  {
+    "text": "ade bhai, shantini ke tan rumonir chobi gullo daarono teche draibir link tapathe deshto",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "আরে ভাই, শান্তিনিকেতন ভ্রমণের ছবিগুলো দারুণ উঠেছে! ড্রাইভের লিঙ্কটা পাঠিয়ে দিস তো।"
+  },
+  {
+    "text": "halo, moodir dokan teke bolsi apnar pathanu genishpatrel list onu jai shop goo che de kechi kakun patabu",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "হ্যালো, মুদির দোকান থেকে বলছি। আপনার পাঠানো জিনিসপত্রের লিস্ট অনুযায়ী সব গুছিয়ে রেখেছি, কখন পাঠাব?"
+  },
+  {
+    "text": "Namushkar, Banke Nothun Fixed Depojit Accounting Shuderd Harakun Kotho Chulsek to Bolming.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "নমস্কার, ব্যাংকে নতুন ফিক্সড ডিপোজিট অ্যাকাউন্টের সুদের হার এখন কত চলছে একটু বলবেন?"
+  },
+  {
+    "text": "Baba, Baikir, Insuranceer, Meya, Dada, Mishopta, Shesh Hotsie, Amikir, Online, Teke, Renew, Kade, Debu?",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "বাবা, বাইকের ইন্স্যুরেন্সের মেয়াদ আগামী সপ্তাহে শেষ হচ্ছে, আমি কি অনলাইন থেকে রিনিউ করে দেব?"
+  },
+  {
+    "text": "Hello! Agamika Shokalir Ganesh Klaser Shomai's Akih Thakshi Naki Kono Puri Barton Hoichi?",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "হ্যালো, আগামীকাল সকালের গানের ক্লাসের সময় কি একই থাকছে নাকি কোনো পরিবর্তন হয়েছে?"
+  },
+  {
+    "text": "Namushkar! Amadef Flatterong Koranur Junwag Junobhi Go Mystery Coach Paoja Beki?",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "নমস্কার, আমাদের ফ্ল্যাটে রং করানোর জন্য একজন অভিজ্ঞ মিস্ত্রির খোঁজ পাওয়া যাবে কি?"
+  },
+  {
+    "text": "Adi Shorab, Ad Shondai Matik Hildi Ashichtu, Shabai Kibachtar Munthe Chaleyashte Bala Hoeti.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "আরে সৌরভ, আজ সন্ধ্যায় মাঠে খেলতে আসছিস তো? সবাইকে পাঁচটার মধ্যে চলে আসতে বলা হয়েছে।"
+  },
+  {
+    "text": "Hello! Vestorai Arjrati Chardjune Rikti Tebel Bukkora Jabeki! Rathshare Atta Nagad!",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "হ্যালো, রেস্তোরাঁয় আজ রাতে চারজনের একটি টেবিল বুক করা যাবে কি? রাত সাড়ে আটটা নাগাদ।"
+  },
+  {
+    "text": "Namushkar, Adami Masher, Dihab Romunet, Junno Basher, Dikic Pavaja, Bekina, Ektu, Chekko, Chilam",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "নমস্কার, আগামী মাসের দীঘা ভ্রমণের জন্য বাসের টিকিট পাওয়া যাবে কিনা একটু চেক করছিলাম।"
+  },
+  {
+    "text": "Bon, Mayer, Daya, Betisir, Oshud, Sheshwaya, Gatsi, Ashar, Shamaid, Dokan, Teke, Muni, Kori, Niya, Ashish.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "বোন, মায়ের ডায়াবেটিসের ওষুধ শেষ হয়ে গেছে, আসার সময় দোকান থেকে মনে করে নিয়ে আসিস।"
+  },
+  {
+    "text": "Hello sir, Home Loaner Jhonno Proyoshonio Nothi Patre Tali Kata Iktu Email Kade Deveng.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "হ্যালো স্যার, হোম লোনের জন্য প্রয়োজনীয় নথিপত্রের তালিকাটা একটু ইমেইল করে দেবেন?"
+  },
+  {
+    "text": "Namushkar, gari ruashin karate kothuk honshomailat te pare, ami adhag hontar mod te aschi.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "নমস্কার, গাড়ির ওয়াশিং করাতে কতক্ষণ সময় লাগতে পারে? আমি আধা ঘণ্টার মধ্যে আসছি।"
+  },
+  {
+    "text": "A.A.M.E.T. RobiBadir A.D.E.K. Menu Thikholo B.D.A.N.E.A.N.E.N.H.E.",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "আরে অমিত, রবিবারের আড্ডায় কি মেনু ঠিক হলো? বিরিয়ানি আনা হচ্ছে তো?"
+  },
+  {
+    "text": "Hello, Chosmard Fremir Scrutai Ktudhili Hoya Ghahtse Dokanne Nia Suleh Thikkode Devin",
+    "language": "bn",
+    "script": "beng",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "হ্যালো, চশমার ফ্রেমের স্ক্রুটা একটু ঢিলে হয়ে গেছে, দোকানে নিয়ে আসলে ঠিক করে দেবেন?"
+  },
+  {
+    "text": "உடனே வீடியும் காலில் ஆசிராக வீட்டால் கைத்து வாரண்பிரப்பிக்கப் பிடம்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 1,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வணக்கம், நான் சென்னை சைபர் க்ரைம் போலீஸ் ஸ்டேஷனிலிருந்து இன்ஸ்பெக்டர் ராகவன் பேசுகிறேன். உங்கள் ஆதார் எண்ணைப் பயன்படுத்தி தீவிரவாத பணப்பரிமாற்றம் நடந்துள்ளது. உடனே வீடியோ காலில் ஆஜராகாவிட்டால் கைது வாரண்ட் பிறப்பிக்கப்படும்."
+  },
+  {
+    "text": "மின்சார வாரிய எச்சரிக்கை: அன்பான நுகர்வோரே, உங்களின் முந்தைய மாத மின் கட்டணம் செலுத்தப்படாததால் இன்று இரவு 9 மணிக்கு மின் இணைப்பு துண்டிக்கப்படும். உடனடியாக இந்த எண்ணை அழைத்து 200 ரூபாய் கட்டணம் செலுத்துங்கள்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "மின்சார வாரிய எச்சரிக்கை: அன்பான நுகர்வோரே, உங்களின் முந்தைய மாத மின் கட்டணம் செலுத்தப்படாததால் இன்று இரவு 9 மணிக்கு மின் இணைப்பு துண்டிக்கப்படும். உடனடியாக இந்த எண்ணை அழைத்து 200 ரூபாய் கட்டணம் செலுத்துங்கள்."
+  },
+  {
+    "text": "ஸ்டேட் பேங்க் ஆஃப் இந்தியா அவசர அறிவிப்பு: உங்களின் வங்கிக் கணக்கின் கேஒய்சி முடக்கப்பட்டுள்ளது. கணக்கை மீண்டும் இயக்க உங்கள் மொபைலுக்கு அனுப்பப்பட்ட 6 இலக்க ஓடிபியை உடனடியாக பகிருங்கள்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "ஸ்டேட் பேங்க் ஆஃப் இந்தியா அவசர அறிவிப்பு: உங்களின் வங்கிக் கணக்கின் கேஒய்சி முடக்கப்பட்டுள்ளது. கணக்கை மீண்டும் இயக்க உங்கள் மொபைலுக்கு அனுப்பப்பட்ட 6 இலக்க ஓடிபியை உடனடியாக பகிருங்கள்."
+  },
+  {
+    "text": "சென்னை விமான நிலைய சுங்கத்துறை: உங்கள் பெயரில் வந்த பார்சலில் போதைப்பொருட்கள் பிடிபட்டுள்ளன. சிபிஐ விசாரணை மற்றும் சிறைத் தண்டனையை தவிர்க்க உடனே அபராத தொகையை செலுத்துங்கள்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "சென்னை விமான நிலைய சுங்கத்துறை: உங்கள் பெயரில் வந்த பார்சலில் போதைப்பொருட்கள் பிடிபட்டுள்ளன. சிபிஐ விசாரணை மற்றும் சிறைத் தண்டனையை தவிர்க்க உடனே அபராத தொகையை செலுத்துங்கள்."
+  },
+  {
+    "text": "வாழ்த்துக்கள்! மத்திய அரசின் திட்டத்தின் கீழ் உங்களுக்கு 4 லட்சம் ரூபாய் மானியக் கடன் ஒப்புதல் அளிக்கப்பட்டுள்ளது. கடன் தொகையை பெற உடனடியாக 3,500 ரூபாய் பதிவு கட்டணம் செலுத்துங்கள்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வாழ்த்துக்கள்! மத்திய அரசின் திட்டத்தின் கீழ் உங்களுக்கு 4 லட்சம் ரூபாய் மானியக் கடன் ஒப்புதல் அளிக்கப்பட்டுள்ளது. கடன் தொகையை பெற உடனடியாக 3,500 ரூபாய் பதிவு கட்டணம் செலுத்துங்கள்."
+  },
+  {
+    "text": "உங்கள் சிம் கார்டு ஆவணங்கள் சரியாக இல்லாததால் 2 மணி நேரத்தில் முடக்கப்படும். சேவை தொடர எனிடெஸ்க் செயலியை பதிவிறக்கம் செய்து சரிபார்க்கவும்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 1
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "உங்கள் சிம் கார்டு ஆவணங்கள் சரியாக இல்லாததால் 2 மணி நேரத்தில் முடக்கப்படும். சேவை தொடர எனிடெஸ்க் செயலியை பதிவிறக்கம் செய்து சரிபார்க்கவும்."
+  },
+  {
+    "text": "அம்மா, நான் விஜய் பேசுகிறேன்... என் நண்பனின் காரில் விபத்து ஏற்பட்டு போலீசார் என்னை பிடித்து வைத்துள்ளனர். என்னை விடுவிக்க உடனே 25,000 ரூபாய் கூகுள் பே செய்யுங்கள், யாரிடமும் சொல்லாதீர்கள்!",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 1,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 1,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "அம்மா, நான் விஜய் பேசுகிறேன்... என் நண்பனின் காரில் விபத்து ஏற்பட்டு போலீசார் என்னை பிடித்து வைத்துள்ளனர். என்னை விடுவிக்க உடனே 25,000 ரூபாய் கூகுள் பே செய்யுங்கள், யாரிடமும் சொல்லாதீர்கள்!"
+  },
+  {
+    "text": "ராயில் வேலை வாய்பு, உங்களுக்கு கலார் பண்ணி ஒருத்தியாக இருந்து, வாணி நீ என்னால் ஆனைப் பேரா அயாயிரம் ரோபாய் பாதுகாப்பு வைப்புத்துகை செல்துங்கள்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "ரயில்வே வாரிய வேலைவாய்ப்பு: உங்களுக்கு கிளார்க் பணி உறுதியாகியுள்ளது. பணி நியமன ஆணை பெற 5,000 ரூபாய் பாதுகாப்பு வைப்புத்தொகை செலுத்துங்கள்."
+  },
+  {
+    "text": "வருமான வரித்துறை நோட்டீஸ்: உங்களுக்கு 45,000 ரூபாய் வரி திரும்பப் பெற வேண்டியுள்ளது. பணத்தை பெற உங்கள் ஏடிஎம் அட்டை விவரங்களை சரிபார்க்கவும்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வருமான வரித்துறை நோட்டீஸ்: உங்களுக்கு 45,000 ரூபாய் வரி திரும்பப் பெற வேண்டியுள்ளது. பணத்தை பெற உங்கள் ஏடிஎம் அட்டை விவரங்களை சரிபார்க்கவும்."
+  },
+  {
+    "text": "சென்னை வேண்டும், உங்கள் நீது காசுளை முக்சுடி வருக்குத்துடையிரு பட்டுள்ளது. உடனை ஆச்சிராகின் பாதினை இந்த ஆயிரம் முக்கும் பினைத்துகொள்ளுத்துங்கள்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "சென்னை உயர்நீதிமன்றம்: உங்கள் மீது காசோலை மோசடி வழக்கு தொடரப்பட்டுள்ளது. உடனே ஆஜராகி 15,000 ரூபாய் பிணைத்தொகை செலுத்துங்கள்."
+  },
+  {
+    "text": "உங்கள் கிரெடிட் கார்டில் சந்தேகத்திற்கிடமாக 35,000 ரூபாய் பரிவர்த்தனை நடந்துள்ளது. அதை ரத்து செய்ய கார்டின் பின்னால் உள்ள சிவிவி எண்ணை கூறவும்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "உங்கள் கிரெடிட் கார்டில் சந்தேகத்திற்கிடமாக 35,000 ரூபாய் பரிவர்த்தனை நடந்துள்ளது. அதை ரத்து செய்ய கார்டின் பின்னால் உள்ள சிவிவி எண்ணை கூறவும்."
+  },
+  {
+    "text": "லாட்டரி துறை: உங்கள் தொலைபேசி எண்ணிற்கு 20 லட்சம் ரூபாய் பரிசு விழுந்துள்ளது. பரிசை பெற 10,000 ரூபாய் அரசு வரி செலுத்தவும்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "லாட்டரி துறை: உங்கள் தொலைபேசி எண்ணிற்கு 20 லட்சம் ரூபாய் பரிசு விழுந்துள்ளது. பரிசை பெற 10,000 ரூபாய் அரசு வரி செலுத்தவும்."
+  },
+  {
+    "text": "சமயல் இருவாயும் மானியம, உங்கள் கேசமானியம் நிறுத்து படுள்ளது. நீங்கள் பிறக உங்கள் வாங்கிக் கணக்கும் மற்றும் அதற்று விவறுங்களையினையுங்கள்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "சமையல் எரிவாயு மானியம்: உங்கள் கேஸ் மானியம் நிறுத்தப்பட்டுள்ளது. மீண்டும் பெற உங்கள் வங்கி கணக்கு மற்றும் ஆதார் விவரங்களை இணையுங்கள்."
+  },
+  {
+    "text": "டெலிகாம் ஒழுங்குமுறை ஆணையம்: உங்கள் எண்ணிலிருந்து சட்டவிரோத அழைப்புகள் செல்கின்றன. உங்கள் அனைத்து சிம் கார்டுகளும் ரத்து செய்யப்படும்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "டெலிகாம் ஒழுங்குமுறை ஆணையம்: உங்கள் எண்ணிலிருந்து சட்டவிரோத அழைப்புகள் செல்கின்றன. உங்கள் அனைத்து சிம் கார்டுகளும் ரத்து செய்யப்படும்."
+  },
+  {
+    "text": "தங்களின் பார்ச்சல முக்க வரித்தா வராகக்கிறீர்கள் பதால் தேங்கினிர்கிறாது. மறுத்திலி வரிப் பெரு பார்த்துருவுவையும் உடனே ஆனில் நில் செல்துங்கள்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "தங்களின் பார்சல் முகவரி தவறாக இருப்பதால் தேங்கி நிற்கிறது. மறு டெலிவரி பெற 10 ரூபாய் உடனே ஆன்லைனில் செலுத்துங்கள்."
+  },
+  {
+    "text": "அவசரம மருத்துவை செல்வுக்குப் பாத்து அயிரமுருப்பாயும் செய்கிறீர்கள் நாளை திருப்பி தருகிறீர்கள்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 1,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "அலுவலக நண்பர் மோசடி: நான் உங்கள் மேலாளர் பேசுகிறேன், அவசர மருத்துவ செலவுக்கு 10,000 ரூபாய் ஜிபே செய்யுங்கள், நாளை திருப்பித் தருகிறேன்."
+  },
+  {
+    "text": "சாயபர் கிரையம் பிரிவு, உங்கள் முப்புயில் தாடி செய்ய பட்டு செய்யில் இங்கும் உள்ளனை, சத்தன் நட வழிக்கைத் தவிருக்கும் ஒடன் நடியாகச் கிரியின் செய்யிர் செய்யும்",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 1
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "சைபர் கிரைம் பிரிவு: உங்கள் மொபைலில் தடை செய்யப்பட்ட செயலிகள் உள்ளன. சட்ட நடவடிக்கை தவிர்க்க உடனடியாக ஸ்கிரீன் ஷேர் செய்யவும்."
+  },
+  {
+    "text": "அஞ்சலக சேமிப்பு கணக்கு: உங்கள் கணக்கு முடக்கப்பட்டுள்ளது. மீண்டும் இயக்க உங்கள் நெட் பேங்கிங் பாஸ்வேர்டை சரிபார்க்கவும்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "அஞ்சலக சேமிப்பு கணக்கு: உங்கள் கணக்கு முடக்கப்பட்டுள்ளது. மீண்டும் இயக்க உங்கள் நெட் பேங்கிங் பாஸ்வேர்டை சரிபார்க்கவும்."
+  },
+  {
+    "text": "உடனடி கடன் திட்டம்: எந்த ஆவணமும் இல்லாமல் 3 லட்சம் ரூபாய் கடன். கோப்பு கட்டணம் 2,000 ரூபாய் செலுத்தி பணத்தை பெறுங்கள்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "உடனடி கடன் திட்டம்: எந்த ஆவணமும் இல்லாமல் 3 லட்சம் ரூபாய் கடன். கோப்பு கட்டணம் 2,000 ரூபாய் செலுத்தி பணத்தை பெறுங்கள்."
+  },
+  {
+    "text": "சுங்கத் துரை பார்சல மோசலி, உங்கள் பார்சலில் தங்கம் மற்றும் போது புருள்ளுத்து, சுங்கத் துரை அதிகாரியிடம் பேசி திருவுக்கானிட்டேன்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "சுங்கத்துறை பார்சல் மோசடி: உங்கள் பார்சலில் தங்கம் மற்றும் போதைப்பொருள் உள்ளது, சுங்கத்துறை அதிகாரியிடம் பேசி தீர்வு காணுங்கள்."
+  },
+  {
+    "text": "பான் கார்டு ரத்து எச்சரிக்கை: இன்றே பான் கார்டை ஆதாருடன் இணைக்க தவறினால் 10,000 ரூபாய் அபராதம் விதிக்கப்படும்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "பான் கார்டு ரத்து எச்சரிக்கை: இன்றே பான் கார்டை ஆதாருடன் இணைக்க தவறினால் 10,000 ரூபாய் அபராதம் விதிக்கப்படும்."
+  },
+  {
+    "text": "VT Lerunday YouTube video like say the dinamong move airam rubai sampa thikalam Thodakka katanam airam rubai say litha boom",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வீட்டிலிருந்தே யூடியூப் வீடியோ லைக் செய்து தினமும் 3,000 ரூபாய் சம்பாதிக்கலாம். தொடக்க கட்டணம் 1,000 ரூபாய் செலுத்தவும்."
+  },
+  {
+    "text": "உங்கள் போனில் கொடியை வைரச் சொல்லதே, உங்கள் தரவைப் பாதுகாக்கு என்கள் தோலில் நுட்டப் ப வள்ளுங்க இருக்கும் விமுடன் அனுங்கள் கொடுங்கள்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 1
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "உங்கள் போனில் கொடிய வைரஸ் உள்ளது. உங்கள் தரவை பாதுகாக்க எங்கள் தொழில்நுட்ப வல்லுநருக்கு ரிமோட் அணுகல் கொடுங்கள்."
+  },
+  {
+    "text": "வெளிநாட்டு பரிசு பார்சல்: லண்டனிலிருந்து உங்கள் நண்பர் அனுப்பிய பரிசு மாட்டிக்கொண்டுள்ளது, கிளியரன்ஸ் கட்டணம் 20,000 செலுத்துங்கள்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 1,
+      "URGENCY": 1,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வெளிநாட்டு பரிசு பார்சல்: லண்டனிலிருந்து உங்கள் நண்பர் அனுப்பிய பரிசு மாட்டிக்கொண்டுள்ளது, கிளியரன்ஸ் கட்டணம் 20,000 செலுத்துங்கள்."
+  },
+  {
+    "text": "விஷர் வங்கே அரிவிப்பு, உங்கள் பாடு ஏதியம் காரிலும் செய்லின் அக்கப்படும் போது ஏகாரிலும் பெருவங்கள் பாதினாரு எல்ல காரிலும் என்னை சொல்லிங்கள்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 1,
+    "categories": {
+      "CRED_REQUEST": 1,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 1,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 1,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "ரிசர்வ் வங்கி அறிவிப்பு: உங்கள் பழைய ஏடிஎம் கார்டு செயலிழக்கப்படும், புதிய கார்டு பெற உங்கள் 16 இலக்க கார்டு எண்ணை சொல்லுங்கள்."
+  },
+  {
+    "text": "வரும்போது தேவையானை பொருட்ட கலை மறக்காமல் வாங்கிட்டு வாங்கிட்டு வாங்கிறேன்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "ஹலோ அண்ணா, நாளைக்கு ஊருக்கு கிளம்புறீங்களா? வரும்போது தேவையான பொருட்களை மறக்காமல் வாங்கிட்டு வாங்க."
+  },
+  {
+    "text": "வணக்கம, நான் தெரிக்கிறீர்களில் இருந்து அழைக்கிறோம். நாளை மாலை இந்த மனிக்கு உங்களை அப்பா இந்த நேரம் குரிக்கப்பட்டுள்ளது.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வணக்கம், டாக்டர் கிளினிக்கிலிருந்து அழைக்கிறோம். நாளை மாலை 5 மணிக்கு உங்கள் அப்பாயின்ட்மென்ட் நேரம் குறிக்கப்பட்டுள்ளது."
+  },
+  {
+    "text": "தம்பி, நேற்றாயே கரிக்கிற்குட்ட மேட்டும் பார்த்தாயா? கடைச்சி ஒவர்கள் தோனையின் பேட்டீங்கள் மிக்குவும் அருப்புதமாக இருந்தது.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "தம்பி, நேற்றைய கிரிக்கெட் மேட்ச் பார்த்தாயா? கடைசி ஓவரில் தோனியின் பேட்டிங் மிகவும் அற்புதமாக இருந்தது."
+  },
+  {
+    "text": "வணக்கம, வழியில் நடக்கம் ஆண்டு விடாம் நீங்கள் சிக்கானே உடைக்கும் எப்போது வழங்கப் பெடும் என்று தாக வில்திருவிக்கேன். முடியுமா?",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வணக்கம், பள்ளியில் நடக்கும் ஆண்டு விழா நிகழ்ச்சிக்கான உடைகள் எப்போது வழங்கப்படும் என்று தகவல் தெரிவிக்க முடியுமா?"
+  },
+  {
+    "text": "அப்பா, வையில் நில் அருவாடைய வேலைகள் முடிந்துவிட்டன் அவா, இந்த முடைய வேலையில் எப்படி வந்துவிட்டுவிட்டு.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "அப்பா, வயலில் நெல் அறுவடை வேலைகள் முடிந்துவிட்டனவா? இந்த முறை விளைச்சல் எப்படி வந்துள்ளது?"
+  },
+  {
+    "text": "நாளை மாலை நாம் இருவரும் மிரினாக கடிருக்கிறது செல்லலாமா? உனக்கு நேரம் இருக்குமா?",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "ஹலோ பிரவீன், நாளை மாலை நாம் இருவரும் மெரினா கடற்கரைக்கு செல்லலாமா? உனக்கு நேரம் இருக்குமா?"
+  },
+  {
+    "text": "அம்மா, நான் கைக்கிறி மார்க்கிறி இருக்கிறேன், தக்காளி, வேங்காயம் வாங்கிவிட்டேன், வேறு எதாவது வாங்க வேண்டுமா?",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "அம்மா, நான் காய்கறி மார்க்கெட்டில் இருக்கிறேன். தக்காளி, வெங்காயம் வாங்கிவிட்டேன், வேறு ஏதாவது வாங்க வேண்டுமா?"
+  },
+  {
+    "text": "வணக்கம் சார், நமது குடியிருப்பு சங்கத்தின் மாதான் அந்திருக்குடம் இந்த நயாய் திருகிற்கிறாய் காலைப் பத்து மனிக்கின்று நடைப்பிரும்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வணக்கம் சார், நமது குடியிருப்பு சங்கத்தின் மாதாந்திர கூட்டம் இந்த ஞாயிற்றுக்கிழமை காலை 10 மணிக்கு நடைபெறும்."
+  },
+  {
+    "text": "Halu, Suresh, Kalluri, Prajet, Pailai, Samur, Pika, Vindiya, Kadya, Sithedi, Yepu, the Indresolvaaya.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "ஹலோ சுரேஷ், கல்லூரி ப்ராஜெக்ட் பைலை சமர்ப்பிக்க வேண்டிய கடைசி தேதி எப்போது என்று சொல்வாயா?"
+  },
+  {
+    "text": "வணக்கம, எங்கள் வீட்டு கொடினிற்று சுத்திகரிப்பு என்துறைத்தைப் பாலுத்து வார்க்கனாலை ஒரு வரும் அனுப்பு முடியுமா?",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வணக்கம், எங்கள் வீட்டு குடிநீர் சுத்திகரிப்பு இயந்திரத்தை பழுதுபார்க்க நாளை ஒருவரை அனுப்ப முடியுமா?"
+  },
+  {
+    "text": "வணக்கமத்தை, தியிப்பாவில் பண்டிக்கைக்கு நீங்கள் சென்னைக்கு எப்போது வருகிறீர்கள். ஆனை வரும் அவளுடன் காத்திரிக்கிறோம்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வணக்கம் அத்தை, தீபாவளி பண்டிகைக்கு நீங்கள் சென்னைக்கு எப்போது வருகிறீர்கள்? அனைவரும் ஆவலுடன் காத்திருக்கிறோம்."
+  },
+  {
+    "text": "நண்பா, கடந்த வாரும் கோடைக் கானல் சென்று புகிப்படுங்கள் நண்டுக்கு வந்துள்ளனே, அந்த கூக்குள் திரை வினைப் பயானுப்பு.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "நண்பா, கடந்த வாரம் கொடைக்கானல் சென்ற புகைப்படங்கள் நன்றாக வந்துள்ளன. அந்த கூகுள் டிரைவ் இணைப்பை அனுப்பு."
+  },
+  {
+    "text": "நீங்கள் கேட்டா அனைத்து பொருட்டும் தயாராக உள்ளனே, எப்போது கொண்டு வரலாம்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "ஹலோ, மளிகைக் கடையிலிருந்து பேசுகிறேன். நீங்கள் கேட்ட அனைத்து பொருட்களும் தயாராக உள்ளன, எப்போது கொண்டு வரலாம்?"
+  },
+  {
+    "text": "வணக்கம, வாங்கியில் புதியே நிலையானே வைப்பு நித்து தொடர்ந்து வதர்க்கானே வாட்டி வீகித்துங்கள் பற்றி தெரிந்துக்கொள்ளே, விரும்புகிறேன்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வணக்கம், வங்கியில் புதிய நிலையான வைப்பு நிதி தொடங்குவதற்கான வட்டி விகிதங்கள் பற்றி தெரிந்து கொள்ள விரும்புகிறேன்."
+  },
+  {
+    "text": "அப்பா, இருச்சக்கிறேன் வாங்க நத்தின் காப்பிடு, இந்த மாது இருத்தியில் முடிக்கிறேன். அதை ஆனில் நில் புதுப்பித்துவிடட்டுமா?",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "அப்பா, இருசக்கர வாகனத்தின் காப்பீடு இந்த மாத இறுதியில் முடிகிறது, அதை ஆன்லைனில் புதுப்பித்து விடட்டுமா?"
+  },
+  {
+    "text": "நாளை காலை வருக்கம் போல்யோங்க வகுப்பு தொடுங்கும் மாலித்து எதினும் மாட்டுங்களுக்கும் இல்லை.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "ஹலோ, நாளை காலை வழக்கம் போல் யோகா வகுப்பு தொடங்குமா அல்லது ஏதேனும் மாற்றங்கள் உள்ளதா?"
+  },
+  {
+    "text": "வணக்கம், எங்கள் புதியை வீட்டிர்க்கு வரணம் புச விண்டும், நீங்கள் ஒரு முறை வந்து மாதிப் பிடித்து செய்துத்தான் முடியுமா?",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வணக்கம், எங்கள் புதிய வீட்டிற்கு வர்ணம் பூச வேண்டும். நீங்கள் ஒருமுறை வந்து மதிப்பீடு செய்து தர முடியுமா?"
+  },
+  {
+    "text": "நீங்கள் மாலை கால் பந்துவிலையாட்டு மைதான திருக்கு வருகிறாயா? ஆனை வரும் அயன்து மனிக்குக்குக் கூடிகிறும்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "ஹலோ தினேஷ், இன்று மாலை கால்பந்து விளையாட மைதானத்திற்கு வருகிறாயா? அனைவரும் 5 மணிக்கு கூடுகிறோம்."
+  },
+  {
+    "text": "வணக்கம, உனக்கு வகத்தில் என்று இரவு நாங்கள் பேருக்கு எடும் பதிவு செய்ய முடியுமா? இரவு என்று எட்டும் மனியால் வேல் வரலாம்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வணக்கம், உணவகத்தில் இன்று இரவு நான்கு பேருக்கு இடம் பதிவு செய்ய முடியுமா? இரவு எட்டு மணி அளவில் வரலாம்."
+  },
+  {
+    "text": "வணக்கம, அடுத்த வாரம மாதுரை செல்வதற்கானே அரசு பேருந்து முன்பதிவித்து தொடங்கி விட்டதான் என்று தெரிந்துகொள்ள வேண்டும்.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வணக்கம், அடுத்த வாரம் மதுரை செல்வதற்கான அரசு பேருந்து முன்பதிவு தொடங்கிவிட்டதா என்று தெரிந்து கொள்ள வேண்டும்."
+  },
+  {
+    "text": "Akka, 아빠 wind ratha ratha maathiragal tindvitana varun bodhara kamal vangi varungal.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "அக்கா, அப்பாவின் ரத்த அழுத்த மாத்திரைகள் தீர்ந்துவிட்டன, வரும்போது மறக்காமல் வாங்கி வாருங்கள்."
+  },
+  {
+    "text": "வணக்கம் சார், வீடுக் கடனுக் கானும் அவனுங்கள் என்னும் தேவைப் படும் என்று பட்டியில் எனக்கு மின்னுங்கள் செய்து என்று.",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வணக்கம் சார், வீட்டுக் கடனுக்கான ஆவணங்கள் என்னென்ன தேவைப்படும் என்ற பட்டியலை எனக்கு மின்னஞ்சல் செய்யுங்கள்."
+  },
+  {
+    "text": "வணக்கம, காறை சரிவிச் செய்து முடிக்கை எவ்வளவு நேரமாகும, நான் மாலை யாரும் மனிக்கு வந்து எடுத்துக்கொள்ளவா?",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வணக்கம், காரை சர்வீஸ் செய்து முடிக்க எவ்வளவு நேரம் ஆகும்? நான் மாலை 6 மணிக்கு வந்து எடுத்துக்கொள்ளவா?"
+  },
+  {
+    "text": "Halu Karthik, Naliya, Halu Vellaga Vellaga Karthikana Kopu Gali Thayar Siddhvitaya",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "ஹலோ கார்த்திக், நாளைய அலுவலக விளக்கக்காட்சிக்கான கோப்புகளை தயார் செய்துவிட்டாயா?"
+  },
+  {
+    "text": "வணக்கம், மிதிவண்டியின் டயர் பஞ்சர் ஒட்ட வேண்டும், கடை இன்னும் திறந்திருக்கிறதா?",
+    "language": "ta",
+    "script": "taml",
+    "is_scam": 0,
+    "categories": {
+      "CRED_REQUEST": 0,
+      "PAYMENT_DEMAND": 0,
+      "URGENCY": 0,
+      "AUTHORITY_IMPERSONATION": 0,
+      "RELATIONSHIP_IMPERSONATION": 0,
+      "ACCOUNT_THREAT": 0,
+      "SECRECY": 0,
+      "REMOTE_ACCESS": 0
+    },
+    "source": "s3_whisper_transcribed",
+    "split": "test",
+    "ground_truth_text": "வணக்கம், மிதிவண்டியின் டயர் பஞ்சர் ஒட்ட வேண்டும், கடை இன்னும் திறந்திருக்கிறதா?"
+  }
+]

@@ -235,15 +235,37 @@ def run_full_scam_evaluation(
     f1_gap = round(float(s1_results["f1"] - s2_results["f1"]), 4)
     acc_gap = round(float(s1_results["accuracy"] - s2_results["accuracy"]), 4)
 
-    # S3 condition note per 13 §7.1: S3 evaluates Whisper transcription output
-    s3_results = {
-        "status": "EVALUATED_PARALLEL",
-        "description": "ASR Whisper-transcribed real audio feeds into S2 classifier",
-        "accuracy": s2_results["accuracy"],
-        "f1": s2_results["f1"],
-        "auc_roc": s2_results["auc_roc"],
-        "notes": "Directly bounds end-to-end linguistic performance under Whisper transcription",
-    }
+    # Load and evaluate genuine Condition S3 (ASR Transcribed) per 13 §7.1
+    s3_candidates = [
+        s3_path if s3_path else None,
+        Path("backend/data/scam/s3_transcribed_test.json"),
+        Path("data/scam/s3_transcribed_test.json"),
+        Path(__file__).parent.parent.parent / "data" / "scam" / "s3_transcribed_test.json",
+    ]
+    s3_records = None
+    for cand in s3_candidates:
+        if cand and Path(cand).exists():
+            with open(cand, "r", encoding="utf-8") as f:
+                s3_records = json.load(f)
+            print(f"Loading Condition S3 (Actual Whisper ASR Transcriptions) from: {cand}")
+            break
+
+    if s3_records:
+        print(f"Evaluating Condition S3 (ASR Transcribed, {len(s3_records)} samples)...")
+        s3_results = evaluate_records(model, tokenizer, s3_records, device)
+        s3_results["status"] = "EVALUATED_GENUINE"
+        s3_results["description"] = "Real TTS audio transcribed through faster-whisper and evaluated end-to-end"
+        s2_to_s3_f1_gap = round(float(s2_results["f1"] - s3_results["f1"]), 4)
+        s2_to_s3_acc_gap = round(float(s2_results["accuracy"] - s3_results["accuracy"]), 4)
+    else:
+        s3_results = {
+            "status": "PENDING_ASR_TRANSCRIPTION",
+            "description": "ASR Whisper transcription pending",
+            "accuracy": None,
+            "f1": None,
+        }
+        s2_to_s3_f1_gap = 0.0
+        s2_to_s3_acc_gap = 0.0
 
     linguistic_summary = {
         "status": "EVALUATED_GENUINE",
@@ -260,6 +282,14 @@ def run_full_scam_evaluation(
             "interpretation": (
                 f"S1->S2 F1 gap is {f1_gap:+.4f}. "
                 "Reflects domain shift from template generation to authentic human phone call syntax."
+            ),
+        },
+        "asr_degradation_gap_s2_to_s3": {
+            "f1_gap": s2_to_s3_f1_gap,
+            "accuracy_gap": s2_to_s3_acc_gap,
+            "interpretation": (
+                f"S2->S3 F1 drop is {s2_to_s3_f1_gap:.4f} (-{s2_to_s3_f1_gap*100:.2f}%). "
+                "Reflects impact of actual faster-whisper acoustic/phonetic errors on downstream classifier."
             ),
         },
     }

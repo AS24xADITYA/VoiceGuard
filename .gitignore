@@ -52,6 +52,7 @@ credentials.json
 data/
 backend/data/
 !backend/data/scam/s2_heldout_real_test.json
+!backend/data/scam/s3_transcribed_test.json
 *.db
 *.db-journal
 *.db-wal

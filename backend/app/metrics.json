@@ -1,5 +1,5 @@
 {
-  "evaluation_timestamp": "2026-09-19T11:42:10.711458+00:00",
+  "evaluation_timestamp": "2026-09-20T08:49:31.346512+00:00",
   "status": "EVALUATED_GENUINE",
   "model": {
     "checkpoint": "model_best.pt",
@@ -187,6 +187,364 @@
       "description": "Neural TTS (FastSpeech + MelGAN)",
       "mean_score": 0.8418,
       "eer_or_miss_rate": 0.0011
+    }
+  },
+  "linguistic_scam": {
+    "status": "EVALUATED_GENUINE",
+    "model_version": "scam-xlm-roberta-v1.0",
+    "operating_threshold": 0.5,
+    "conditions": {
+      "s1_heldout_generated": {
+        "n_samples": 825,
+        "accuracy": 0.9939,
+        "precision": 0.9916,
+        "recall": 0.9944,
+        "f1": 0.993,
+        "auc_roc": 0.9997,
+        "confusion_matrix": [
+          [
+            466,
+            3
+          ],
+          [
+            2,
+            354
+          ]
+        ],
+        "per_language": {
+          "en": {
+            "n_samples": 225,
+            "accuracy": 0.9778,
+            "precision": 0.8929,
+            "recall": 0.9259,
+            "f1": 0.9091,
+            "auc_roc": 0.9908
+          },
+          "hi": {
+            "n_samples": 150,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "auc_roc": 1.0
+          },
+          "mr": {
+            "n_samples": 150,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "auc_roc": 1.0
+          },
+          "bn": {
+            "n_samples": 150,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "auc_roc": 1.0
+          },
+          "ta": {
+            "n_samples": 150,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "auc_roc": 1.0
+          }
+        },
+        "categories": {
+          "macro_f1": 0.5753,
+          "breakdown": {
+            "CRED_REQUEST": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "n_positive": 78
+            },
+            "PAYMENT_DEMAND": {
+              "f1": 0.937,
+              "precision": 0.8846,
+              "recall": 0.9961,
+              "n_positive": 254
+            },
+            "URGENCY": {
+              "f1": 0.9956,
+              "precision": 0.9942,
+              "recall": 0.9971,
+              "n_positive": 342
+            },
+            "AUTHORITY_IMPERSONATION": {
+              "f1": 0.8694,
+              "precision": 0.769,
+              "recall": 1.0,
+              "n_positive": 253
+            },
+            "RELATIONSHIP_IMPERSONATION": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "n_positive": 0
+            },
+            "ACCOUNT_THREAT": {
+              "f1": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "n_positive": 329
+            },
+            "SECRECY": {
+              "f1": 0.8,
+              "precision": 1.0,
+              "recall": 0.6667,
+              "n_positive": 3
+            },
+            "REMOTE_ACCESS": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "n_positive": 0
+            }
+          }
+        }
+      },
+      "s2_heldout_real_style": {
+        "n_samples": 250,
+        "accuracy": 0.96,
+        "precision": 0.9528,
+        "recall": 0.968,
+        "f1": 0.9603,
+        "auc_roc": 0.9956,
+        "confusion_matrix": [
+          [
+            119,
+            6
+          ],
+          [
+            4,
+            121
+          ]
+        ],
+        "per_language": {
+          "en": {
+            "n_samples": 50,
+            "accuracy": 0.88,
+            "precision": 0.8276,
+            "recall": 0.96,
+            "f1": 0.8889,
+            "auc_roc": 0.9712
+          },
+          "hi": {
+            "n_samples": 50,
+            "accuracy": 0.96,
+            "precision": 1.0,
+            "recall": 0.92,
+            "f1": 0.9583,
+            "auc_roc": 1.0
+          },
+          "mr": {
+            "n_samples": 50,
+            "accuracy": 0.98,
+            "precision": 1.0,
+            "recall": 0.96,
+            "f1": 0.9796,
+            "auc_roc": 1.0
+          },
+          "bn": {
+            "n_samples": 50,
+            "accuracy": 0.98,
+            "precision": 0.9615,
+            "recall": 1.0,
+            "f1": 0.9804,
+            "auc_roc": 0.9968
+          },
+          "ta": {
+            "n_samples": 50,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "auc_roc": 1.0
+          }
+        },
+        "categories": {
+          "macro_f1": 0.6621,
+          "breakdown": {
+            "CRED_REQUEST": {
+              "f1": 0.6538,
+              "precision": 0.85,
+              "recall": 0.5312,
+              "n_positive": 32
+            },
+            "PAYMENT_DEMAND": {
+              "f1": 0.6218,
+              "precision": 0.6852,
+              "recall": 0.5692,
+              "n_positive": 65
+            },
+            "URGENCY": {
+              "f1": 0.9191,
+              "precision": 0.9076,
+              "recall": 0.931,
+              "n_positive": 116
+            },
+            "AUTHORITY_IMPERSONATION": {
+              "f1": 0.605,
+              "precision": 0.4615,
+              "recall": 0.878,
+              "n_positive": 41
+            },
+            "RELATIONSHIP_IMPERSONATION": {
+              "f1": 0.7368,
+              "precision": 0.875,
+              "recall": 0.6364,
+              "n_positive": 11
+            },
+            "ACCOUNT_THREAT": {
+              "f1": 0.8172,
+              "precision": 0.7308,
+              "recall": 0.9268,
+              "n_positive": 82
+            },
+            "SECRECY": {
+              "f1": 0.8182,
+              "precision": 0.75,
+              "recall": 0.9,
+              "n_positive": 10
+            },
+            "REMOTE_ACCESS": {
+              "f1": 0.125,
+              "precision": 0.5,
+              "recall": 0.0714,
+              "n_positive": 14
+            }
+          }
+        }
+      },
+      "s3_asr_transcribed": {
+        "n_samples": 250,
+        "accuracy": 0.724,
+        "precision": 0.9242,
+        "recall": 0.488,
+        "f1": 0.6387,
+        "auc_roc": 0.8833,
+        "confusion_matrix": [
+          [
+            120,
+            5
+          ],
+          [
+            64,
+            61
+          ]
+        ],
+        "per_language": {
+          "en": {
+            "n_samples": 50,
+            "accuracy": 0.88,
+            "precision": 0.8276,
+            "recall": 0.96,
+            "f1": 0.8889,
+            "auc_roc": 0.9616
+          },
+          "hi": {
+            "n_samples": 50,
+            "accuracy": 0.82,
+            "precision": 1.0,
+            "recall": 0.64,
+            "f1": 0.7805,
+            "auc_roc": 0.9904
+          },
+          "mr": {
+            "n_samples": 50,
+            "accuracy": 0.56,
+            "precision": 1.0,
+            "recall": 0.12,
+            "f1": 0.2143,
+            "auc_roc": 0.7424
+          },
+          "bn": {
+            "n_samples": 50,
+            "accuracy": 0.52,
+            "precision": 1.0,
+            "recall": 0.04,
+            "f1": 0.0769,
+            "auc_roc": 0.776
+          },
+          "ta": {
+            "n_samples": 50,
+            "accuracy": 0.84,
+            "precision": 1.0,
+            "recall": 0.68,
+            "f1": 0.8095,
+            "auc_roc": 0.9904
+          }
+        },
+        "categories": {
+          "macro_f1": 0.3475,
+          "breakdown": {
+            "CRED_REQUEST": {
+              "f1": 0.2222,
+              "precision": 1.0,
+              "recall": 0.125,
+              "n_positive": 32
+            },
+            "PAYMENT_DEMAND": {
+              "f1": 0.3333,
+              "precision": 0.6,
+              "recall": 0.2308,
+              "n_positive": 65
+            },
+            "URGENCY": {
+              "f1": 0.5562,
+              "precision": 0.8868,
+              "recall": 0.4052,
+              "n_positive": 116
+            },
+            "AUTHORITY_IMPERSONATION": {
+              "f1": 0.3824,
+              "precision": 0.4815,
+              "recall": 0.3171,
+              "n_positive": 41
+            },
+            "RELATIONSHIP_IMPERSONATION": {
+              "f1": 0.2667,
+              "precision": 0.5,
+              "recall": 0.1818,
+              "n_positive": 11
+            },
+            "ACCOUNT_THREAT": {
+              "f1": 0.5484,
+              "precision": 0.8095,
+              "recall": 0.4146,
+              "n_positive": 82
+            },
+            "SECRECY": {
+              "f1": 0.4706,
+              "precision": 0.5714,
+              "recall": 0.4,
+              "n_positive": 10
+            },
+            "REMOTE_ACCESS": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "n_positive": 14
+            }
+          }
+        },
+        "status": "EVALUATED_GENUINE",
+        "description": "Real TTS audio transcribed through faster-whisper and evaluated end-to-end"
+      }
+    },
+    "generalization_gap_s1_to_s2": {
+      "f1_gap": 0.0327,
+      "accuracy_gap": 0.0339,
+      "interpretation": "S1->S2 F1 gap is +0.0327. Reflects domain shift from template generation to authentic human phone call syntax."
+    },
+    "asr_degradation_gap_s2_to_s3": {
+      "f1_gap": 0.3216,
+      "accuracy_gap": 0.236,
+      "interpretation": "S2->S3 F1 drop is 0.3216 (-32.16%). Reflects impact of actual faster-whisper acoustic/phonetic errors on downstream classifier."
     }
   }
 }
