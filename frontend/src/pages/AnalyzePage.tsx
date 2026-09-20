@@ -171,16 +171,25 @@ export const AnalyzePage: React.FC = () => {
 
     try {
       const formData = new FormData();
-      formData.append('file', target, file?.name || 'recorded_audio.wav');
+      let filename = file?.name;
+      if (!filename) {
+        const mime = target.type || '';
+        const ext = mime.includes('webm') ? '.webm' : mime.includes('mp4') ? '.m4a' : mime.includes('ogg') ? '.ogg' : '.wav';
+        filename = `recorded_audio${ext}`;
+      }
+      formData.append('file', target, filename);
+      formData.append('source_type', fileToUpload ? 'MICROPHONE' : 'UPLOAD');
       if (label) formData.append('label', label);
 
       const res = await api.analyses.create(formData);
       setAnalysisId(res.id);
     } catch (err: any) {
       setIsSubmitting(false);
-      setValidationError(
-        err.response?.data?.detail || err.message || 'Failed to submit audio for analysis.'
-      );
+      const detail = err.response?.data?.detail;
+      const msg = typeof detail === 'string'
+        ? detail
+        : detail?.message || err.message || 'Failed to submit audio for analysis.';
+      setValidationError(msg);
     }
   };
 

@@ -98,6 +98,8 @@ def validate_file_size(filepath: Path, max_mb: int = 25) -> None:
 def probe_duration(filepath: Path) -> float:
     """Use ffprobe to get the duration of an audio file.
 
+    Falls back to ffmpeg stream timestamp scanning for live-streamed containers
+    (e.g., browser MediaRecorder WebM/Opus blobs without duration container header).
     Raises AudioValidationError with CORRUPT_AUDIO on failure.
     """
     try:
@@ -113,14 +115,39 @@ def probe_duration(filepath: Path) -> float:
             text=True,
             timeout=30,
         )
+        if result.returncode == 0:
+            stdout_str = result.stdout.strip()
+            if stdout_str and stdout_str != "N/A":
+                try:
+                    return float(stdout_str)
+                except ValueError:
+                    pass
+
+        # Fallback for streamed media (browser WebM without container duration header)
+        null_res = subprocess.run(
+            ["ffmpeg", "-i", str(filepath), "-f", "null", "-"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        import re
+
+        matches = re.findall(r"time=(\d+):(\d+):(\d+\.?\d*)", null_res.stderr)
+        if matches:
+            hours, minutes, seconds = matches[-1]
+            return float(hours) * 3600 + float(minutes) * 60 + float(seconds)
+
         if result.returncode != 0:
             raise AudioValidationError(
                 "CORRUPT_AUDIO",
                 f"ffprobe failed: {result.stderr.strip()[:200]}",
             )
-        duration = float(result.stdout.strip())
-        return duration
-    except (ValueError, subprocess.TimeoutExpired) as e:
+        raise AudioValidationError("CORRUPT_AUDIO", "Cannot determine audio duration from stream.")
+    except AudioValidationError:
+        raise
+    except subprocess.TimeoutExpired as e:
+        raise AudioValidationError("CORRUPT_AUDIO", f"Audio probe timed out: {e}")
+    except Exception as e:
         raise AudioValidationError("CORRUPT_AUDIO", f"Cannot determine audio duration: {e}")
 
 

@@ -155,6 +155,10 @@ export const AudioRecorder: React.FC<AudioRecorderProps> = ({
 
   const handleConfirm = () => {
     if (recordedBlob) {
+      if (recordingDuration < 1.5) {
+        setMicPermissionError('Recording is too short (minimum 1.5 seconds required). Please record a longer sample.');
+        return;
+      }
       onComplete(recordedBlob, recordingDuration);
     }
   };
