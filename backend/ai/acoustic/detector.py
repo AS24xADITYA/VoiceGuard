@@ -19,8 +19,11 @@ from pathlib import Path
 from typing import Final
 
 import numpy as np
+import structlog
 import torch
 import torch.nn.functional as F
+
+log = structlog.get_logger()
 
 from ai.acoustic.model import AcousticDeepfakeCNN
 from ai.audio.features import (
@@ -188,6 +191,17 @@ class AcousticDetector(Component):
             window_times.append((t_start, t_end))
 
         batch = torch.from_numpy(np.stack(window_tensors, axis=0)).to(self.device)
+
+        log.info(
+            "acoustic_input_tensor_stats",
+            audio_path=str(audio_path),
+            batch_shape=list(batch.shape),
+            batch_mean=round(float(batch.mean()), 5),
+            batch_std=round(float(batch.std()), 5),
+            batch_min=round(float(batch.min()), 5),
+            batch_max=round(float(batch.max()), 5),
+            first_5_values=[round(float(x), 5) for x in batch[0, 0, 0, :5]],
+        )
 
         # Model inference
         with torch.inference_mode():

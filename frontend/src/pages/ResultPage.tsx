@@ -58,12 +58,20 @@ function _verdictGuidance(verdict?: string): string {
   }
 }
 
-function _mapContributions(contributions?: Record<string, number> | null, featureVector?: number[] | null): any[] {
+function _mapContributions(contributions?: any, featureVector?: number[] | null): any[] {
   if (!contributions) return [];
+  if (Array.isArray(contributions)) {
+    return contributions.map((c: any) => ({
+      feature: c.feature || 'unknown',
+      value: typeof c.value === 'number' ? c.value : 0,
+      contribution: typeof c.contribution === 'number' ? c.contribution : Number(c.contribution || 0),
+      label: c.feature ? c.feature.replace(/_/g, ' ') : 'unknown',
+    }));
+  }
   return Object.entries(contributions).map(([feature, contribution], i) => ({
     feature,
     value: featureVector?.[i] ?? 0,
-    contribution,
+    contribution: typeof contribution === 'number' ? contribution : Number(contribution || 0),
     label: feature.replace(/_/g, ' '),
   }));
 }

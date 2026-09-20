@@ -23,11 +23,14 @@ export const ContributionChart: React.FC<ContributionChartProps> = ({
 }) => {
   const validContributions = (contributions || [])
     .filter((c) => c != null)
-    .map((c: any) => ({
-      feature: c.feature || 'unknown',
-      label: c.label || (c.feature ? FEATURE_LABELS[c.feature] : undefined),
-      contribution: Number(c.contribution ?? c.value ?? 0),
-    }));
+    .map((c: any) => {
+      const rawVal = typeof c.contribution === 'number' ? c.contribution : Number(c.contribution ?? c.value ?? 0);
+      return {
+        feature: c.feature || 'unknown',
+        label: c.label || (c.feature ? FEATURE_LABELS[c.feature] : undefined),
+        contribution: isNaN(rawVal) ? 0 : rawVal,
+      };
+    });
 
   // Sort by absolute contribution and take top maxItems
   const sorted = [...validContributions]

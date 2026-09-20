@@ -274,6 +274,13 @@ class ScamIntentClassifier(Component):
 
         # Inference
         assert self.model is not None
+        safe_preview = text[:80].encode("ascii", "backslashreplace").decode("ascii")
+        log.info(
+            "scam_input_tensor_stats",
+            text_preview=safe_preview,
+            input_ids_shape=list(input_ids.shape),
+            token_ids=input_ids[0, :8].tolist(),
+        )
         with torch.no_grad():
             b_logits, c_logits = self.model(input_ids=input_ids, attention_mask=attention_mask)
             scam_prob = float(F.softmax(b_logits, dim=-1)[0, 1].item())
