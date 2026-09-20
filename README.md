@@ -73,7 +73,7 @@ As generative neural speech models (Diffusion vocoders, zero-shot cloners, VALL-
    - Includes real-time **Grad-CAM** visual saliency heatmaps highlighting exact time-frequency cloning artifacts for human forensic validation.
 2. **Linguistic Branch (`MultilingualScamClassifier`)**:
    - Transcribes conversational audio using Whisper.
-   - Analyzes intent using an XLM-RoBERTa dual-head network identifying urgency, impersonation, OTP requests, and 8 distinct social engineering tactics across English, Hindi, Spanish, French, and German.
+   - Analyzes intent using an XLM-RoBERTa dual-head network identifying urgency, impersonation, OTP requests, and 8 distinct social engineering tactics across 5 languages: English (`en`), Hindi (`hi`), and Tamil (`ta`) [Production Tier], alongside Marathi (`mr`) and Bengali (`bn`) [Experimental/Degraded Tier per 13 §7.3].
 3. **Interactive Challenge–Response Branch**:
    - Challenges suspicious callers with dynamically generated phonetic sentences, random pitch transitions, and whisper-phonation switches.
    - Compares baseline vs. response fundamental frequency ($f_0$) and jitter/shimmer deltas to reveal real-time latency and spectral phase synthesis breakdown.
@@ -85,23 +85,27 @@ As generative neural speech models (Diffusion vocoders, zero-shot cloners, VALL-
 
 ## 📊 Empirical Benchmarks
 
-Evaluated rigorously under standard speech synthesis detection protocols (see full report in [`docs/EVALUATION_REPORT.md`](docs/EVALUATION_REPORT.md)):
+Evaluated rigorously under standard forensic detection protocols (see full report in [`docs/EVALUATION_REPORT.md`](docs/EVALUATION_REPORT.md)):
 
 ### Acoustic Generalization Across Conditions (C1 to C4)
-| Benchmark Condition | Scenario / Dataset | Equal Error Rate (EER) | AUC-ROC | F1 Score |
-|---|---|:---:|:---:|:---:|
-| **C1: In-domain** | ASVspoof 2019 LA Evaluation | **4.82%** | **0.9845** | **0.9412** |
-| **C2: Out-of-domain** | In-the-Wild Deepfake Corpus | **13.41%** | **0.9184** | **0.8423** |
-| **C3: Codec-degraded** | 8 kHz G.711 / AMR-WB Cellular | **16.85%** | **0.8842** | **0.8012** |
-| **C4: Noise-degraded** | MUSAN 10 dB SNR Additive Noise | **9.12%** | **0.9461** | **0.8953** |
+| Benchmark Condition | Scenario / Dataset | Equal Error Rate (EER) | AUC-ROC | F1 Score | Evaluation Status |
+|---|---|:---:|:---:|:---:|:---:|
+| **C1: In-domain** | ASVspoof 2019 LA Official Eval | **14.96%** | **0.9161** | **0.8654** | Genuine Evaluated |
+| **C2: Out-of-domain** | In-the-Wild Deepfake Corpus | **46.98%** | **0.5512** | **0.4987** | Genuine Evaluated |
+| **C3: Codec-degraded** | 8 kHz G.711 / AMR-WB Cellular | *Pending* | — | — | Planned Evaluation |
+| **C4: Noise-degraded** | MUSAN 10 dB SNR Additive Noise | *Pending* | — | — | Planned Evaluation |
 
-### Multi-Modal Ablation Analysis
-| Architecture Configuration | EER | AUC-ROC | F1 Score |
-|---|:---:|:---:|:---:|
-| Acoustic Branch Only | 13.41% | 0.9184 | 0.8423 |
-| Linguistic Branch Only | 18.23% | 0.8712 | 0.8125 |
-| **Acoustic + Linguistic (Fused)** | **7.12%** | **0.9682** | **0.9184** |
-| **Acoustic + Linguistic + Challenge–Response (Full Stack)** | **4.18%** | **0.9875** | **0.9482** |
+### Linguistic Scam-Intent Detection Across Conditions (S1 to S3)
+| Benchmark Condition | Scenario / Test Partition | Accuracy | Macro F1 | AUC-ROC | Evaluation Status |
+|---|---|:---:|:---:|:---:|:---:|
+| **S1: Generated Disjoint** | Synthetically generated test set | **99.39%** | **0.9930** | **0.9996** | Genuine Evaluated |
+| **S2: Held-Out Real-Style** | 250 curated multi-turn call transcripts | **96.00%** | **0.9603** | **0.9956** | Genuine Evaluated |
+| **S3: ASR-Transcribed Audio** | End-to-end Whisper transcription of S2 | **72.40%** | **0.6387** | **0.8833** | Genuine Evaluated |
+
+> **⚠️ Multilingual Reliability Notice (per 13 §7.3)**:
+> - **Production Tier**: English (`en`: S3 F1 0.8889), Hindi (`hi`: S3 F1 0.7805), Tamil (`ta`: S3 F1 0.8095).
+> - **Experimental / Degraded Tier**: Marathi (`mr`: S3 F1 0.2143) and Bengali (`bn`: S3 F1 0.0769).
+> - *Empirical Finding*: Under actual Whisper speech transcription, Marathi and Bengali audio experience significant phonetic script transliteration and word truncation on telephone channels. While precision remains high, recall drops sharply. Detection in these two languages is flagged as experimental.
 
 ---
 

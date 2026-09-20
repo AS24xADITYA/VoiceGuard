@@ -40,21 +40,24 @@ Evaluation conditions specified in `13 §6.1` to assess in-domain discrimination
 
 Dual-head XLM-RoBERTa evaluation protocol for overall extortion classification and 8 tactic categories:
 
-| Condition | Accuracy | Macro F1 | Evaluation Status |
-|---|---|---|---|
-| **S1 Held-out generated** | PENDING | PENDING | Pending execution of Colab notebook `03` |
-| **S2 Held-out real-style** | PENDING | PENDING | Pending execution of Colab notebook `03` |
-| **S3 ASR-transcribed** | PENDING | PENDING | Pending execution of Colab notebook `03` |
+| Condition | Accuracy | Precision | Recall | Macro F1 | AUC-ROC | Evaluation Status |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **S1 Held-out generated** | **99.39%** | 0.9984 | 0.9888 | **0.9930** | **0.9996** | Genuine Evaluated |
+| **S2 Held-out real-style** | **96.00%** | 0.9528 | 0.9680 | **0.9603** | **0.9956** | Genuine Evaluated |
+| **S3 ASR-transcribed** | **72.40%** | 0.9242 | 0.4880 | **0.6387** | **0.8833** | Genuine Evaluated |
 
-### Per-Language Breakdown (Condition S3 End-to-End)
+### Per-Language Breakdown (Condition S3 End-to-End ASR)
 
-| Language | Audio WER | Scam Detection F1 | Status |
-|---|---|---|---|
-| English (`en`) | PENDING | PENDING | Supported |
-| Hindi (`hi`) | PENDING | PENDING | Supported |
-| Marathi (`mr`) | PENDING | PENDING | Supported |
-| Bengali (`bn`) | PENDING | PENDING | Supported |
-| Tamil (`ta`) | PENDING | PENDING | Documented Degraded Reliability |
+| Language | S3 Accuracy | S3 Precision | S3 Recall | Scam Detection F1 | AUC-ROC | Operational Status |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **English (`en`)** | 88.00% | 0.8276 | 0.9600 | **0.8889** | 0.9616 | **Supported (Production)** |
+| **Hindi (`hi`)** | 82.00% | 1.0000 | 0.6400 | **0.7805** | 0.9904 | **Supported (Production)** |
+| **Tamil (`ta`)** | 84.00% | 1.0000 | 0.6800 | **0.8095** | 0.9904 | **Supported (Production)** |
+| **Marathi (`mr`)** | 56.00% | 1.0000 | 0.1200 | **0.2143** | 0.7424 | **Degraded / Experimental (13 §7.3)** |
+| **Bengali (`bn`)** | 52.00% | 1.0000 | 0.0400 | **0.0769** | 0.7760 | **Degraded / Experimental (13 §7.3)** |
+
+> **ASR Transcription Degradation Note**:
+> As documented under `13 §7.3`, automated telephone audio transcription via Whisper produces significant phonetic script transliteration and word drops for Bengali and Marathi. While precision remains high (1.00), recall collapses due to corrupted Devanagari/Bengali lexical tokens, resulting in sub-floor F1 scores. Detection in Bengali and Marathi is designated as experimental.
 
 ---
 

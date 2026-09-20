@@ -81,6 +81,11 @@ async def config() -> dict[str, Any]:
         },
         "supported_formats": ["wav", "mp3", "m4a", "flac", "ogg", "webm"],
         "supported_languages": settings.whisper_language_list,
+        "language_tiers": {
+            "production": ["en", "hi", "ta"],
+            "experimental_degraded": ["mr", "bn"],
+            "notes": "Bengali (bn, S3 F1 0.0769) and Marathi (mr, S3 F1 0.2143) exhibit severe ASR phonetic degradation under Whisper telephone transcription per 13 §7.3.",
+        },
         "verdict_thresholds": {
             "moderate": settings.verdict_threshold_moderate,
             "high": settings.verdict_threshold_high,

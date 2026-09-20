@@ -68,8 +68,9 @@ export const AboutPage: React.FC = () => {
             <div className="text-accent font-mono text-xs font-bold uppercase">Linguistic Intent</div>
             <p className="text-xs text-text-secondary leading-relaxed">
               Multilingual transcription powered by Whisper with hallucination guards, coupled with an
-              XLM-RoBERTa dual-head classifier detecting 8 extortion and urgency tactics across English,
-              Hindi, and regional languages.
+              XLM-RoBERTa dual-head classifier detecting 8 extortion tactics. Production-tier accuracy
+              in English, Hindi, and Tamil; Marathi and Bengali are designated as experimental/degraded
+              due to ASR phoneme drift under telephone speech.
             </p>
           </Card>
 
@@ -177,6 +178,17 @@ export const AboutPage: React.FC = () => {
             <p>
               VoiceGuard does not tap, monitor, or intercept active PSTN/GSM telephone calls. It operates
               strictly on audio explicitly uploaded or recorded through client interfaces.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-xl bg-bg-surface border border-amber-500/30 space-y-1">
+            <strong className="text-amber-400 block font-mono">5. Bengali &amp; Marathi ASR Degradation (per 13 §7.3)</strong>
+            <p>
+              Empirical speech-to-text evaluation (Condition S3) demonstrates severe transcription breakdown
+              for Bengali (F1 0.0769) and Marathi (F1 0.2143). Whisper ASR produces phonetic script
+              transliteration and word drops on telephone audio, significantly suppressing tactic recall.
+              Scam detection for Bengali and Marathi is currently classified as <strong>experimental / degraded</strong>,
+              whereas English (F1 0.8889), Hindi (F1 0.7805), and Tamil (F1 0.8095) achieve production-grade reliability.
             </p>
           </div>
         </div>

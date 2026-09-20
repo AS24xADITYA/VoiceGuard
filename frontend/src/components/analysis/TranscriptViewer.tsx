@@ -49,6 +49,8 @@ export const TranscriptViewer: React.FC<TranscriptViewerProps> = ({
     return `${min}:${sec < 10 ? '0' : ''}${sec}.${ms}`;
   };
 
+  const isDegradedLang = ['mr', 'bn'].includes(language.toLowerCase());
+
   return (
     <Card className="p-6 bg-bg-surface border-border-default space-y-4">
       {/* Header */}
@@ -58,12 +60,17 @@ export const TranscriptViewer: React.FC<TranscriptViewerProps> = ({
             <FileText className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-base font-semibold text-text-primary font-mono flex items-center gap-2">
+            <h3 className="text-base font-semibold text-text-primary font-mono flex items-center gap-2 flex-wrap">
               <span>Speech Transcript</span>
               <span className="text-xs font-mono font-normal uppercase px-2 py-0.5 rounded bg-bg-elevated border border-border-subtle text-text-secondary flex items-center gap-1">
                 <Globe className="w-3 h-3 text-accent" />
                 {language.toUpperCase()} ({Math.round(confidence * 100)}% conf)
               </span>
+              {isDegradedLang && (
+                <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400">
+                  Experimental / ASR Degraded
+                </span>
+              )}
             </h3>
             <p className="text-xs text-text-tertiary mt-0.5">
               Automated transcription with scam-tactic token attribution
@@ -98,6 +105,17 @@ export const TranscriptViewer: React.FC<TranscriptViewerProps> = ({
           </button>
         </div>
       </div>
+
+      {/* Experimental Language Notice (per 13 §7.3) */}
+      {isDegradedLang && (
+        <div className="p-3.5 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-start gap-2.5 text-xs text-amber-400">
+          <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
+          <div>
+            <span className="font-semibold font-mono">Language Reliability Notice (per 13 §7.3): </span>
+            Whisper ASR transcription for {language.toUpperCase() === 'MR' ? 'Marathi' : 'Bengali'} exhibits significant phonetic degradation and transliteration on telephone audio, reducing downstream scam classification recall. Treat results as experimental and verify manually.
+          </div>
+        </div>
+      )}
 
       {/* Low Reliability Warning Banner per 09 §4.3.D */}
       {!reliable && (
