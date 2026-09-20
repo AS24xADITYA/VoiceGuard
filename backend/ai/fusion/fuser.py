@@ -218,14 +218,71 @@ class FusionEngine(Component):
                 "Verdict forced to INCONCLUSIVE."
             )
 
+        # 6. Hard Override 3: Quality-gated acoustic weighting & calibration (Condition C5 mitigation)
+        # Per Condition C5 empirical findings: ASVspoof-trained acoustic CNN exhibits a 100% false-positive rate
+        # on ordinary consumer microphones (laptop/phone mics, room reverb, SNR < 30 dB), clustering at ~0.85.
+        # When audio is recorded in consumer-mic/room acoustics and linguistic scam intent is low/absent,
+        # the acoustic score is uncorroborated. Without linguistic corroboration, risk is attenuated to
+        # LOW or MODERATE rather than falsely declaring HIGH risk fraud.
+        is_consumer_acoustics = False
+        snr: float | None = None
+        if quality is not None:
+            snr = quality.snr_estimate_db
+            if snr < 30.0 or features.audio_quality_score < 0.93:
+                is_consumer_acoustics = True
+        elif features.audio_quality_score < 0.93:
+            is_consumer_acoustics = True
+
+        is_acoustic_elevated = features.acoustic_spoof_prob >= 0.65
+        is_linguistic_benign = features.linguistic_available > 0.5 and features.scam_prob < 0.30
+
+        if is_consumer_acoustics and is_acoustic_elevated and is_linguistic_benign and verdict != Verdict.INCONCLUSIVE:
+            corrob_ratio = max(0.0, min(1.0, features.scam_prob / 0.30))
+            # Attenuation ceiling: if scam_prob is near zero, risk capped at LOW (<=0.28).
+            # As scam_prob approaches 0.30, risk scales up through MODERATE.
+            max_allowed_risk = 0.28 + corrob_ratio * (0.58 - 0.28)
+            if calibrated_prob > max_allowed_risk:
+                old_prob = calibrated_prob
+                calibrated_prob = round(max_allowed_risk, 4)
+
+                # Re-evaluate verdict under attenuated probability
+                if calibrated_prob >= self.threshold_high:
+                    verdict = Verdict.HIGH
+                elif calibrated_prob >= self.threshold_moderate:
+                    verdict = Verdict.MODERATE
+                else:
+                    verdict = Verdict.LOW
+
+                overrides_applied.append("QUALITY_GATED_ACOUSTIC_ATTENUATION")
+                snr_str = f", SNR {snr:.1f} dB" if snr is not None else ""
+                reasons.append(
+                    f"Quality-gated acoustic attenuation applied: Acoustic spoof score ({features.acoustic_spoof_prob:.2f}) "
+                    f"was recorded under ordinary consumer-microphone acoustics (Quality {features.audio_quality_score:.2f}{snr_str}) "
+                    f"where genuine human speech exhibits elevated baseline scores (Condition C5). Without corroborating "
+                    f"linguistic scam intent ({features.scam_prob:.2%}), fused risk was attenuated from {old_prob:.2%} "
+                    f"to {calibrated_prob:.2%} ({verdict.value})."
+                )
+
+                # Also scale down acoustic contribution in the explanation vector so chart aligns with verdict
+                for c in contributions:
+                    if c["feature"] in ("acoustic_spoof_prob", "acoustic_uncertainty"):
+                        c["contribution"] = round(float(c["contribution"]) * corrob_ratio, 3)
+                        if abs(c["contribution"]) < 0.001:
+                            c["contribution"] = 0.0
+                        c["direction"] = "increases_risk" if c["contribution"] > 0 else "decreases_risk"
+
+                contributions.sort(key=lambda c: abs(c["contribution"]), reverse=True)
+
         # Confidence: distance from nearest decision boundary
         if verdict == Verdict.HIGH:
             conf = min(1.0, (calibrated_prob - self.threshold_high) / (1.0 - self.threshold_high + 1e-6))
         elif verdict == Verdict.MODERATE:
             mid = (self.threshold_high + self.threshold_moderate) / 2.0
             conf = 1.0 - abs(calibrated_prob - mid) / (mid - self.threshold_moderate + 1e-6)
-        else:
+        elif verdict == Verdict.LOW:
             conf = min(1.0, (self.threshold_moderate - calibrated_prob) / (self.threshold_moderate + 1e-6))
+        else:
+            conf = 0.0
 
         return FusionResult(
             risk_probability=round(calibrated_prob, 4),

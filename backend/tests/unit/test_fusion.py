@@ -152,6 +152,105 @@ def test_inconclusive_floor_override(trained_fusion_artifact: Path):
     assert any("Audio quality gate failed" in r for r in result.reasons)
 
 
+def test_quality_gated_acoustic_attenuation_override(trained_fusion_artifact: Path):
+    """Verify Override 3: Elevated acoustic spoof score on consumer audio without scam corroboration is attenuated."""
+    fuser = FusionEngine(
+        model_path=trained_fusion_artifact,
+        threshold_moderate=0.30,
+        threshold_high=0.65,
+    )
+    fuser.load()
+    assert fuser.is_loaded()
+
+    # Case 1: Elevated acoustic score (0.85), but consumer mic acoustics (Q=0.88, SNR=22dB) and clean benign text (scam=0.001)
+    consumer_benign = FusionFeatures(
+        acoustic_available=1.0,
+        acoustic_spoof_prob=0.85,
+        acoustic_uncertainty=0.60,
+        acoustic_window_std=0.02,
+        linguistic_available=1.0,
+        scam_prob=0.001,
+        scam_max_category=0.0,
+        scam_n_categories=0.0,
+        transcript_reliable=1.0,
+        language_supported=1.0,
+        transcript_length_norm=0.20,
+        challenge_available=0.0,
+        challenge_consistency=0.50,
+        audio_quality_score=0.88,
+    )
+    consumer_quality = QualityReport(
+        duration_s=8.0,
+        speech_ratio=0.75,
+        snr_estimate_db=22.0,
+        clipping_ratio=0.0001,
+        dc_offset=0.0001,
+        passed=True,
+        failures=[],
+    )
+
+    res1 = fuser.fuse(consumer_benign, quality=consumer_quality)
+    assert res1.verdict == Verdict.LOW
+    assert res1.risk_probability <= 0.30
+    assert "QUALITY_GATED_ACOUSTIC_ATTENUATION" in res1.overrides_applied
+    assert any("Quality-gated acoustic attenuation applied" in r for r in res1.reasons)
+
+    # Case 2: Pristine studio audio (Q=0.98, SNR=45dB) with elevated acoustic score (0.85) and benign text (scam=0.001)
+    # Under studio conditions, acoustic score is NOT attenuated (in-domain deepfake clone)
+    studio_spoof = FusionFeatures(
+        acoustic_available=1.0,
+        acoustic_spoof_prob=0.85,
+        acoustic_uncertainty=0.10,
+        acoustic_window_std=0.02,
+        linguistic_available=1.0,
+        scam_prob=0.001,
+        scam_max_category=0.0,
+        scam_n_categories=0.0,
+        transcript_reliable=1.0,
+        language_supported=1.0,
+        transcript_length_norm=0.20,
+        challenge_available=0.0,
+        challenge_consistency=0.50,
+        audio_quality_score=0.98,
+    )
+    studio_quality = QualityReport(
+        duration_s=8.0,
+        speech_ratio=0.85,
+        snr_estimate_db=45.0,
+        clipping_ratio=0.0,
+        dc_offset=0.0,
+        passed=True,
+        failures=[],
+    )
+
+    res2 = fuser.fuse(studio_spoof, quality=studio_quality)
+    assert "QUALITY_GATED_ACOUSTIC_ATTENUATION" not in res2.overrides_applied
+    assert res2.risk_probability > res1.risk_probability
+
+    # Case 3: Consumer mic audio with high scam intent (scam=0.85) and elevated acoustic (0.85)
+    # Corroborated by linguistic branch -> remains HIGH risk
+    consumer_scam = FusionFeatures(
+        acoustic_available=1.0,
+        acoustic_spoof_prob=0.85,
+        acoustic_uncertainty=0.60,
+        acoustic_window_std=0.02,
+        linguistic_available=1.0,
+        scam_prob=0.85,
+        scam_max_category=0.80,
+        scam_n_categories=2.0,
+        transcript_reliable=1.0,
+        language_supported=1.0,
+        transcript_length_norm=0.20,
+        challenge_available=0.0,
+        challenge_consistency=0.50,
+        audio_quality_score=0.88,
+    )
+    res3 = fuser.fuse(consumer_scam, quality=consumer_quality)
+    assert "QUALITY_GATED_ACOUSTIC_ATTENUATION" not in res3.overrides_applied
+    assert res3.verdict == Verdict.HIGH
+
+
+
 def test_feature_contributions(trained_fusion_artifact: Path):
     """Verify feature contributions have valid direction and magnitude."""
     fuser = FusionEngine(model_path=trained_fusion_artifact)
