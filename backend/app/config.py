@@ -14,6 +14,11 @@ from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
+BACKEND_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BACKEND_DIR / "data"
+MODELS_DIR = BACKEND_DIR / "models"
+
+
 class Settings(BaseSettings):
     """Application settings, loaded from environment variables."""
 
@@ -28,11 +33,11 @@ class Settings(BaseSettings):
     app_env: Literal["development", "production"] = "development"
 
     # ── Database ─────────────────────────────────────────────────
-    database_url: str = "sqlite+aiosqlite:///./data/voiceguard.db"
+    database_url: str = f"sqlite+aiosqlite:///{DATA_DIR.as_posix()}/voiceguard.db"
 
     # ── Storage ──────────────────────────────────────────────────
     storage_backend: Literal["local", "s3"] = "local"
-    storage_local_root: str = "./data/artifacts"
+    storage_local_root: str = str(DATA_DIR / "artifacts")
     s3_endpoint: str = ""
     s3_bucket: str = ""
     s3_access_key: str = ""
@@ -45,7 +50,7 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
 
     # ── AI Models ────────────────────────────────────────────────
-    acoustic_model_id: str = "models/acoustic.pth"
+    acoustic_model_id: str = str(MODELS_DIR / "acoustic.pth")
     acoustic_borderline_low: float = 0.35
     acoustic_borderline_high: float = 0.65
 
@@ -53,8 +58,8 @@ class Settings(BaseSettings):
     whisper_compute_type: Literal["int8", "float16", "float32"] = "int8"
     whisper_languages: str = "en,hi,mr,bn,ta"
 
-    scam_model_id: str = "models/scam_model.pt"
-    fusion_model_path: str = "models/fusion.pkl"
+    scam_model_id: str = str(MODELS_DIR / "scam_model.pt")
+    fusion_model_path: str = str(MODELS_DIR / "fusion.pkl")
 
     # ── Verdict thresholds ───────────────────────────────────────
     verdict_threshold_moderate: float = 0.30
@@ -97,7 +102,19 @@ class Settings(BaseSettings):
 
     @property
     def storage_local_path(self) -> Path:
-        return Path(self.storage_local_root)
+        p = Path(self.storage_local_root)
+        if not p.is_absolute():
+            return BACKEND_DIR / p
+        return p
+
+    def resolve_model_path(self, path_str: str) -> Path:
+        """Resolve a model path, falling back to BACKEND_DIR if relative."""
+        p = Path(path_str)
+        if p.is_absolute() and p.exists():
+            return p
+        if (BACKEND_DIR / p).exists():
+            return BACKEND_DIR / p
+        return p
 
     @field_validator("jwt_secret")
     @classmethod

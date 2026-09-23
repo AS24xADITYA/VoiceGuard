@@ -16,6 +16,11 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
+# Ensure alembic always connects to the configured database
+from app.config import get_settings
+settings = get_settings()
+config.set_main_option("sqlalchemy.url", settings.database_url)
+
 # Ensure sqlite target directory exists
 db_url = config.get_main_option("sqlalchemy.url") or ""
 if "sqlite" in db_url:

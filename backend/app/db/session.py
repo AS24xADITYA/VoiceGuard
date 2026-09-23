@@ -43,7 +43,11 @@ def init_db(settings: Settings):
         path_part = settings.database_url.split(":///")[-1]
         if path_part and not path_part.startswith(":memory:"):
             from pathlib import Path
-            Path(path_part).parent.mkdir(parents=True, exist_ok=True)
+            db_path = Path(path_part)
+            if not db_path.is_absolute():
+                from app.config import BACKEND_DIR
+                db_path = BACKEND_DIR / db_path
+            db_path.parent.mkdir(parents=True, exist_ok=True)
         elif path_part.startswith(":memory:"):
             from sqlalchemy.pool import StaticPool
             pool_kwargs["poolclass"] = StaticPool
