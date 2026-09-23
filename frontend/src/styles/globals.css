@@ -18,6 +18,22 @@ code, kbd, samp, pre {
   font-family: var(--font-mono);
 }
 
+input, textarea, select {
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
 /* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 8px;

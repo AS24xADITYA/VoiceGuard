@@ -1,34 +1,34 @@
 :root {
-  /* Surfaces — near-black with a cool cast, not pure black */
-  --bg-base:        #0A0C10;
-  --bg-surface:     #12151C;
-  --bg-elevated:    #1A1E27;
-  --bg-overlay:     #232833;
+  /* Surfaces — Cyber Mint (Near-black #060B0A base -> charcoal-mint surfaces) */
+  --bg-base:        #060B0A;
+  --bg-surface:     #0C1311;
+  --bg-elevated:    #121B18;
+  --bg-overlay:     #192521;
 
-  /* Borders */
-  --border-subtle:  #232833;
-  --border-default: #2E3440;
-  --border-strong:  #3D4552;
+  /* Borders — subtle mint accents */
+  --border-subtle:  rgba(16, 185, 129, 0.08);
+  --border-default: rgba(16, 185, 129, 0.16);
+  --border-strong:  rgba(16, 185, 129, 0.28);
 
-  /* Text */
-  --text-primary:   #E8EBF0;
-  --text-secondary: #9BA3B4;
-  --text-tertiary:  #6B7383;
-  --text-inverse:   #0A0C10;
+  /* Text — Crisp high-contrast readable hierarchy */
+  --text-primary:   #F0FDF4;
+  --text-secondary: #94A3B8;
+  --text-tertiary:  #64748B;
+  --text-inverse:   #060B0A;
 
-  /* Accent — a single restrained cyan. One accent, used sparingly. */
-  --accent:         #22D3EE;
-  --accent-muted:   #0E7490;
-  --accent-glow:    rgba(34, 211, 238, 0.14);
+  /* Accent — Primary Cyber Mint reserved for buttons, icons, highlights */
+  --accent:         #10B981;
+  --accent-muted:   #064E3B;
+  --accent-glow:    rgba(16, 185, 129, 0.14);
 
-  /* Risk semantics — the only other colours permitted */
-  --risk-low:       #34D399;
-  --risk-moderate:  #FBBF24;
-  --risk-high:      #F87171;
-  --risk-unknown:   #94A3B8;
-  --risk-low-bg:      rgba(52, 211, 153, 0.10);
-  --risk-moderate-bg: rgba(251, 191, 36, 0.10);
-  --risk-high-bg:     rgba(248, 113, 113, 0.10);
+  /* Risk semantics — visually distinct from brand mint */
+  --risk-low:       #22C55E;
+  --risk-moderate:  #F59E0B;
+  --risk-high:      #EF4444;
+  --risk-unknown:   #64748B;
+  --risk-low-bg:      rgba(34, 197, 94, 0.12);
+  --risk-moderate-bg: rgba(245, 158, 11, 0.12);
+  --risk-high-bg:     rgba(239, 68, 68, 0.12);
 
   /* Typography */
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;

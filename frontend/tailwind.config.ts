@@ -6,6 +6,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        bg: {
+          base: 'var(--bg-base)',
+          surface: 'var(--bg-surface)',
+          elevated: 'var(--bg-elevated)',
+          overlay: 'var(--bg-overlay)',
+        },
+        text: {
+          primary: 'var(--text-primary)',
+          secondary: 'var(--text-secondary)',
+          tertiary: 'var(--text-tertiary)',
+          inverse: 'var(--text-inverse)',
+        },
         surface: {
           base: 'var(--bg-base)',
           DEFAULT: 'var(--bg-surface)',
@@ -15,6 +27,7 @@ const config: Config = {
         border: {
           subtle: 'var(--border-subtle)',
           DEFAULT: 'var(--border-default)',
+          default: 'var(--border-default)',
           strong: 'var(--border-strong)',
         },
         content: {
