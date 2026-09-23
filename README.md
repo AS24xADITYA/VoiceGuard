@@ -1,11 +1,21 @@
-# VoiceGuard: Multi-Signal Deepfake Voice & Scam Intelligence System
+<p align="center">
+  <img src="frontend/public/logo.png" alt="VoiceGuard Logo" width="280" />
+</p>
 
-[![GitHub License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python Version](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776AB.svg?logo=python&logoColor=white)](https://python.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C.svg?logo=pytorch&logoColor=white)](https://pytorch.org)
-[![React](https://img.shields.io/badge/Frontend-React%2018%20%2B%20Vite-61DAFB.svg?logo=react&logoColor=black)](https://react.dev)
-[![Docker](https://img.shields.io/badge/Docker-Compose-2496ED.svg?logo=docker&logoColor=white)](https://www.docker.com)
+<h1 align="center">VoiceGuard: Multi-Signal Deepfake Voice &amp; Scam Intelligence System</h1>
+
+<p align="center">
+  <strong>An automated security pipeline uniting convolutional acoustic artifact detection, multilingual extortion language analysis, and interactive challenge verification.</strong>
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="GitHub License" /></a>
+  <a href="https://python.org"><img src="https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776AB.svg?logo=python&logoColor=white" alt="Python Version" /></a>
+  <a href="https://fastapi.tiangolo.com"><img src="https://img.shields.io/badge/FastAPI-0.110+-009688.svg?logo=fastapi&logoColor=white" alt="FastAPI" /></a>
+  <a href="https://pytorch.org"><img src="https://img.shields.io/badge/PyTorch-2.0+-EE4C2C.svg?logo=pytorch&logoColor=white" alt="PyTorch" /></a>
+  <a href="https://react.dev"><img src="https://img.shields.io/badge/Frontend-React%2018%20%2B%20Vite-61DAFB.svg?logo=react&logoColor=black" alt="React" /></a>
+  <a href="https://www.docker.com"><img src="https://img.shields.io/badge/Docker-Compose-2496ED.svg?logo=docker&logoColor=white" alt="Docker" /></a>
+</p>
 
 > **Mandatory Scope Notice**: VoiceGuard is engineered to evaluate pre-recorded or user-recorded audio files. It does not monitor, tap, or intercept private live telephony streams. All risk assessments represent probabilistic defense evaluations grounded in multi-modal signal fusion.
 
