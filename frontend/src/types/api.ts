@@ -286,13 +286,23 @@ export interface HealthResponse {
 }
 
 export interface SystemMetrics {
-  total_analyses: number;
-  verdict_distribution: Record<VerdictType, number>;
-  average_duration_ms: number;
-  model_performance: {
-    acoustic_eer_in_domain: number;
-    acoustic_eer_out_of_domain: number;
-    scam_macro_f1: number;
-    fusion_ece: number;
+  evaluation_timestamp?: string;
+  status?: string;
+  model?: {
+    checkpoint?: string;
+    backbone?: string;
+    operating_threshold?: number;
+  };
+  conditions?: Record<string, any>;
+  linguistic_scam?: Record<string, any>;
+  fusion?: Record<string, any>;
+  total_analyses?: number;
+  verdict_distribution?: Record<VerdictType, number>;
+  average_duration_ms?: number;
+  model_performance?: {
+    acoustic_eer_in_domain?: number | null;
+    acoustic_eer_out_of_domain?: number | null;
+    scam_macro_f1?: number | null;
+    fusion_ece?: number | null;
   };
 }

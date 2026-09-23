@@ -17,6 +17,7 @@ import {
   ArrowLeft,
 } from 'lucide-react';
 import { api } from '../api/endpoints';
+import { useAuthStore } from '../store/authStore';
 import { AnalysisResponse, ChallengeVerifyResponse, FusionResult, VerdictType } from '../types/api';
 import { COPY } from '../i18n/en';
 import { VerdictCard } from '../components/analysis/VerdictCard';
@@ -142,6 +143,8 @@ export const ResultPage: React.FC = () => {
     fetchResult();
   }, [id]);
 
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+
   const handleDelete = async () => {
     if (!id) return;
     if (!window.confirm('Are you sure you want to delete this analysis and all associated artifacts?')) {
@@ -149,9 +152,15 @@ export const ResultPage: React.FC = () => {
     }
     try {
       await api.analyses.delete(id);
-      navigate('/history');
+      if (isAuthenticated) {
+        navigate('/history');
+      } else {
+        navigate('/analyze');
+      }
     } catch (err: any) {
-      alert(err.response?.data?.detail || 'Failed to delete analysis');
+      const msg = err.response?.data?.detail?.message ||
+                  (typeof err.response?.data?.detail === 'string' ? err.response?.data?.detail : 'Failed to delete analysis');
+      alert(msg);
     }
   };
 
@@ -203,10 +212,11 @@ export const ResultPage: React.FC = () => {
   }
 
   // Artifact URLs
-  const audioArtifact = data.artifacts.find((a) => a.kind === 'canonical_audio');
-  const specArtifact = data.artifacts.find((a) => a.kind === 'spectrogram');
-  const overlayArtifact = data.artifacts.find((a) => a.kind === 'gradcam_overlay');
-  const heatmapArtifact = data.artifacts.find((a) => a.kind === 'gradcam_heatmap');
+  const artifacts = data.artifacts || [];
+  const audioArtifact = artifacts.find((a) => a.kind === 'canonical_audio');
+  const specArtifact = artifacts.find((a) => a.kind === 'spectrogram');
+  const overlayArtifact = artifacts.find((a) => a.kind === 'gradcam_overlay');
+  const heatmapArtifact = artifacts.find((a) => a.kind === 'gradcam_heatmap');
 
   const audioUrl = audioArtifact
     ? (api.artifacts.getUrl(data.id, audioArtifact.id) ?? audioArtifact.download_url)

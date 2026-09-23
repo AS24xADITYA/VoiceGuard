@@ -248,25 +248,52 @@ class ComponentRegistry:
             Path("metrics.json"),
         ]
 
+        data = None
         for p in candidate_paths:
             if p and p.is_file():
                 try:
-                    return json.loads(p.read_text(encoding="utf-8"))
+                    data = json.loads(p.read_text(encoding="utf-8"))
+                    break
                 except Exception:
                     pass
 
-        return {
-            "total_analyses": 0,
-            "verdict_distribution": {"LOW": 0, "MODERATE": 0, "HIGH": 0, "INCONCLUSIVE": 0},
-            "average_duration_ms": 0,
-            "status": "PENDING — no trained artifact exists yet, will be populated after Colab training run",
-            "model_performance": {
-                "acoustic_eer_in_domain": None,
-                "acoustic_eer_out_of_domain": None,
-                "scam_macro_f1": None,
-                "fusion_ece": None,
-            },
-        }
+        if data is None:
+            return {
+                "total_analyses": 0,
+                "verdict_distribution": {"LOW": 0, "MODERATE": 0, "HIGH": 0, "INCONCLUSIVE": 0},
+                "average_duration_ms": 0,
+                "status": "PENDING — no trained artifact exists yet, will be populated after Colab training run",
+                "model_performance": {
+                    "acoustic_eer_in_domain": None,
+                    "acoustic_eer_out_of_domain": None,
+                    "scam_macro_f1": None,
+                    "fusion_ece": None,
+                },
+            }
+
+        # Populate model_performance block if not present for frontend compatibility
+        if "model_performance" not in data:
+            c1_eer = data.get("conditions", {}).get("c1_in_domain", {}).get("eer")
+            c2_eer = data.get("conditions", {}).get("c2_out_of_domain", {}).get("eer")
+            scam_f1 = (
+                data.get("linguistic_scam", {})
+                .get("conditions", {})
+                .get("s2_heldout_real_style", {})
+                .get("f1")
+            )
+            fusion_ece = (
+                data.get("fusion", {})
+                .get("calibration", {})
+                .get("post_calibration_ece")
+            )
+            data["model_performance"] = {
+                "acoustic_eer_in_domain": c1_eer,
+                "acoustic_eer_out_of_domain": c2_eer,
+                "scam_macro_f1": scam_f1,
+                "fusion_ece": fusion_ece,
+            }
+
+        return data
 
 
 def get_registry() -> ComponentRegistry:
