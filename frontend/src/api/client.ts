@@ -19,16 +19,20 @@ export const apiClient = axios.create({
   },
 });
 
-// Request interceptor: attach access token
+// Request interceptor: attach access token and guest session token
 apiClient.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   const token = useAuthStore.getState().accessToken;
   if (token && config.headers) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+  const guestSession = localStorage.getItem('vg_guest_session');
+  if (guestSession && config.headers && !config.headers.Authorization) {
+    config.headers['X-Guest-Session'] = guestSession;
+  }
   return config;
 });
 
-// Response interceptor: handle 401 and refresh
+// Response interceptor: handle 401, refresh, and capture guest session token
 let isRefreshing = false;
 let failedQueue: Array<{
   resolve: (value?: unknown) => void;
@@ -47,7 +51,14 @@ const processQueue = (error: AxiosError | null, token: string | null = null) => 
 };
 
 apiClient.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    const sessionToken =
+      response.headers?.['x-guest-session'] || (response.data && response.data.guest_session_token);
+    if (sessionToken && typeof sessionToken === 'string') {
+      localStorage.setItem('vg_guest_session', sessionToken);
+    }
+    return response;
+  },
   async (error: AxiosError) => {
     const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
 

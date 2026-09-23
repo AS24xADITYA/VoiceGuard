@@ -57,6 +57,22 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     init_db(settings)
     log.info("database_initialized", url=settings.database_url.split("@")[-1])
 
+    # Ensure tables and guest_session_id column exist
+    try:
+        from app.db.base import Base
+        import app.db.models  # ensure models registered
+        from sqlalchemy import text
+        from app.db.session import _engine
+        if _engine is not None:
+            async with _engine.begin() as conn:
+                await conn.run_sync(Base.metadata.create_all)
+                try:
+                    await conn.execute(text("ALTER TABLE analyses ADD COLUMN guest_session_id VARCHAR(64)"))
+                except Exception:
+                    pass
+    except Exception as e:
+        log.warning("db_schema_sync_warning", error=str(e))
+
     # Ensure storage directory exists
     if settings.storage_backend == "local":
         Path(settings.storage_local_root).mkdir(parents=True, exist_ok=True)

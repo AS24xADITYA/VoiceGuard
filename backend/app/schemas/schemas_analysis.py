@@ -18,6 +18,7 @@ class AnalysisCreateResponse(BaseModel):
     created_at: datetime
     poll_url: str
     deduplicated: bool = False
+    guest_session_token: str | None = None
 
 
 class AnalysisPollResponse(BaseModel):

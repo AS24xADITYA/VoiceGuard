@@ -104,6 +104,9 @@ class Analysis(Base):
     user_id: Mapped[str | None] = mapped_column(
         String(36), ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
     )
+    guest_session_id: Mapped[str | None] = mapped_column(
+        String(64), nullable=True, index=True
+    )
     status: Mapped[str] = mapped_column(String(24), nullable=False, index=True, default="QUEUED")
     stage: Mapped[str | None] = mapped_column(String(32), nullable=True)
     progress_pct: Mapped[int] = mapped_column(Integer, nullable=False, default=0)

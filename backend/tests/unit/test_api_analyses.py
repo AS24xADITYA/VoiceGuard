@@ -133,3 +133,122 @@ async def test_analysis_deletion_purges_storage(tmp_path: Path):
 
         # Artifact must be deleted from storage
         assert not storage.exists(storage_key)
+
+
+@pytest.mark.asyncio
+async def test_guest_analysis_session_binding(tmp_path: Path):
+    """Verify guest analysis deletion enforces signed session token binding per 14 §4.
+
+    Exit criteria:
+      - Anonymous delete without token returns 403 FORBIDDEN
+      - Anonymous delete with a DIFFERENT guest session token returns 403 FORBIDDEN
+      - Anonymous delete with the MATCHING guest session token returns 204 NO CONTENT
+    """
+    from app.security import create_guest_session_token
+
+    settings = get_settings()
+    app = create_app()
+    transport = ASGITransport(app=app)
+
+    token_a, session_id_a = create_guest_session_token(settings=settings)
+    token_b, session_id_b = create_guest_session_token(settings=settings)
+
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        # Create a guest analysis bound to session_id_a
+        async with async_session_factory() as db:
+            guest_ana = Analysis(
+                id="guest_ana_test_123",
+                user_id=None,
+                guest_session_id=session_id_a,
+                status="COMPLETE",
+                audio_sha256="sha256_guest_test",
+                duration_seconds=4.0,
+                file_size_bytes=600,
+            )
+            db.add(guest_ana)
+            await db.commit()
+
+        # 1. Anonymous request with NO session token -> 403 FORBIDDEN
+        res_no_token = await client.delete("/api/v1/analyses/guest_ana_test_123")
+        assert res_no_token.status_code == 403
+        assert res_no_token.json()["error"]["code"] == "FORBIDDEN"
+
+        # 2. Anonymous request with a DIFFERENT session token (token_b) -> 403 FORBIDDEN
+        res_diff_session = await client.delete(
+            "/api/v1/analyses/guest_ana_test_123",
+            headers={"X-Guest-Session": token_b},
+        )
+        assert res_diff_session.status_code == 403
+        assert res_diff_session.json()["error"]["code"] == "FORBIDDEN"
+
+        # 3. Anonymous request with MATCHING session token (token_a) -> 204 NO CONTENT
+        res_matching_session = await client.delete(
+            "/api/v1/analyses/guest_ana_test_123",
+            headers={"X-Guest-Session": token_a},
+        )
+        assert res_matching_session.status_code == 204
+
+        # 4. Verify analysis is now removed from database
+        async with async_session_factory() as db:
+            deleted_check = await db.get(Analysis, "guest_ana_test_123")
+            assert deleted_check is None
+
+
+@pytest.mark.asyncio
+async def test_guest_analysis_session_binding(tmp_path: Path):
+    """Verify guest analysis deletion enforces signed session token binding per 14 §4.
+
+    Exit criteria:
+      - Anonymous delete without token returns 403 FORBIDDEN
+      - Anonymous delete with a DIFFERENT guest session token returns 403 FORBIDDEN
+      - Anonymous delete with the MATCHING guest session token returns 204 NO CONTENT
+    """
+    from app.security import create_guest_session_token
+
+    settings = get_settings()
+    app = create_app()
+    transport = ASGITransport(app=app)
+
+    token_a, session_id_a = create_guest_session_token(settings=settings)
+    token_b, session_id_b = create_guest_session_token(settings=settings)
+
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        # Create a guest analysis bound to session_id_a
+        async with async_session_factory() as db:
+            guest_ana = Analysis(
+                id="guest_ana_test_123",
+                user_id=None,
+                guest_session_id=session_id_a,
+                status="COMPLETE",
+                audio_sha256="sha256_guest_test",
+                duration_seconds=4.0,
+                file_size_bytes=600,
+            )
+            db.add(guest_ana)
+            await db.commit()
+
+        # 1. Anonymous request with NO session token -> 403 FORBIDDEN
+        res_no_token = await client.delete("/api/v1/analyses/guest_ana_test_123")
+        assert res_no_token.status_code == 403
+        assert res_no_token.json()["error"]["code"] == "FORBIDDEN"
+
+        # 2. Anonymous request with a DIFFERENT session token (token_b) -> 403 FORBIDDEN
+        res_diff_session = await client.delete(
+            "/api/v1/analyses/guest_ana_test_123",
+            headers={"X-Guest-Session": token_b},
+        )
+        assert res_diff_session.status_code == 403
+        assert res_diff_session.json()["error"]["code"] == "FORBIDDEN"
+
+        # 3. Anonymous request with MATCHING session token (token_a) -> 204 NO CONTENT
+        res_matching_session = await client.delete(
+            "/api/v1/analyses/guest_ana_test_123",
+            headers={"X-Guest-Session": token_a},
+        )
+        assert res_matching_session.status_code == 204
+
+        # 4. Verify analysis is now removed from database
+        async with async_session_factory() as db:
+            deleted_check = await db.get(Analysis, "guest_ana_test_123")
+            assert deleted_check is None
+

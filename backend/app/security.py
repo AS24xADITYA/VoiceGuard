@@ -103,6 +103,66 @@ def decode_access_token(token: str, settings: Settings | None = None) -> dict[st
 decode_token = decode_access_token
 
 
+def create_guest_session_token(
+    session_id: str | None = None,
+    settings: Settings | None = None,
+    ttl_hours: int = 24,
+) -> tuple[str, str]:
+    """Create a cryptographically signed guest session token (JWT) with 24-hour TTL per 14 §4.
+
+    Returns (raw_signed_token, session_id).
+    """
+    if settings is None:
+        from app.config import get_settings
+        settings = get_settings()
+
+    if session_id is None:
+        session_id = secrets.token_urlsafe(32)
+
+    now = datetime.now(UTC)
+    expire = now + timedelta(hours=ttl_hours)
+
+    claims: dict[str, Any] = {
+        "type": "guest_session",
+        "sub": "guest",
+        "session_id": session_id,
+        "iat": now,
+        "exp": expire,
+        "jti": secrets.token_urlsafe(16),
+    }
+    token = jwt.encode(claims, settings.jwt_secret, algorithm=settings.jwt_algorithm)
+    return token, session_id
+
+
+def verify_guest_session_token(
+    token: str | None,
+    settings: Settings | None = None,
+) -> str | None:
+    """Verify a signed guest session token and return the validated session_id.
+
+    Returns None if token is invalid, expired, or malformed.
+    """
+    if not token:
+        return None
+    if settings is None:
+        from app.config import get_settings
+        settings = get_settings()
+
+    try:
+        payload = jwt.decode(
+            token,
+            settings.jwt_secret,
+            algorithms=[settings.jwt_algorithm],
+        )
+        if payload.get("type") == "guest_session" and payload.get("session_id"):
+            return str(payload["session_id"])
+        if payload.get("session_id"):
+            return str(payload["session_id"])
+        return None
+    except Exception:
+        return None
+
+
 # Common password denylist — a minimal set for the prototype.
 # In production this would be loaded from a file.
 COMMON_PASSWORDS: set[str] = {

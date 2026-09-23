@@ -43,6 +43,7 @@ from ai.audio.io import (
 from app.config import get_settings
 from app.db.models import Analysis, Artifact, Challenge, User
 from app.deps import get_current_user, get_current_user_optional, get_db
+from app.security import create_guest_session_token, verify_guest_session_token
 from app.schemas.schemas_analysis import (
     AnalysisArtifactItem,
     AnalysisCreateResponse,
@@ -65,6 +66,8 @@ router = APIRouter(prefix="/analyses", tags=["analyses"])
     summary="Submit audio for deepfake and scam analysis",
 )
 async def create_analysis(
+    request: Request,
+    response: Response,
     file: UploadFile = File(...),
     source_type: str = Form("UPLOAD"),
     auto_challenge: bool = Form(True),
@@ -128,6 +131,24 @@ async def create_analysis(
     sha256 = compute_sha256(temp_file)
     user_id = current_user.id if current_user else None
 
+    # Guest session handling per 08 §3 & 14 §4
+    guest_session_token = None
+    guest_session_id = None
+    if user_id is None:
+        presented_guest_token = (
+            request.headers.get("X-Guest-Session")
+            or request.headers.get("X-Session-ID")
+            or request.cookies.get("vg_guest_session")
+        )
+        validated_id = verify_guest_session_token(presented_guest_token, settings) if presented_guest_token else None
+        if validated_id:
+            guest_session_id = validated_id
+            guest_session_token = presented_guest_token
+        else:
+            guest_session_token, guest_session_id = create_guest_session_token(settings=settings)
+
+        response.headers["X-Guest-Session"] = guest_session_token
+
     # 5. Deduplication check per 08 §3.1
     if user_id:
         stmt = (
@@ -151,11 +172,13 @@ async def create_analysis(
                 created_at=existing.created_at,
                 poll_url=f"/api/v1/analyses/{existing.id}",
                 deduplicated=True,
+                guest_session_token=guest_session_token,
             )
 
     # 6. Create initial database row
     analysis = Analysis(
         user_id=user_id,
+        guest_session_id=guest_session_id,
         status="QUEUED",
         stage="INGESTING",
         progress_pct=0,
@@ -191,6 +214,7 @@ async def create_analysis(
         created_at=analysis.created_at,
         poll_url=f"/api/v1/analyses/{analysis.id}",
         deduplicated=False,
+        guest_session_token=guest_session_token,
     )
 
 
@@ -355,9 +379,11 @@ async def list_analyses(
 )
 async def delete_analysis(
     analysis_id: str,
-    current_user: Annotated[User, Depends(get_current_user)],
-    db: Annotated[AsyncSession, Depends(get_db)],
+    request: Request,
+    current_user: Annotated[User | None, Depends(get_current_user_optional)] = None,
+    db: Annotated[AsyncSession, Depends(get_db)] = None,
 ) -> Response:
+    settings = get_settings()
     stmt = (
         select(Analysis)
         .options(selectinload(Analysis.artifacts))
@@ -371,17 +397,47 @@ async def delete_analysis(
             detail={"code": "NOT_FOUND", "message": "Analysis not found."},
         )
 
-    # Ownership check
-    if analysis.user_id != current_user.id:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail={"code": "FORBIDDEN", "message": "You do not own this analysis."},
+    # Ownership check: registered analyses require user match; guest analyses require signed session binding per 14 §4
+    if analysis.user_id is not None:
+        if current_user is None or analysis.user_id != current_user.id:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail={"code": "FORBIDDEN", "message": "You do not own this analysis."},
+            )
+    else:
+        # Anonymous / Guest analysis: must present valid signed guest token matching the bound session
+        presented_token = (
+            request.headers.get("X-Guest-Session")
+            or request.headers.get("X-Session-ID")
+            or request.cookies.get("vg_guest_session")
         )
+        if not presented_token:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail={"code": "FORBIDDEN", "message": "Missing guest session token for anonymous analysis."},
+            )
+        verified_session_id = verify_guest_session_token(presented_token, settings)
+        if not verified_session_id or (analysis.guest_session_id and verified_session_id != analysis.guest_session_id):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail={"code": "FORBIDDEN", "message": "Invalid or mismatched guest session token."},
+            )
 
     # Remove artifacts from storage backend
     storage = get_storage()
     for art in analysis.artifacts:
-        storage.delete(art.storage_key)
+        try:
+            storage.delete(art.storage_key)
+        except Exception:
+            pass
+
+    # Clean up local analysis directory if local storage backend
+    settings = get_settings()
+    if settings.storage_backend == "local":
+        import shutil
+        analysis_dir = Path(settings.storage_local_root) / "analyses" / str(analysis.id)
+        if analysis_dir.exists():
+            shutil.rmtree(analysis_dir, ignore_errors=True)
 
     await db.delete(analysis)
     await db.commit()
