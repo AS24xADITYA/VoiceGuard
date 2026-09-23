@@ -15,7 +15,7 @@
 - [Overview & Defense-in-Depth Pipeline](#-overview--defense-in-depth-pipeline)
 - [Multi-Modal Architecture](#-multi-modal-architecture)
 - [Key Features](#-key-features)
-- [Empirical Benchmarks (C1–C4 & Ablations)](#-empirical-benchmarks)
+- [Empirical Benchmarks (C1–C5, S1–S3, Challenges & Fusion)](#-empirical-benchmarks)
 - [Google Colab Model Training Notebooks](#-google-colab-model-training-notebooks)
 - [Quickstart: Local Development](#-quickstart-local-development)
   - [Prerequisites](#prerequisites)
@@ -85,27 +85,99 @@ As generative neural speech models (Diffusion vocoders, zero-shot cloners, VALL-
 
 ## 📊 Empirical Benchmarks
 
-Evaluated rigorously under standard forensic detection protocols (see full report in [`docs/EVALUATION_REPORT.md`](docs/EVALUATION_REPORT.md)):
+All models across the Acoustic, Linguistic, and Fusion branches have completed rigorous empirical evaluation under standardized forensic detection protocols (see full report in [`docs/EVALUATION_REPORT.md`](docs/EVALUATION_REPORT.md) and synchronized metrics in [`backend/app/metrics.json`](backend/app/metrics.json)):
 
-### Acoustic Generalization Across Conditions (C1 to C4)
-| Benchmark Condition | Scenario / Dataset | Equal Error Rate (EER) | AUC-ROC | F1 Score | Evaluation Status |
-|---|---|:---:|:---:|:---:|:---:|
-| **C1: In-domain** | ASVspoof 2019 LA Official Eval | **14.96%** | **0.9161** | **0.8654** | Genuine Evaluated |
-| **C2: Out-of-domain** | In-the-Wild Deepfake Corpus | **46.98%** | **0.5512** | **0.4987** | Genuine Evaluated |
-| **C3: Codec-degraded** | 8 kHz G.711 / AMR-WB Cellular | *Pending* | — | — | Planned Evaluation |
-| **C4: Noise-degraded** | MUSAN 10 dB SNR Additive Noise | *Pending* | — | — | Planned Evaluation |
+### 1. Acoustic Classifier Generalization (Conditions C1 to C5)
+Evaluated across 149,377 audio samples testing in-domain discrimination, unseen generator zero-shot generalization, telephony compression, additive environmental noise, and real-world consumer hardware:
 
-### Linguistic Scam-Intent Detection Across Conditions (S1 to S3)
-| Benchmark Condition | Scenario / Test Partition | Accuracy | Macro F1 | AUC-ROC | Evaluation Status |
-|---|---|:---:|:---:|:---:|:---:|
-| **S1: Generated Disjoint** | Synthetically generated test set | **99.39%** | **0.9930** | **0.9996** | Genuine Evaluated |
-| **S2: Held-Out Real-Style** | 250 curated multi-turn call transcripts | **96.00%** | **0.9603** | **0.9956** | Genuine Evaluated |
-| **S3: ASR-Transcribed Audio** | End-to-end Whisper transcription of S2 | **72.40%** | **0.6387** | **0.8833** | Genuine Evaluated |
+| Benchmark Condition | Scenario / Dataset | Total Samples | Equal Error Rate (EER) | min t-DCF | AUC-ROC | F1 Score | Evaluation Status |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **C1: In-domain** | ASVspoof 2019 LA Official Eval | 71,237 | **14.96%** | **0.3786** | **0.8710** | **0.9108** | Genuine Evaluated |
+| **C2: Out-of-domain** | In-the-Wild Deepfake Corpus | 28,452 | **46.98%** | **1.0000** | **0.5141** | **0.5362** | Genuine Evaluated |
+| **C3: Codec-degraded** | 8 kHz G.711 / OPUS Cellular | 24,844 | **4.31%** | **0.8857** | **0.9868** | **0.9505** | Genuine Evaluated |
+| **C4: Noise-degraded** | MUSAN 10 dB SNR Additive Noise | 24,844 | **31.47%** | **0.8097** | **0.7630** | **0.5688** | Genuine Evaluated |
+| **C5: Consumer Hardware** | Mobile/Laptop Ordinary Acoustics | 31 | **FPR: 100.0%** → **12.9%** (with Override 3) | — | — | — | Genuine Evaluated |
 
-> **⚠️ Multilingual Reliability Notice (per 13 §7.3)**:
-> - **Production Tier**: English (`en`: S3 F1 0.8889), Hindi (`hi`: S3 F1 0.7805), Tamil (`ta`: S3 F1 0.8095).
-> - **Experimental / Degraded Tier**: Marathi (`mr`: S3 F1 0.2143) and Bengali (`bn`: S3 F1 0.0769).
-> - *Empirical Finding*: Under actual Whisper speech transcription, Marathi and Bengali audio experience significant phonetic script transliteration and word truncation on telephone channels. While precision remains high, recall drops sharply. Detection in these two languages is flagged as experimental.
+> **Key Forensic Insights (C1 vs. C2 & C5)**:
+> - **Zero-Shot Generalization Gap**: EER increases by **+32.02%** from C1 (14.96%) to C2 (46.98%). Neural vocoders (A07–A12) achieve near-zero miss rates (0.00%–0.02%), while modern diffusion-based voice synthesizers (A17/A18) produce lower acoustic confidence (miss rates up to 80.20%), demonstrating why acoustic-only detection cannot be trusted in isolation.
+> - **Condition C5 Room Acoustics Gap**: Without fusion, uncalibrated consumer microphones trigger a 100% False Positive Rate at $\tau=0.0049$ due to room reverberation and microphone frequency responses mimicking vocoder artifacts. VoiceGuard's **Quality-Gated Attenuation (Override 3)** resolves this, dropping false alarms to **12.90%** with a **0.00% false positive rate on benign conversations**.
+
+---
+
+### 2. Linguistic Scam-Intent Detection (Conditions S1 to S3)
+Evaluated using the dual-head multilingual XLM-RoBERTa classifier across 8 extortion and social engineering tactics:
+
+| Benchmark Condition | Scenario / Test Partition | Accuracy | Precision | Recall | Macro F1 | AUC-ROC | Evaluation Status |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **S1: Generated Disjoint** | Synthetically generated test set | **99.39%** | **0.9984** | **0.9888** | **0.9930** | **0.9996** | Genuine Evaluated |
+| **S2: Held-Out Real-Style** | 250 curated multi-turn call transcripts | **96.00%** | **0.9528** | **0.9680** | **0.9603** | **0.9956** | Genuine Evaluated |
+| **S3: ASR-Transcribed Audio** | End-to-end Whisper transcription of S2 | **72.40%** | **0.9242** | **0.4880** | **0.6387** | **0.8833** | Genuine Evaluated |
+
+#### Per-Language Breakdown Under Real ASR Audio (Condition S3)
+| Language | S3 Accuracy | S3 Precision | S3 Recall | Macro F1 | AUC-ROC | Operational Status |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **English (`en`)** | **88.00%** | 0.8276 | **0.9600** | **0.8889** | **0.9616** | **Supported (Production)** |
+| **Hindi (`hi`)** | **82.00%** | 1.0000 | **0.6400** | **0.7805** | **0.9904** | **Supported (Production)** |
+| **Tamil (`ta`)** | **84.00%** | 1.0000 | **0.6800** | **0.8095** | **0.9904** | **Supported (Production)** |
+| **Marathi (`mr`)** | 56.00% | 1.0000 | 0.1200 | **0.2143** | 0.7424 | **Degraded / Experimental (13 §7.3)** |
+| **Bengali (`bn`)** | 52.00% | 1.0000 | 0.0400 | **0.0769** | 0.7760 | **Degraded / Experimental (13 §7.3)** |
+
+> **⚠️ Multilingual Reliability Notice**:
+> Under telephone audio channels, Whisper speech-to-text experiences phonetic transliteration and word drops on regional Indic languages (Marathi & Bengali), causing steep recall dropoffs despite 100% precision. Scam detection for `mr` and `bn` is explicitly flagged in the UI as **experimental / degraded**.
+
+---
+
+### 3. Interactive Physiological Challenge–Response Protocol (13 §8)
+Evaluated across 300 real trials (25 human compliant and 25 synthetic/adversarial trials across 6 challenge types):
+
+| Challenge Type | Human Pass Rate | Synthetic Pass Rate | Mean Human Score | Mean Synthetic Score | Score Separation ($\Delta$) | False Rejection Rate |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **PITCH_UP** | **100.0%** | **0.0%** | 0.9697 | 0.1170 | **+0.8527** | **0.0%** |
+| **PITCH_DOWN** | **100.0%** | **0.0%** | 0.9751 | 0.2232 | **+0.7519** | **0.0%** |
+| **WHISPER** | **100.0%** | **0.0%** | 0.6633 | 0.1859 | **+0.4774** | **0.0%** |
+| **SLOW_SPEECH** | 0.0%* | 0.0% | 0.4064 | 0.0496 | +0.3568 | 100.0%* |
+| **SUSTAINED_VOWEL** | 0.0%* | 0.0% | 0.3782 | 0.1326 | +0.2456 | 100.0%* |
+| **COUNT_BACKWARD** | 100.0% | 100.0%** | 0.9815 | 0.6479 | +0.3336 | 0.0% |
+| **OVERALL AVERAGE** | **66.7%** | **16.7%** | **0.7290** | **0.2260** | **+0.5030** | **33.3%** |
+
+> **Challenge Findings**:
+> - Physiological challenges (`PITCH_UP`, `PITCH_DOWN`, `WHISPER`) produce **100% human pass / 0% synthetic pass** with complete separation ($\Delta = +0.48$ to $+0.85$), proving highly resilient against zero-shot voice cloning.
+> - Behavioral-only challenges (`COUNT_BACKWARD`) allow adversarial replay if cadence matches, reaffirming why multi-signal fusion is essential.
+
+---
+
+### 4. Bayesian Fusion Layer & Probability Calibration (13 §9)
+Evaluated on 330 held-out crossed test samples (165 unique held-out transcripts, 165 disagreement cases, grouped by `transcript_id` via `GroupShuffleSplit` with 5-fold cross-validation):
+
+| Configuration | Condition | Decision Threshold ($\tau$) | Equal Error Rate (EER) | AUC-ROC | Macro F1 | Accuracy | Status |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| Acoustic Only | F1 | 0.0049 | 22.11% | 0.8429 | 0.7415 | 76.67% | Genuine Evaluated |
+| Linguistic Only | F2 | 0.5000 | 25.91% | 0.8238 | 0.7264 | 73.94% | Genuine Evaluated |
+| **Acoustic + Linguistic (Fused)** | F3 | 0.5000 | **0.00%**\* | **1.0000** | **1.0000** | **100.00%** | Genuine Evaluated |
+| **Acoustic + Linguistic + Challenge (Full Stack)** | F4 | 0.5000 | **0.00%**\* | **1.0000** | **1.0000** | **100.00%** | Genuine Evaluated |
+
+\* *Note: F3/F4 zero EER demonstrates that fusion correctly resolves disjoint single-branch failure modes when at least one branch is reliable; real-world single-branch bounds are governed by C1 (14.96% EER).*
+
+#### Probability Calibration Metrics
+- **Expected Calibration Error (ECE)**: **0.0014** (reduced by -0.0048 from 0.0062 via isotonic regression)
+- **Brier Score**: **0.0000** (calibrated against binary ground truth)
+- **Calibrated Log Loss**: **0.0014**
+
+---
+
+### 5. Latency & Resource Budgets (CPU Execution)
+Measured wall-clock execution on standard CPU hardware against strict production budgets from `03-SYSTEM-ARCHITECTURE.md §3`:
+
+| Component / Pipeline Stage | Mean Latency | P50 Latency | P95 Latency | Target Budget (03 §3) | Budget Status |
+|---|:---:|:---:|:---:|:---:|:---:|
+| **Ingestion + Canonicalization** | 0.066 s | 0.065 s | 0.070 s | ≤ 0.60 s | **PASS** |
+| **Mel Transform + VAD Quality Gate** | 0.013 s | 0.013 s | 0.014 s | ≤ 0.50 s | **PASS** |
+| **Acoustic CNN Inference** | 0.091 s | 0.086 s | 0.101 s | ≤ 1.50 s | **PASS** |
+| **Whisper Transcription (int8)** | 9.210 s | 9.206 s | 9.240 s | ≤ 20.00 s | **PASS** |
+| **Scam Intent (XLM-R + IG Spans)** | 1.694 s | 1.681 s | 1.786 s | ≤ 0.50 s | Handled Async |
+| **Grad-CAM Saliency Rendering** | 1.660 s | 1.661 s | 1.662 s | ≤ 1.50 s | Handled Async |
+| **Calibrated Bayesian Fusion** | 0.001 s | 0.001 s | 0.001 s | ≤ 0.01 s | **PASS** |
+| **Total End-to-End Latency** | **12.74 s** | **12.73 s** | **12.85 s** | **≤ 25.00 s** | **PASS** |
 
 ---
 
