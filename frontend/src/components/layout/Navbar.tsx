@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Shield, Activity, User as UserIcon, LogOut, LogIn, History, Info, Mic } from 'lucide-react';
+import { Activity, User as UserIcon, LogOut, LogIn, History, Info, Mic } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 import { api } from '../../api/endpoints';
 
@@ -36,18 +36,15 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border-subtle bg-bg-base/80 backdrop-blur-md">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-40 w-full border-b border-border-subtle bg-bg-base/85 backdrop-blur-md">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
         {/* Brand */}
-        <Link to="/" className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md p-1">
-          <div className="w-9 h-9 rounded-lg bg-bg-surface border border-border-default flex items-center justify-center text-accent group-hover:border-accent/40 transition-colors">
-            <Shield className="w-5 h-5" />
+        <Link to="/" className="flex items-center gap-3.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-lg p-1">
+          <div className="w-12 h-12 rounded-xl bg-bg-surface border border-border-default flex items-center justify-center p-1.5 group-hover:border-accent/40 shadow-sm transition-all">
+            <img src="/logo.png" alt="VoiceGuard Logo" className="w-full h-full object-contain" />
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <span className="font-semibold text-text-primary text-base tracking-tight font-mono">VoiceGuard</span>
-              <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-bg-overlay text-text-tertiary border border-border-subtle">v0.1.0</span>
-            </div>
+            <span className="font-semibold text-text-primary text-base sm:text-lg tracking-tight font-mono block">VoiceGuard</span>
             <p className="text-xs text-text-tertiary hidden sm:block">Multi-signal audio intelligence</p>
           </div>
         </Link>

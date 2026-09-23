@@ -44,9 +44,9 @@ export const LoginPage: React.FC = () => {
 
   return (
     <div className="py-12 max-w-md mx-auto space-y-6">
-      <div className="text-center space-y-2">
-        <div className="w-12 h-12 rounded-xl bg-bg-surface border border-border-default flex items-center justify-center text-accent mx-auto">
-          <Shield className="w-6 h-6" />
+      <div className="text-center space-y-3">
+        <div className="w-32 h-32 rounded-3xl bg-bg-surface border border-border-default flex items-center justify-center p-3.5 mx-auto shadow-card">
+          <img src="/logo.png" alt="VoiceGuard Logo" className="w-full h-full object-contain" />
         </div>
         <h1 className="text-2xl font-bold font-mono tracking-tight text-text-primary">
           Log in to VoiceGuard

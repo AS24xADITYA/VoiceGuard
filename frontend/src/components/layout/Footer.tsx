@@ -19,9 +19,10 @@ export const Footer: React.FC = () => {
 
         {/* Links & Attribution */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-border-subtle text-xs text-text-tertiary">
-          <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4 text-accent" />
-            <span className="font-mono font-medium text-text-secondary">VoiceGuard</span>
+          <div className="flex items-center gap-2.5">
+            <img src="/logo.png" alt="VoiceGuard Logo" className="w-7 h-7 object-contain" />
+            <span className="font-mono font-medium text-text-secondary text-sm">VoiceGuard</span>
+            <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-bg-overlay text-text-tertiary border border-border-subtle">v0.1.0</span>
             <span>&copy; {new Date().getFullYear()} — Multi-Signal Deepfake Voice & Scam Intelligence</span>
           </div>
 
@@ -39,7 +40,7 @@ export const Footer: React.FC = () => {
               <ExternalLink className="w-3 h-3" />
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/AS24xADITYA/VoiceGuard"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1 hover:text-text-primary transition-colors"
