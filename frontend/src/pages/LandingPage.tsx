@@ -14,44 +14,48 @@ import {
 } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
+import { CyberMintWaves } from '../components/ui/CyberMintWaves';
 
 export const LandingPage: React.FC = () => {
   return (
-    <div className="space-y-16 py-6 sm:py-10">
-      {/* 1. Hero Section */}
-      <section className="text-center max-w-3xl mx-auto space-y-6">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-glow border border-accent/20 text-accent text-xs font-mono">
-          <Shield className="w-3.5 h-3.5" />
-          <span>Multi-Signal Voice Synthesis & Extortion Defense</span>
-        </div>
+    <div className="relative space-y-16 py-6 sm:py-10">
+      {/* 1. Hero Section with 3D Cyber Mint Waves strictly confined to hero area */}
+      <div className="relative -mt-6 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-28 sm:pb-36 min-h-[520px] sm:min-h-[560px] flex items-center justify-center overflow-hidden">
+        <CyberMintWaves />
+        <section className="relative z-10 text-center max-w-3xl mx-auto space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-glow border border-accent/20 text-accent text-xs font-mono">
+            <Shield className="w-3.5 h-3.5" />
+            <span>Multi-Signal Voice Synthesis & Extortion Defense</span>
+          </div>
 
-        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-text-primary">
-          Deepfake Voice &amp; Scam Intelligence
-        </h1>
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-text-primary drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+            Deepfake Voice &amp; Scam Intelligence
+          </h1>
 
-        <p className="text-base sm:text-lg text-text-secondary leading-relaxed max-w-2xl mx-auto">
-          An automated security pipeline uniting convolutional acoustic artifact detection,
-          multilingual extortion language analysis, and interactive challenge verification.
-        </p>
+          <p className="text-base sm:text-lg text-text-secondary leading-relaxed max-w-2xl mx-auto drop-shadow-[0_1px_6px_rgba(0,0,0,0.85)]">
+            An automated security pipeline uniting convolutional acoustic artifact detection,
+            multilingual extortion language analysis, and interactive challenge verification.
+          </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-          <Link to="/analyze">
-            <Button size="lg" className="w-full sm:w-auto gap-2">
-              <Mic className="w-4 h-4" />
-              <span>Analyse Audio</span>
-              <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
-          </Link>
-          <Link to="/about">
-            <Button variant="secondary" size="lg" className="w-full sm:w-auto">
-              How It Works
-            </Button>
-          </Link>
-        </div>
-      </section>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+            <Link to="/analyze">
+              <Button size="lg" className="w-full sm:w-auto gap-2">
+                <Mic className="w-4 h-4" />
+                <span>Analyse Audio</span>
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
+            <Link to="/about">
+              <Button variant="secondary" size="lg" className="w-full sm:w-auto">
+                How It Works
+              </Button>
+            </Link>
+          </div>
+        </section>
+      </div>
 
       {/* 2. Scope Notice (Above the fold per 09 §4.1) */}
-      <section className="max-w-4xl mx-auto">
+      <section className="relative z-10 max-w-4xl mx-auto">
         <div className="p-4 sm:p-5 rounded-xl bg-bg-surface border border-accent/30 flex items-start gap-3.5 text-sm text-text-secondary shadow-card">
           <AlertTriangle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
           <div>
@@ -65,7 +69,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* 3. Pipeline Diagram (Static, crisp SVG per 09 §4.1) */}
-      <section className="max-w-5xl mx-auto space-y-6">
+      <section className="relative z-10 max-w-5xl mx-auto space-y-6">
         <div className="text-center space-y-2">
           <h2 className="text-2xl font-bold font-mono tracking-tight text-text-primary">
             Convergent Multi-Signal Architecture
@@ -129,7 +133,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* 4. Four Signal Cards per 09 §4.1 */}
-      <section className="max-w-5xl mx-auto space-y-6">
+      <section className="relative z-10 max-w-5xl mx-auto space-y-6">
         <h2 className="text-xl font-bold font-mono tracking-tight text-text-primary text-center">
           Comprehensive Analysis Modalities
         </h2>
@@ -177,7 +181,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* 5. Limitations Strip (Honest statements from 01 §6 per 09 §4.1) */}
-      <section className="max-w-4xl mx-auto">
+      <section className="relative z-10 max-w-4xl mx-auto">
         <div className="p-6 rounded-xl bg-bg-elevated border border-border-subtle space-y-3">
           <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase text-accent">
             <Info className="w-4 h-4" />
